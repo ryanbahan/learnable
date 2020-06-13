@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/userContext';
 
 const H1 = styled.h1`
   cursor: pointer;
@@ -47,23 +49,28 @@ const Nav = styled.nav`
   color: ${({ theme }) => theme.colors.fontPrimary};
 `;
 
-const Header = () => (
-  <Nav>
-    <Link href="/">
-      <H1>learnable</H1>
-    </Link>
-    <Div>
-      <Ul>
-        <Link href="/">
-          <li>home</li>
-        </Link>
-        <Link href="/app/notifications">
-          <li>notifications</li>
-        </Link>
-      </Ul>
-      <Button>Welcome, Ryan!</Button>
-    </Div>
-  </Nav>
-);
+const Header = () => {
+  const userContext = useContext(UserContext);
+  const { user } = userContext.state;
+
+  return (
+    <Nav>
+      <Link href="/">
+        <H1>learnable</H1>
+      </Link>
+      <Div>
+        <Ul>
+          <Link href="/">
+            <li>home</li>
+          </Link>
+          <Link href="/app/notifications">
+            <li>notifications</li>
+          </Link>
+        </Ul>
+        {!user ? <Button>Log in</Button> : <Button>Welcome, {user}</Button>}
+      </Div>
+    </Nav>
+  )
+};
 
 export default Header;
