@@ -18,7 +18,6 @@ const onRedirectCallback = appState => {
   )
 };
 
-
 export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
