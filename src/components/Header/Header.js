@@ -1,5 +1,38 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/userContext';
+import { useAuth0 } from "../../react-auth0-spa";
+import React from "react";
+
+const Header = () => {
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const userContext = useContext(UserContext);
+  const { user } = userContext.state;
+
+  return (
+    <Nav>
+      <Link href="/">
+        <H1>learnable</H1>
+      </Link>
+      <Div>
+        <Ul>
+          <Link href="/">
+            <li>home</li>
+          </Link>
+          <Link href="/app/notifications">
+            <li>notifications</li>
+          </Link>
+        </Ul>
+        {
+          !isAuthenticated
+          ? <Button onClick={() => loginWithRedirect()}>Log in</Button> 
+          : <Button onClick={() => logout()}>Logout</Button>
+        }
+      </Div>
+    </Nav>
+  )
+};
 
 const H1 = styled.h1`
   cursor: pointer;
@@ -46,24 +79,5 @@ const Nav = styled.nav`
   padding: 1rem 3.5rem;
   color: ${({ theme }) => theme.colors.fontPrimary};
 `;
-
-const Header = () => (
-  <Nav>
-    <Link href="/">
-      <H1>learnable</H1>
-    </Link>
-    <Div>
-      <Ul>
-        <Link href="/">
-          <li>home</li>
-        </Link>
-        <Link href="/app/notifications">
-          <li>notifications</li>
-        </Link>
-      </Ul>
-      <Button>Welcome, Ryan!</Button>
-    </Div>
-  </Nav>
-);
 
 export default Header;
