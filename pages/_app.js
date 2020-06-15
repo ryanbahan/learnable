@@ -11,11 +11,7 @@ import config from "../src/auth_config.json";
 import Router from 'next/router'
 
 const onRedirectCallback = appState => {
-  Router.push(
-    appState && appState.targetUrl
-      ? 'appState.targetUrl'
-      : '/'
-  )
+  Router.push('/')
 };
 
 export default class MyApp extends App {

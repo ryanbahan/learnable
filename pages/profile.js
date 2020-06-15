@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styled from 'styled-components';
 import Profile from '../src/components/Profile/Profile'
+import PrivateRoute from '../src/hocs/PrivateRoute'
 
 const MainWrapper = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ export default function Home() {
                 <title>Learnable</title>
             </Head>
             <MainWrapper>
-                <Profile />
+                <PrivateRoute path="/profile" component={Profile} />
             </MainWrapper>
         </>
     );
