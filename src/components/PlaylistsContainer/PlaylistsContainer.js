@@ -15,8 +15,8 @@ const PlaylistsContainer = () => {
 
   const filteredPlaylists = () =>
     appSettingsContext.state.archiveView
-      ? playlists.filter((p) => p.status === 'archived')
-      : playlists.filter((p) => p.status !== 'archived');
+      ? playlists.filter((playlist) => playlist.status === 'archived')
+      : playlists.filter((playlist) => playlist.status !== 'archived');
 
   const renderedPlaylists = filteredPlaylists().map((playlist) => (
     <Playlist key={playlist.id} {...playlist} />
