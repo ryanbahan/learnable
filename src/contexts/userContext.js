@@ -8,7 +8,7 @@ const UserProvider = ({ children }) => {
   const { user } = useAuth0();
 
   useEffect(() => {
-    state.user === null
+    state.user === null && user
       ? setState({ user: user })
       : null
   });

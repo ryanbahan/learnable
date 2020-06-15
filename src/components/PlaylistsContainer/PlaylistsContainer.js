@@ -6,12 +6,15 @@ import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
 import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
+import { UserContext } from '../../contexts/userContext'
 
 const PlaylistsContainer = () => {
   const appSettingsContext = useContext(AppSettingsContext);
   const { archiveView, view } = appSettingsContext.state;
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
+  const userContext = useContext(UserContext);
+  console.log(userContext.state)
 
   const filteredPlaylists = () =>
     appSettingsContext.state.archiveView
