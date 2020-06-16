@@ -1,6 +1,4 @@
-# Learnable [![Build Status](https://travis-ci.org/learn-able/learnable-fe.svg?branch=master)](https://travis-ci.org/learn-able/learnable-fe)
-
-![Size](https://github-size-badge.herokuapp.com/ryanbahan/learnable.svg)
+# Learnable [![Build Status](https://travis-ci.org/learn-able/learnable-fe.svg?branch=master)](https://travis-ci.org/learn-able/learnable-fe) ![Size](https://github-size-badge.herokuapp.com/ryanbahan/learnable.svg)
 
 
 
