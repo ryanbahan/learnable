@@ -1,4 +1,4 @@
-# Learnable [![Build Status](https://travis-ci.org/learn-able/learnable-fe.svg?branch=master)](https://travis-ci.org/learn-able/learnable-fe) https://img.badgesize.io//ryanbahan/learnable[.svg|png|jpg][?compression=gzip|brotli][&label=string][&max=string][&softmax=string]
+# Learnable [![Build Status](https://travis-ci.org/learn-able/learnable-fe.svg?branch=master)](https://travis-ci.org/learn-able/learnable-fe) https://img.badgesize.io/ryanbahan/learnable[.svg|png|jpg][?compression=gzip|brotli][&label=string][&max=string][&softmax=string]
 
 
 Contributors:
