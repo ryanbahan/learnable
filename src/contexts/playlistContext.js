@@ -75,6 +75,8 @@ const PlaylistProvider = ({ children }) => {
           playlist.playlist_items.push(newItem)
         }
 
+        sortPlaylistItems(playlist.playlist_items);
+
         return playlist;
       }),
     });
@@ -121,10 +123,6 @@ const PlaylistProvider = ({ children }) => {
         JSON.stringify(playlistItemState),
         { 'Content-Type': 'application/json' }
       );
-
-      console.log(responseData)
-
-      // sortPlaylistItems(responseData.data.playlist_items);
 
       updatePlaylist(responseData);
     } catch (error) {
