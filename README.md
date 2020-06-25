@@ -1,5 +1,7 @@
 # Learnable [![Build Status](https://travis-ci.org/learn-able/learnable-fe.svg?branch=master)](https://travis-ci.org/learn-able/learnable-fe) ![Size](https://github-size-badge.herokuapp.com/ryanbahan/learnable.svg)
 
+### Hey! Learnable is currently undergoing maintenance as we migrate our backend to AWS and auth0. Due to this, features are limited and you may experience some bugs or unusual performace, with limited PWA functionality. We expect to have the app back up and running by the first week of July. Thanks for bearing with us!
+
 
 
 Contributors:
@@ -15,36 +17,13 @@ Contributors:
 5. [Testing](#5-testing)
 6. [Deployment](#6-deployment)
 
-![main](https://user-images.githubusercontent.com/44818815/83580573-a1684a80-a4f9-11ea-8bd7-328c0c2adcb5.gif)
+![main](https://user-images.githubusercontent.com/54119863/85772664-4d0c5100-b6da-11ea-99b9-e939f4484275.png)
 
 ### 1. Abstract
 
 As a software developer, there is always more to learn, and many of us find ourselves with folders full of interesting articles, videos, and podcasts that we'd love to learn from yet somehow never get to. Managing tabs and windows is obnoxious and bookmarks never get maintained. Learnable helps you trim the fat and finish what you started.
 
-Learnable is an educational project developed in two weeks at the Turing School of Software and Design in Denver, CO. Its primary intent is to act as a learning management platform for software developers. This is accomplished by helping developers organize, gamify, and set goals for their learning resources.
-
-High level goals included self-teaching of a new technology on both the front end and back end, collaborating as two separate teams on the same project, and using agile processes to manage a project.
-
-### 2. Learning Goals
-
-Technical
-
-- [x] Explore server side rendered React via Next.js.
-- [x] Implement animation via Framer Motion.
-- [x] Use CSS in React via Styled Components.
-- [x] Practice using multiple contests via the React Context API to manage state.
-- [x] Use hooks, including custom hooks, to modify state.
-- [x] Practice composing components in a manner such that the UX is fluid and seamless.
-
-Project Management
-
-- [x] Use an agile process, including sprints, daily standups, retros, backlog grooming, user stories, kanban board, and code review to turn well defined requirements into deployed and production ready software.
-- [x] Gain experience dividing applications into components and domains of responsibilities to facilitate multi-developer teams.
-- [x] Gain more experience using continuous integration tools to build and automate the deployment of features in various environments.
-- [x] Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec.
-- [x] Concept ideation and wireframing in Figma.
-
-### 3. Technology
+### 2. Technology
 
 - Next.js
 - React Context API for front end state management
@@ -53,7 +32,7 @@ Project Management
 - Styled Components
 - Material UI
 
-### 4. Installation
+### 3. Installation
 
 Front end:
 
@@ -73,4 +52,4 @@ Front end:
 
 https://learnable-fe.now.sh/
 
-_Please note: back end API is hosted on Heroku and will take 30 seconds to spin up._
+_Please note: back end API is hosted on Heroku and may take up to 30 seconds to spin up._
