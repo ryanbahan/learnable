@@ -84,6 +84,6 @@ const Div = styled.div`
 Dropdown.propTypes = {
   dueDate: PropTypes.string.isRequired,
   isFavorite: PropTypes.bool,
-  playlistId: PropTypes.number.isRequired,
+  playlistId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };

@@ -77,10 +77,10 @@ const PlaylistItem = ({
 
 PlaylistItem.propTypes = {
   category: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.string,
   is_complete: PropTypes.bool,
   name: PropTypes.string,
-  playlist_id: PropTypes.number,
+  playlist_id: PropTypes.string,
   url: PropTypes.string,
 };
 

@@ -9,9 +9,11 @@ const PlaylistProvider = ({ children }) => {
   const [state, setState] = useState({ playlists: [] });
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const { user } = useAuth0();
+  const base = process.env.baseURL[process.env.type];
+
+  // console.log(state)
 
   const fetchPlaylists = async () => {
-    const base = process.env.baseURL[process.env.type]
 
     try {
       const responseData = await sendRequest(
@@ -48,14 +50,14 @@ const PlaylistProvider = ({ children }) => {
   const postPlaylist = async ({ user_id, title, due_date }) => {
     try {
       const responseData = await sendRequest(
-        `https://learnablebe.herokuapp.com/api/v0/playlists`,
+        `${base}/playlists/${user.sub}`,
         'POST',
-        JSON.stringify({ user_id, title, due_date }),
+        JSON.stringify({ user_id: user.sub, title, due_date, status: "active" }),
         { 'Content-Type': 'application/json' }
       );
 
       setState({
-        playlists: [...state.playlists.filter((p) => p.id), responseData.data],
+        playlists: [...state.playlists.filter((p) => p.id), responseData],
       });
     } catch (error) {
       console.error(error);

@@ -149,12 +149,12 @@ const childVariants = {
 };
 
 Playlist.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   due_date: PropTypes.string,
   playlist_items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      playlist_id: PropTypes.number,
+      id: PropTypes.string,
+      playlist_id: PropTypes.string,
       name: PropTypes.string,
       description: PropTypes.string,
       url: PropTypes.string,

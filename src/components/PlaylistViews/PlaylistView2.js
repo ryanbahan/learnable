@@ -102,7 +102,7 @@ const PlaylistView2 = ({
 PlaylistView2.propTypes = {
   dueDate: PropTypes.string,
   nextStep: PropTypes.func,
-  playlistId: PropTypes.number,
+  playlistId: PropTypes.string,
   playlistItems: PropTypes.arrayOf(PropTypes.object),
   playlistItemURL: PropTypes.string,
   setPlaylistItemURL: PropTypes.func,
