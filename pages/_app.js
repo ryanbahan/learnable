@@ -11,7 +11,9 @@ import config from "../src/auth_config.json";
 import Router from 'next/router'
 
 const onRedirectCallback = appState => {
-  Router.push('/')
+  appState
+  ? Router.push(appState.targetUrl)
+  : Router.push('/app')
 };
 
 export default class MyApp extends App {

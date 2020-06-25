@@ -6,17 +6,20 @@ import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
 import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
+import { UserContext } from '../../contexts/userContext'
 
 const PlaylistsContainer = () => {
   const appSettingsContext = useContext(AppSettingsContext);
   const { archiveView, view } = appSettingsContext.state;
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
+  const userContext = useContext(UserContext);
+  console.log(userContext.state)
 
   const filteredPlaylists = () =>
     appSettingsContext.state.archiveView
-      ? playlists.filter((p) => p.status === 'archived')
-      : playlists.filter((p) => p.status !== 'archived');
+      ? playlists.filter((playlist) => playlist.status === 'archived')
+      : playlists.filter((playlist) => playlist.status !== 'archived');
 
   const renderedPlaylists = filteredPlaylists().map((playlist) => (
     <Playlist key={playlist.id} {...playlist} />
