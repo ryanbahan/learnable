@@ -11,10 +11,11 @@ const PlaylistProvider = ({ children }) => {
   const { user } = useAuth0();
 
   const fetchPlaylists = async () => {
+    const base = process.env.baseURL[process.env.type]
 
     try {
       const responseData = await sendRequest(
-        `http://learnablebe-env.eba-trycamvb.us-east-1.elasticbeanstalk.com/playlists/${user.sub}`
+        `${base}/playlists/${user.sub}`
       );
 
       const formattedData = responseData.data.map((playlist) => {
