@@ -2,21 +2,6 @@
 
 ### Hey! Learnable is currently undergoing maintenance as we migrate our backend to AWS and auth0. Due to this, features are limited and you may experience some bugs or unusual performace, with limited PWA functionality. We expect to have the app back up and running by the first week of July. Thanks for bearing with us!
 
-
-
-Contributors:
-[Steve Anderson](https://github.com/alerrian),
-[Ryan Bahan](https://github.com/ryanbahan),
-[Chris Postma](https://github.com/cjrpostma),
-[Meghan Stovall](https://github.com/meghanstovall)
-
-1. [Abstract](#1-abstract)
-2. [Learning Goals](#2-learning-goals)
-3. [Technology](#3-technology)
-4. [Installation](#4-installation)
-5. [Testing](#5-testing)
-6. [Deployment](#6-deployment)
-
 ![main](https://user-images.githubusercontent.com/54119863/85772664-4d0c5100-b6da-11ea-99b9-e939f4484275.png)
 
 ### 1. Abstract
@@ -53,3 +38,9 @@ Front end:
 https://learnable-fe.now.sh/
 
 _Please note: back end API is hosted on Heroku and may take up to 30 seconds to spin up._
+
+Contributors:
+[Steve Anderson](https://github.com/alerrian),
+[Ryan Bahan](https://github.com/ryanbahan),
+[Chris Postma](https://github.com/cjrpostma),
+[Meghan Stovall](https://github.com/meghanstovall)
