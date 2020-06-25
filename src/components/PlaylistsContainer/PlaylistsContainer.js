@@ -14,7 +14,6 @@ const PlaylistsContainer = () => {
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
   const userContext = useContext(UserContext);
-  console.log(userContext.state)
 
   const filteredPlaylists = () =>
     appSettingsContext.state.archiveView

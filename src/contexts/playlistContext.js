@@ -1,17 +1,20 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { sortPlaylistItems } from '../utils/utils';
+import { useAuth0 } from '../react-auth0-spa';
 
 export const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
   const [state, setState] = useState({ playlists: [] });
   const { isLoading, error, sendRequest, clearError } = useFetch();
+  const { user } = useAuth0();
 
   const fetchPlaylists = async () => {
+
     try {
       const responseData = await sendRequest(
-        `https://learnablebe.herokuapp.com/api/v0/user/1/playlists`
+        `http://learnablebe-env.eba-trycamvb.us-east-1.elasticbeanstalk.com/playlists/${user.sub}`
       );
 
       const formattedData = responseData.data.map((playlist) => {
@@ -28,9 +31,12 @@ const PlaylistProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchPlaylists();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sendRequest]);
+    if (user) {
+      fetchPlaylists();
+    } else {
+      console.log('test')
+    }
+  }, [user]);
 
   const addPlaylist = (newPlaylist) => {
     setState((prevState) => ({
