@@ -13,7 +13,7 @@ import Router from 'next/router'
 const onRedirectCallback = appState => {
   appState
   ? Router.push(appState.targetUrl)
-  : Router.push('/')
+  : Router.push('/app')
 };
 
 export default class MyApp extends App {
