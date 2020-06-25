@@ -43,7 +43,7 @@ const PlaylistItem = ({
   category,
   id,
   is_complete,
-  name,
+  title,
   playlist_id,
   url,
 }) => {
@@ -52,7 +52,7 @@ const PlaylistItem = ({
   const handleCheckboxToggle = () => {
     playlistContext.patchPlaylistItem(playlist_id, id, {
       playlist_id,
-      name,
+      title,
       category,
       is_complete: !is_complete,
       url,
@@ -69,8 +69,8 @@ const PlaylistItem = ({
         name="checkbox"
         color="default"
       />
-      <P>{name}</P>
-      {icon[category]}
+      <P>{ title }</P>
+      { icon[category] }
     </A>
   );
 };
