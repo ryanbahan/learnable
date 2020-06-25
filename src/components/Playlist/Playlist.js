@@ -43,7 +43,7 @@ const Playlist = ({
   const handleSubmit = () => {
     const newPlaylistItem = {
       playlist_id: id,
-      name: playlistItemTitle,
+      title: playlistItemTitle,
       category,
       url: playlistItemURL,
       is_complete: false,

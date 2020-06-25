@@ -23,10 +23,7 @@ export default function Dropdown({ dueDate, isFavorite, playlistId, title }) {
   const handleClose = (option) => {
     if (option === 'Archive') {
       playlistContext.patchPlaylist(playlistId, {
-        due_date: dueDate,
-        is_favorite: isFavorite,
         status: 'archived',
-        title,
       });
     }
 
