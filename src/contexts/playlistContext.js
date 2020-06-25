@@ -71,7 +71,7 @@ const PlaylistProvider = ({ children }) => {
     setState({
       playlists: playlists.map((playlist) => {
         if (playlist.id === newItem.playlist_id) {
-          playlist.playlist_items.filter(p => p.id === newItem.id)
+          playlist.playlist_items = playlist.playlist_items.filter(p => p.id !== newItem.id)
           playlist.playlist_items.push(newItem)
         }
 
@@ -111,24 +111,25 @@ const PlaylistProvider = ({ children }) => {
   };
 
   const patchPlaylistItem = async (
-    playlistId,
     playlistItemId,
     playlistItemState
   ) => {
-    // try {
-    //   const responseData = await sendRequest(
-    //     `https://learnablebe.herokuapp.com/api/v0/playlists/${playlistId}/items/${playlistItemId}`,
-    //     'PATCH',
-    //     JSON.stringify(playlistItemState),
-    //     { 'Content-Type': 'application/json' }
-    //   );
+    try {
+      const responseData = await sendRequest(
+        `${base}/playlistItems/${playlistItemId}`,
+        'PUT',
+        JSON.stringify(playlistItemState),
+        { 'Content-Type': 'application/json' }
+      );
 
-    //   sortPlaylistItems(responseData.data.playlist_items);
+      console.log(responseData)
 
-    //   updatePlaylist(responseData.data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+      // sortPlaylistItems(responseData.data.playlist_items);
+
+      updatePlaylist(responseData);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const removePlaylist = () => {

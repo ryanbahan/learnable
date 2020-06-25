@@ -60,9 +60,11 @@ const PlaylistView2 = ({
   if (!playlistItems) {
     playlistItems = [];
   }
-  const items = playlistItems.map((item) => (
-    <PlaylistItem key={item.id} playlistId={playlistId} {...item} />
-  ));
+
+  const items = playlistItems.map((item) => {
+    // console.log(item, 'item')
+    return <PlaylistItem key={item.id} playlistId={playlistId} {...item} />
+  });
 
   return (
     <>
