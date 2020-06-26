@@ -22,11 +22,13 @@ export default class MyApp extends App {
     const baseURL = process.env.baseURL[process.env.type];
     const env = process.env.type
 
+    // console.log(process.env.assetPrefix, 'app')
+
     return (
       <Auth0Provider
         domain={config.domain}
         client_id={config.clientId}
-        redirect_uri={env === "prod" ? Router.push(baseURL) : baseURL}
+        redirect_uri={baseURL[env]}
         onRedirectCallback={onRedirectCallback}
       >
         <UserProvider>
