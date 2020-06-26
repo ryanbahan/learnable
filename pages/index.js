@@ -5,6 +5,8 @@ import { useAuth0 } from "../src/react-auth0-spa";
 export default function Home() {
     const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0();
 
+    console.log(isAuthenticated, 'auth')
+
     return (
         <>
             <Head>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import createAuth0Client from "@auth0/auth0-spa-js@1.3.2";
+import createAuth0Client from "@auth0/auth0-spa-js";
 import Router from 'next/router';
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
