@@ -13,7 +13,7 @@ export default function Home() {
             }
         };
         fn();
-    }, [isAuthenticated, loginWithRedirect, path, loading]);
+    }, [isAuthenticated, loginWithRedirect, loading]);
 
     console.log(isAuthenticated, 'auth')
 
