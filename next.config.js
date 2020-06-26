@@ -6,7 +6,7 @@ module.exports = {
         assetPrefix: process.env.BASE_PATH || '',
         baseAPIURL: {
             dev: "http://localhost:3000",
-            prod: "https://learnableservices.com/",
+            prod: "https://learnableservices.com",
         },
         baseURL: {
             dev: "http://localhost:8080",
