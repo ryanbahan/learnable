@@ -12,7 +12,7 @@ const PlaylistProvider = ({ children }) => {
   const base = process.env.baseAPIURL[process.env.type];
 
   const fetchPlaylists = async () => {
-
+    console.log(user)
     try {
       const responseData = await sendRequest(
         `${base}/playlists/${user.sub}`
