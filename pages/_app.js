@@ -18,6 +18,8 @@ const onRedirectCallback = appState => {
 
 function MyApp(props) {
   const { Component, pageProps } = props
+  console.log('testauth');
+  
 
   return (
     <Auth0Provider
