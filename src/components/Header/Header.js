@@ -6,9 +6,13 @@ import { useAuth0 } from "../../react-auth0-spa";
 import React from "react";
 
 const Header = () => {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0();
   const userContext = useContext(UserContext);
   const { user } = userContext.state;
+
+  if (loading) {
+    return <div>loading...</div>
+  }
 
   return (
     <Nav>

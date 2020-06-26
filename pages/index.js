@@ -3,7 +3,11 @@ import styled from 'styled-components'
 import { useAuth0 } from "../src/react-auth0-spa";
 
 export default function Home() {
-    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+    const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0();
+
+    if (loading) {
+        return <div>loading...</div>
+    }
 
     return (
         <>
@@ -18,7 +22,7 @@ export default function Home() {
                     <Button onClick={() => loginWithRedirect()}>Sign in</Button>
                 </div>
             </Main>
-        </> 
+        </div> 
     );
 }
 
