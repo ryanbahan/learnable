@@ -10,7 +10,7 @@ module.exports = {
         },
         baseURL: {
             dev: "http://localhost:8080",
-            prod: "http://learnable-de5ge3h9e.vercel.app",
+            prod: "http://learnable-git-hookup-aws.ryanbahan.vercel.app",
         }
     },
 }
