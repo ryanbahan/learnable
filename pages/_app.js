@@ -18,7 +18,9 @@ const onRedirectCallback = appState => {
 
 function MyApp(props) {
   const { Component, pageProps } = props
-  console.log('testauth');
+  console.log('testauth url', process.env.baseURL);
+  console.log('testauth type', process.env.type);
+  console.log('testauth env', process.env.);
   
 
   return (
