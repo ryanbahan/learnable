@@ -10,6 +10,8 @@ const Header = () => {
   const userContext = useContext(UserContext);
   const { user } = userContext.state;
 
+  console.log(loading, 'loading')
+
   if (loading) {
     return <div>loading...</div>
   }
