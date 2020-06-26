@@ -6,7 +6,7 @@ module.exports = {
         assetPrefix: process.env.BASE_PATH || '',
         baseAPIURL: {
             dev: "http://localhost:3000",
-            prod: "http://learnablebe-env.eba-trycamvb.us-east-1.elasticbeanstalk.com",
+            prod: "https://learnableservices.com/",
         },
         baseURL: {
             dev: "http://localhost:8080",
