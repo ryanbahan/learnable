@@ -12,15 +12,11 @@ const PlaylistProvider = ({ children }) => {
   const base = process.env.baseAPIURL[process.env.type];
 
   const fetchPlaylists = async () => {
-    console.log(user, 'user')
-    console.log('url', base)
     try {
       console.log('full', `${base}/playlists/${user.sub}`)
       const responseData = await sendRequest(
         `${base}/playlists/${user.sub}`
       );
-
-      console.log('userdata', responseData)
 
       const formattedData = responseData.data.map((playlist) => {
         if (playlist.playlist_items) {

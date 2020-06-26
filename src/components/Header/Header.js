@@ -10,7 +10,7 @@ const Header = () => {
   const userContext = useContext(UserContext);
   const { user } = userContext.state;
 
-  console.log(test, loginWithRedirect)
+  console.log("loginwithredirect", loginWithRedirect)
 
   return (
     <Nav>
