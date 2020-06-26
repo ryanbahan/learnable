@@ -9,7 +9,7 @@ const PlaylistProvider = ({ children }) => {
   const [state, setState] = useState({ playlists: [] });
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const { user } = useAuth0();
-  const base = process.env.baseURL[process.env.type];
+  const base = process.env.baseAPIURL[process.env.type];
 
   const fetchPlaylists = async () => {
 

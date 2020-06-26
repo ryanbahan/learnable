@@ -19,12 +19,14 @@ const onRedirectCallback = appState => {
 export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
+    const baseURL = process.env.baseURL[process.env.type];
+    const env = process.env.type
 
     return (
       <Auth0Provider
         domain={config.domain}
         client_id={config.clientId}
-        redirect_uri={'http://localhost:8080'}
+        redirect_uri={env === "prod" ? Router.push(baseURL) : baseURL}
         onRedirectCallback={onRedirectCallback}
       >
         <UserProvider>
