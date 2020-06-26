@@ -22,7 +22,7 @@ export default function Home() {
                     <Button onClick={() => loginWithRedirect()}>Sign in</Button>
                 </div>
             </Main>
-        </div> 
+        </> 
     );
 }
 
