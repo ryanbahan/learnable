@@ -12,10 +12,6 @@ const Header = () => {
 
   console.log(test, loginWithRedirect)
 
-  if (loading) {
-    return <div>loading...</div>
-  }
-
   return (
     <Nav>
       <Link href="/app">
