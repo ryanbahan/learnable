@@ -16,32 +16,28 @@ const onRedirectCallback = appState => {
   : Router.push('/app')
 };
 
-export default class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-    const baseURL = process.env.baseURL[process.env.type];
-    const env = process.env.type
+function MyApp(props) {
+  const { Component, pageProps } = props
 
-    // console.log(process.env.assetPrefix, 'app')
-
-    return (
-      <Auth0Provider
-        domain={config.domain}
-        client_id={config.clientId}
-        redirect_uri={baseURL[env]}
-        onRedirectCallback={onRedirectCallback}
-      >
-        <UserProvider>
-          <AppSettingsProvider>
-            <ThemeProvider theme={theme}>
-              <MuiPickersUtilsProvider utils={MomentUtils}>
-                <GlobalStyles />
-                <Component {...pageProps} />
-              </MuiPickersUtilsProvider>
-            </ThemeProvider>
-          </AppSettingsProvider>
-        </UserProvider>
-      </Auth0Provider>
-    );
-  }
+  return (
+    <Auth0Provider
+      domain={config.domain}
+      client_id={config.clientId}
+      redirect_uri={process.env.baseURL[process.env.type]}
+      onRedirectCallback={onRedirectCallback}
+    >
+      <UserProvider>
+        <AppSettingsProvider>
+          <ThemeProvider theme={theme}>
+            <MuiPickersUtilsProvider utils={MomentUtils}>
+              <GlobalStyles />
+              <Component {...pageProps} />
+            </MuiPickersUtilsProvider>
+          </ThemeProvider>
+        </AppSettingsProvider>
+      </UserProvider>
+    </Auth0Provider>
+  );
 }
+
+export default MyApp
