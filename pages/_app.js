@@ -18,9 +18,6 @@ const onRedirectCallback = appState => {
 
 function MyApp(props) {
   const { Component, pageProps } = props
-  console.log('URL', process.env.baseURL[process.env.type]);
-  console.log('type', process.env.type);
-  console.log('base', process.env.baseURL);
 
   return (
     <Auth0Provider
