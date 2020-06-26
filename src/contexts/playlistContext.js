@@ -13,7 +13,9 @@ const PlaylistProvider = ({ children }) => {
 
   const fetchPlaylists = async () => {
     console.log(user, 'user')
+    console.log('url', base)
     try {
+      console.log('full', `${base}/playlists/${user.sub}`)
       const responseData = await sendRequest(
         `${base}/playlists/${user.sub}`
       );
