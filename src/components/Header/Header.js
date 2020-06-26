@@ -12,12 +12,12 @@ const Header = () => {
 
   return (
     <Nav>
-      <Link href="/">
+      <Link href="/app">
         <H1>learnable</H1>
       </Link>
       <Div>
         <Ul>
-          <Link href="/">
+          <Link href="/app">
             <li>home</li>
           </Link>
           <Link href="/app/notifications">
