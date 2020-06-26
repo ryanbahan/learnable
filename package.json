@@ -31,5 +31,6 @@
     "jest": "^26.0.1",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "react-test-renderer": "^16.13.1"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
