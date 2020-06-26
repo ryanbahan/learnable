@@ -1,9 +1,19 @@
 import Head from 'next/head';
 import styled from 'styled-components'
 import { useAuth0 } from "../src/react-auth0-spa";
+import { useEffect } from 'react';
 
 export default function Home() {
     const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0();
+
+    useEffect(() => {
+        const fn = async () => {
+            // here
+            if (loading === false && !isAuthenticated) {
+            }
+        };
+        fn();
+    }, [isAuthenticated, loginWithRedirect, path, loading]);
 
     console.log(isAuthenticated, 'auth')
 
