@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next -p 8080",
-    "build": "next build",
-    "start": "next start",
+    "dev": "NODE_ENV=dev next -p 8080",
+    "build": "NODE_ENV=prod next build",
+    "start": "NODE_ENV=prod next start",
     "test": "jest --watch",
     "coverage": "npm test -- --coverage --watchAll"
   },
@@ -31,5 +31,6 @@
     "jest": "^26.0.1",
     "jest-environment-jsdom-sixteen": "^1.0.3",
     "react-test-renderer": "^16.13.1"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }

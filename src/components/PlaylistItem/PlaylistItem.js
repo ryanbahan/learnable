@@ -43,16 +43,17 @@ const PlaylistItem = ({
   category,
   id,
   is_complete,
-  name,
+  title,
   playlist_id,
   url,
 }) => {
   const playlistContext = useContext(PlaylistContext);
 
   const handleCheckboxToggle = () => {
-    playlistContext.patchPlaylistItem(playlist_id, id, {
+    console.log(is_complete)
+    playlistContext.patchPlaylistItem(id, {
       playlist_id,
-      name,
+      title,
       category,
       is_complete: !is_complete,
       url,
@@ -69,18 +70,18 @@ const PlaylistItem = ({
         name="checkbox"
         color="default"
       />
-      <P>{name}</P>
-      {icon[category]}
+      <P>{ title }</P>
+      { icon[category] }
     </A>
   );
 };
 
 PlaylistItem.propTypes = {
   category: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.string,
   is_complete: PropTypes.bool,
   name: PropTypes.string,
-  playlist_id: PropTypes.number,
+  playlist_id: PropTypes.string,
   url: PropTypes.string,
 };
 

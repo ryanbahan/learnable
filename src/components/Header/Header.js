@@ -6,18 +6,18 @@ import { useAuth0 } from "../../react-auth0-spa";
 import React from "react";
 
 const Header = () => {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0();
   const userContext = useContext(UserContext);
   const { user } = userContext.state;
 
   return (
     <Nav>
-      <Link href="/">
+      <Link href="/app">
         <H1>learnable</H1>
       </Link>
       <Div>
         <Ul>
-          <Link href="/">
+          <Link href="/app">
             <li>home</li>
           </Link>
           <Link href="/app/notifications">

@@ -6,15 +6,14 @@ import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
 import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
-import { UserContext } from '../../contexts/userContext'
+import { useAuth0 } from '../../react-auth0-spa'
 
 const PlaylistsContainer = () => {
   const appSettingsContext = useContext(AppSettingsContext);
   const { archiveView, view } = appSettingsContext.state;
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
-  const userContext = useContext(UserContext);
-  console.log(userContext.state)
+  const { user } = useAuth0();
 
   const filteredPlaylists = () =>
     appSettingsContext.state.archiveView
@@ -42,7 +41,7 @@ const PlaylistsContainer = () => {
       {view === true ? renderedPlaylists : renderedPlaylistsSmall}
       {view === true && !archiveView ? <AddPlaylist /> : null}
     </Main>
-  );
+  )
 };
 
 const Main = styled(motion.main)`

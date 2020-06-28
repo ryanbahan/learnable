@@ -60,9 +60,11 @@ const PlaylistView2 = ({
   if (!playlistItems) {
     playlistItems = [];
   }
-  const items = playlistItems.map((item) => (
-    <PlaylistItem key={item.id} playlistId={playlistId} {...item} />
-  ));
+
+  const items = playlistItems.map((item) => {
+    // console.log(item, 'item')
+    return <PlaylistItem key={item.id} playlistId={playlistId} {...item} />
+  });
 
   return (
     <>
@@ -102,7 +104,7 @@ const PlaylistView2 = ({
 PlaylistView2.propTypes = {
   dueDate: PropTypes.string,
   nextStep: PropTypes.func,
-  playlistId: PropTypes.number,
+  playlistId: PropTypes.string,
   playlistItems: PropTypes.arrayOf(PropTypes.object),
   playlistItemURL: PropTypes.string,
   setPlaylistItemURL: PropTypes.func,

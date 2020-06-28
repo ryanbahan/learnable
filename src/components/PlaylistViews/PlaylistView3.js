@@ -83,7 +83,7 @@ const PlaylistView3 = ({
   setPlaylistItemTitle,
 }) => (
   <>
-    <PlaylistItem category={category} name={playlistItemTitle} />
+    <PlaylistItem category={category} title={playlistItemTitle} />
     <Input
       label="Playlist item title"
       onChangeHandler={(e) => setPlaylistItemTitle(e.target.value)}

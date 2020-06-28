@@ -11,33 +11,34 @@ import config from "../src/auth_config.json";
 import Router from 'next/router'
 
 const onRedirectCallback = appState => {
+  console.log('appstate', appState)
   appState
   ? Router.push(appState.targetUrl)
   : Router.push('/app')
 };
 
-export default class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
+function MyApp(props) {
+  const { Component, pageProps } = props
 
-    return (
-      <Auth0Provider
-        domain={config.domain}
-        client_id={config.clientId}
-        redirect_uri={'http://localhost:8080'}
-        onRedirectCallback={onRedirectCallback}
-      >
-        <UserProvider>
-          <AppSettingsProvider>
-            <ThemeProvider theme={theme}>
-              <MuiPickersUtilsProvider utils={MomentUtils}>
-                <GlobalStyles />
-                <Component {...pageProps} />
-              </MuiPickersUtilsProvider>
-            </ThemeProvider>
-          </AppSettingsProvider>
-        </UserProvider>
-      </Auth0Provider>
-    );
-  }
+  return (
+    <Auth0Provider
+      domain={config.domain}
+      client_id={config.clientId}
+      redirect_uri={"http://localhost:8080"}
+      onRedirectCallback={onRedirectCallback}
+    >
+      <UserProvider>
+        <AppSettingsProvider>
+          <ThemeProvider theme={theme}>
+            <MuiPickersUtilsProvider utils={MomentUtils}>
+              <GlobalStyles />
+              <Component {...pageProps} />
+            </MuiPickersUtilsProvider>
+          </ThemeProvider>
+        </AppSettingsProvider>
+      </UserProvider>
+    </Auth0Provider>
+  );
 }
+
+export default MyApp

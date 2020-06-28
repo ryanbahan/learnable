@@ -8,13 +8,14 @@ import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import ArchiveIcon from '@material-ui/icons/Archive';
 import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
+import { useAuth0 } from '../../react-auth0-spa';
 
 const AppNav = () => {
   const [hover, setHover] = useState(null);
   const appSettingsContext = useContext(AppSettingsContext);
   const { archiveView, view } = appSettingsContext.state;
   const { switchArchiveView, switchView } = appSettingsContext;
-
+  const { user } = useAuth0();
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
   let cancel = false;
@@ -120,7 +121,7 @@ const AppNav = () => {
       </Wrapper>
       </Div>
     </Nav>
-  );
+  )
 };
 
 const H2 = styled.h2`

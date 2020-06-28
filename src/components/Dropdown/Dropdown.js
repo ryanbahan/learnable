@@ -23,10 +23,7 @@ export default function Dropdown({ dueDate, isFavorite, playlistId, title }) {
   const handleClose = (option) => {
     if (option === 'Archive') {
       playlistContext.patchPlaylist(playlistId, {
-        due_date: dueDate,
-        is_favorite: isFavorite,
         status: 'archived',
-        title,
       });
     }
 
@@ -84,6 +81,6 @@ const Div = styled.div`
 Dropdown.propTypes = {
   dueDate: PropTypes.string.isRequired,
   isFavorite: PropTypes.bool,
-  playlistId: PropTypes.number.isRequired,
+  playlistId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
