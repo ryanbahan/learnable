@@ -1,5 +1,3 @@
-import { useAuth0 } from "../../react-auth0-spa";
-
 const Profile = () => {
     const { user } = useAuth0();
 
