@@ -6,17 +6,6 @@ import { useEffect } from 'react';
 export default function Home() {
     const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0();
 
-    useEffect(() => {
-        const fn = async () => {
-            // here
-            if (loading === false && !isAuthenticated) {
-            }
-        };
-        fn();
-    }, [isAuthenticated, loginWithRedirect, loading]);
-
-    console.log(isAuthenticated, 'auth')
-
     return (
         <>
             <Head>

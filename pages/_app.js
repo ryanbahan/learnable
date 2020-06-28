@@ -24,7 +24,7 @@ function MyApp(props) {
     <Auth0Provider
       domain={config.domain}
       client_id={config.clientId}
-      redirect_uri={process.env.baseURL[process.env.type]}
+      redirect_uri={"http://localhost:8080"}
       onRedirectCallback={onRedirectCallback}
     >
       <UserProvider>

@@ -47,7 +47,7 @@ const AppNav = () => {
     callback();
   };
 
-  return user ? 
+  return (
     <Nav>
       {<H2>{!appSettingsContext.state.archiveView ? 'CURRENT' : 'ARCHIVED'}</H2>}
       <Div>
@@ -121,7 +121,7 @@ const AppNav = () => {
       </Wrapper>
       </Div>
     </Nav>
-  : null
+  )
 };
 
 const H2 = styled.h2`

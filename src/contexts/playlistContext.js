@@ -3,12 +3,14 @@ import { useFetch } from '../hooks/useFetch';
 import { sortPlaylistItems } from '../utils/utils';
 import { useAuth0 } from '../react-auth0-spa';
 
+const user = { sub: "google-oauth2|116126598023906197703" }
+
 export const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
   const [state, setState] = useState({ playlists: [] });
   const { isLoading, error, sendRequest, clearError } = useFetch();
-  const { user } = useAuth0();
+  // const { user } = useAuth0();
   const base = process.env.baseAPIURL[process.env.type];
 
   const fetchPlaylists = async () => {

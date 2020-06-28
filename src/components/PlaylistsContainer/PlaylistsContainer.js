@@ -28,7 +28,7 @@ const PlaylistsContainer = () => {
     <PlaylistViewSmall key={playlist.id} {...playlist} />
   ));
 
-  return user ? 
+  return (
     <Main
       variants={parentVariants}
       initial="disabled"
@@ -41,9 +41,7 @@ const PlaylistsContainer = () => {
       {view === true ? renderedPlaylists : renderedPlaylistsSmall}
       {view === true && !archiveView ? <AddPlaylist /> : null}
     </Main>
-    : <Main>
-      you're not logged in
-    </Main>
+  )
 };
 
 const Main = styled(motion.main)`
