@@ -4,6 +4,7 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import PlaylistProvider from '../../src/contexts/playlistContext';
 import PlaylistsContainer from '../../src/components/PlaylistsContainer/PlaylistsContainer';
+import { useSession } from 'next-auth/client'
 
 const MainWrapper = styled.div`
   display: flex;
@@ -12,9 +13,12 @@ const MainWrapper = styled.div`
 `;
 
 export default function App() {
+  const [session, loading] = useSession()
+
   return (
     <>
       <Head>
+        {console.log(session)}
         <title>Learnable</title>
       </Head>
       <PlaylistProvider>

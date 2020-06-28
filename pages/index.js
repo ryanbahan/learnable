@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import styled from 'styled-components'
-import { useAuth0 } from "../src/react-auth0-spa";
-import { useEffect } from 'react';
+import { useSession } from 'next-auth/client'
 
 export default function Home() {
-    const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0();
+    const [session, loading] = useSession()
 
     return (
         <>
@@ -12,11 +11,12 @@ export default function Home() {
                 <title>Learnable</title>
             </Head>
             <Main>
+                {console.log(session)}
                 <Title>The learning management tool for developers.</Title>
                 <SubTitle>Keep your goals clear, and actualize every step of your progress.</SubTitle>
                 <div>
-                    <Button onClick={() => loginWithRedirect()}>Sign up</Button>
-                    <Button onClick={() => loginWithRedirect()}>Sign in</Button>
+                    <Button>Sign up</Button>
+                    <Button>Sign in</Button>
                 </div>
             </Main>
         </> 

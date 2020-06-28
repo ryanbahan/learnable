@@ -1,17 +1,16 @@
-import { useAuth0 } from "../react-auth0-spa";
 import React, { createContext, useEffect, useState } from 'react';
 
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [state, setState] = useState({user: null});
-  const { user } = useAuth0();
+  // const { user } = useAuth0();
 
-  useEffect(() => {
-    state.user === null && user
-      ? setState({ user: user })
-      : null
-  });
+  // useEffect(() => {
+  //   state.user === null && user
+  //     ? setState({ user: user })
+  //     : null
+  // });
 
   return (
     <UserContext.Provider

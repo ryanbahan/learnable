@@ -3,7 +3,7 @@ const env = process.env.NODE_ENV || 'development';
 module.exports = {
     env: {
         type: process.env.NODE_ENV,
-        assetPrefix: process.env.BASE_PATH || '',
+        url: process.env.VERCEL_URL,
         baseAPIURL: {
             dev: "http://localhost:3000",
             prod: "https://learnableservices.com",
