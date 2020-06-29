@@ -2,7 +2,7 @@ import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
 const options = {
-    site: process.env.url || 'http://localhost:8080',
+    site: process.env.VERCEL_URL || 'http://localhost:8080',
     // Configure one or more authentication providers
     providers: [
         Providers.GitHub({
