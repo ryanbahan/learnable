@@ -1,6 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { sortPlaylistItems } from '../utils/utils';
+import { useSession } from 'next-auth/client'
 
 const user = { sub: "google-oauth2|116126598023906197703" }
 
@@ -9,14 +10,13 @@ export const PlaylistContext = createContext();
 const PlaylistProvider = ({ children }) => {
   const [state, setState] = useState({ playlists: [] });
   const { isLoading, error, sendRequest, clearError } = useFetch();
-  // const { user } = useAuth0();
+  const [session, loading] = useSession()
   const base = process.env.baseAPIURL[process.env.type];
 
   const fetchPlaylists = async () => {
     try {
-      console.log('full', `${base}/playlists/${user.sub}`)
       const responseData = await sendRequest(
-        `${base}/playlists/${user.sub}`
+        `${base}/playlists/${session.user.email}`
       );
 
       const formattedData = responseData.data.map((playlist) => {
@@ -31,14 +31,14 @@ const PlaylistProvider = ({ children }) => {
       console.error(error);
     }
   };
-
   useEffect(() => {
-    if (user) {
+    if (session && session.user) {
+      console.log(session.user, 'user')
       fetchPlaylists();
     } else {
       console.log('test')
     }
-  }, [user]);
+  }, [session]);
 
   const addPlaylist = (newPlaylist) => {
     setState((prevState) => ({
@@ -49,9 +49,9 @@ const PlaylistProvider = ({ children }) => {
   const postPlaylist = async ({ user_id, title, due_date }) => {
     try {
       const responseData = await sendRequest(
-        `${base}/playlists/${user.sub}`,
+        `${base}/playlists/${session.user.email}`,
         'POST',
-        JSON.stringify({ user_id: user.sub, title, due_date, status: "active" }),
+        JSON.stringify({ user_id: session.user.email, title, due_date, status: "active" }),
         { 'Content-Type': 'application/json' }
       );
       
