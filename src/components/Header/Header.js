@@ -2,11 +2,10 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/userContext';
-import { useAuth0 } from "../../react-auth0-spa";
 import React from "react";
+import { signin } from 'next-auth/client'
 
 const Header = () => {
-  const { isAuthenticated, loginWithRedirect, logout, loading } = useAuth0();
   const userContext = useContext(UserContext);
   const { user } = userContext.state;
 
@@ -24,11 +23,7 @@ const Header = () => {
             <li>notifications</li>
           </Link>
         </Ul>
-        {
-          !isAuthenticated
-          ? <Button onClick={() => loginWithRedirect()}>Log in</Button> 
-          : <Button onClick={() => logout()}>Logout</Button>
-        }
+        <Button onClick={signin}>Log in</Button> 
       </Div>
     </Nav>
   )

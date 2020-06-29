@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { sortPlaylistItems } from '../utils/utils';
-import { useAuth0 } from '../react-auth0-spa';
 
 const user = { sub: "google-oauth2|116126598023906197703" }
 

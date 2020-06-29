@@ -6,14 +6,12 @@ import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
 import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
-import { useAuth0 } from '../../react-auth0-spa'
 
 const PlaylistsContainer = () => {
   const appSettingsContext = useContext(AppSettingsContext);
   const { archiveView, view } = appSettingsContext.state;
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
-  const { user } = useAuth0();
 
   const filteredPlaylists = () =>
     appSettingsContext.state.archiveView
