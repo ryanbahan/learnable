@@ -10,7 +10,7 @@ module.exports = {
         },
         baseURL: {
             dev: "http://localhost:8080",
-            prod: "http://learnable-git-migrate-auth.ryanbahan.vercel.app",
+            prod: "https://learnableapp.dev",
         }
     },
 }
