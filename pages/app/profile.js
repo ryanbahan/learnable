@@ -15,7 +15,6 @@ export default function Home() {
                 <title>Learnable</title>
             </Head>
             <MainWrapper>
-                <PrivateRoute path="/app/profile" component={Profile} />
             </MainWrapper>
         </>
     );
