@@ -19,6 +19,4 @@ const options = {
     // database: process.env.DATABASE_URL,
 }
 
-console.log('url', process.env.VERCEL_URL)
-
 export default (req, res) => NextAuth(req, res, options)

@@ -18,6 +18,7 @@ export default function App() {
   return (
     <>
       <Head>
+        {console.log(process.env.url, 'url')}
         <title>Learnable</title>
       </Head>
       <PlaylistProvider>
