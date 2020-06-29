@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/userContext';
 import React from "react";
-import { signin } from 'next-auth/client'
+import { signin, signout, useSession } from 'next-auth/client'
 
 const Header = () => {
-  const userContext = useContext(UserContext);
-  const { user } = userContext.state;
+  const [session, loading] = useSession()
 
   return (
     <Nav>
@@ -23,7 +22,11 @@ const Header = () => {
             <li>notifications</li>
           </Link>
         </Ul>
-        <Button onClick={signin}>Log in</Button> 
+        {
+        session && session.user 
+        ? <Button onClick={signout}>Log out</Button> 
+        : <Button onClick={signin}>Log in</Button>
+        }
       </Div>
     </Nav>
   )
