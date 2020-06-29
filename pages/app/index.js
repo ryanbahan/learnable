@@ -18,7 +18,6 @@ export default function App() {
   return (
     <>
       <Head>
-        {console.log(session)}
         <title>Learnable</title>
       </Head>
       <PlaylistProvider>
