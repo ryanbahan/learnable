@@ -6,8 +6,8 @@ const options = {
 
     providers: [
         Providers.Email({
-            server: process.env.EMAIL_SERVER,
-            from: process.env.EMAIL_FROM
+            server: "smtp://apikey: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@smtp.sendgrid.net:587",
+            from: "ryan@ryanbahan.com"
         }),
         Providers.GitHub({
             clientId: process.env.GITHUB_ID,
