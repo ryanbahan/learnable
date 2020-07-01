@@ -24,12 +24,12 @@ const options = {
     },
 
     database: {
-        type: process.env.DATABASE_TYPE,
-        host: process.env.DATABASE_HOST,
-        port: process.env.DATABASE_PORT,
-        username: process.env.DATABASE_USERNAME,
-        password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE,
+        type: "postgres",
+        host: "learnable-db.ctshxwkv0wyi.us-east-1.rds.amazonaws.com",
+        port: 5432,
+        username: "learnable",
+        password: "tq&KCU%5&YFh",
+        database: "postgres",
         synchronize: true,
     },
 
