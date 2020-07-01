@@ -3,8 +3,6 @@ import { useFetch } from '../hooks/useFetch';
 import { sortPlaylistItems } from '../utils/utils';
 import { useSession } from 'next-auth/client'
 
-const user = { sub: "google-oauth2|116126598023906197703" }
-
 export const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
@@ -13,32 +11,34 @@ const PlaylistProvider = ({ children }) => {
   const [session, loading] = useSession()
   const base = process.env.baseAPIURL[process.env.type];
 
+  useEffect(() => {
+    if (session && session.user) {
+      fetchPlaylists();
+    } else {
+      console.log('test re-render')
+    }
+  }, [session]);
+
   const fetchPlaylists = async () => {
     try {
       const responseData = await sendRequest(
-        `${base}/playlists/${session.user.email}`
+        `${base}/playlists/${session.user.id}`
       );
+      
+      if (responseData) {
+        const formattedData = responseData.data.map((playlist) => {
+          if (playlist.playlist_items) {
+            sortPlaylistItems(playlist.playlist_items);
+          }
+          return playlist;
+        });
 
-      const formattedData = responseData.data.map((playlist) => {
-        if (playlist.playlist_items) {
-          sortPlaylistItems(playlist.playlist_items);
-        }
-        return playlist;
-      });
-
-      setState({ playlists: formattedData });
+        setState({ playlists: formattedData });
+      }
     } catch (error) {
       console.error(error);
     }
   };
-  useEffect(() => {
-    if (session && session.user) {
-      console.log(session.user, 'user')
-      fetchPlaylists();
-    } else {
-      console.log('test')
-    }
-  }, [session]);
 
   const addPlaylist = (newPlaylist) => {
     setState((prevState) => ({
@@ -49,9 +49,9 @@ const PlaylistProvider = ({ children }) => {
   const postPlaylist = async ({ user_id, title, due_date }) => {
     try {
       const responseData = await sendRequest(
-        `${base}/playlists/${session.user.email}`,
+        `${base}/playlists/${session.user.id}`,
         'POST',
-        JSON.stringify({ user_id: session.user.email, title, due_date, status: "active" }),
+        JSON.stringify({ user_id: session.user.id, title, due_date, status: "active" }),
         { 'Content-Type': 'application/json' }
       );
       
@@ -131,7 +131,7 @@ const PlaylistProvider = ({ children }) => {
     }
   };
 
-  const removePlaylist = () => {
+  const removePlaylist = (id) => {
     setState({
       playlists: state.playlists.filter((p) => p.id),
     });
