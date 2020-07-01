@@ -6,10 +6,15 @@ import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
 import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
+import { useSession } from 'next-auth/client'
 
 const PlaylistsContainer = () => {
+  const [session, loading] = useSession()
+  console.log(session, 'session')
+
   const appSettingsContext = useContext(AppSettingsContext);
   const { archiveView, view } = appSettingsContext.state;
+  
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
 

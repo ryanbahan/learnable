@@ -1,44 +1,44 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { sortPlaylistItems } from '../utils/utils';
-
-const user = { sub: "google-oauth2|116126598023906197703" }
+import { useSession } from 'next-auth/client'
 
 export const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
   const [state, setState] = useState({ playlists: [] });
   const { isLoading, error, sendRequest, clearError } = useFetch();
-  // const { user } = useAuth0();
+  const [session, loading] = useSession()
   const base = process.env.baseAPIURL[process.env.type];
+
+  useEffect(() => {
+    if (session && session.user) {
+      fetchPlaylists();
+    } else {
+      console.log('test re-render')
+    }
+  }, [session]);
 
   const fetchPlaylists = async () => {
     try {
-      console.log('full', `${base}/playlists/${user.sub}`)
       const responseData = await sendRequest(
-        `${base}/playlists/${user.sub}`
+        `${base}/playlists/${session.user.id}`
       );
+      
+      if (responseData) {
+        const formattedData = responseData.data.map((playlist) => {
+          if (playlist.playlist_items) {
+            sortPlaylistItems(playlist.playlist_items);
+          }
+          return playlist;
+        });
 
-      const formattedData = responseData.data.map((playlist) => {
-        if (playlist.playlist_items) {
-          sortPlaylistItems(playlist.playlist_items);
-        }
-        return playlist;
-      });
-
-      setState({ playlists: formattedData });
+        setState({ playlists: formattedData });
+      }
     } catch (error) {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    if (user) {
-      fetchPlaylists();
-    } else {
-      console.log('test')
-    }
-  }, [user]);
 
   const addPlaylist = (newPlaylist) => {
     setState((prevState) => ({
@@ -49,9 +49,9 @@ const PlaylistProvider = ({ children }) => {
   const postPlaylist = async ({ user_id, title, due_date }) => {
     try {
       const responseData = await sendRequest(
-        `${base}/playlists/${user.sub}`,
+        `${base}/playlists/${session.user.id}`,
         'POST',
-        JSON.stringify({ user_id: user.sub, title, due_date, status: "active" }),
+        JSON.stringify({ user_id: session.user.id, title, due_date, status: "active" }),
         { 'Content-Type': 'application/json' }
       );
       
@@ -131,7 +131,7 @@ const PlaylistProvider = ({ children }) => {
     }
   };
 
-  const removePlaylist = () => {
+  const removePlaylist = (id) => {
     setState({
       playlists: state.playlists.filter((p) => p.id),
     });

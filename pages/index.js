@@ -2,8 +2,18 @@ import Head from 'next/head';
 import styled from 'styled-components'
 import { useSession } from 'next-auth/client'
 
-export default function Home() {
+const testVar = "testVar"
+
+export async function getServerSideProps(context, testVar) {
+    return {
+        props: {test: "test"}, // will be passed to the page component as props
+    }
+}
+
+export default function Home(props) {
     const [session, loading] = useSession()
+
+    console.log(Home, 'home')
 
     return (
         <>
@@ -11,7 +21,6 @@ export default function Home() {
                 <title>Learnable</title>
             </Head>
             <Main>
-                {console.log(session)}
                 <Title>The learning management tool for developers.</Title>
                 <SubTitle>Keep your goals clear, and actualize every step of your progress.</SubTitle>
                 <div>
