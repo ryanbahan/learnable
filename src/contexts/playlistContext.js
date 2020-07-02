@@ -66,7 +66,7 @@ const PlaylistProvider = ({ children }) => {
     }
   };
 
-  const updatePlaylist = (newItem) => {
+  const updatePlaylistItem = (newItem) => {
     const { playlists } = state;
 
     setState({
@@ -83,6 +83,14 @@ const PlaylistProvider = ({ children }) => {
     });
   };
 
+  const updatePlaylist = (newItem) => {
+    const { playlists } = state;
+
+    setState({
+      playlists: [...playlists.filter(p => p.id !== newItem.id), newItem]
+    });
+  };
+
   const postPlaylistItem = async (newPlaylistItem) => {
     try {
       const responseData = await sendRequest(
@@ -92,7 +100,7 @@ const PlaylistProvider = ({ children }) => {
         { 'Content-Type': 'application/json' }
       );
 
-      updatePlaylist(responseData);
+      updatePlaylistItem(responseData);
     } catch (error) {
       console.error(error);
     }
@@ -125,7 +133,7 @@ const PlaylistProvider = ({ children }) => {
         { 'Content-Type': 'application/json' }
       );
 
-      updatePlaylist(responseData);
+      updatePlaylistItem(responseData);
     } catch (error) {
       console.error(error);
     }
