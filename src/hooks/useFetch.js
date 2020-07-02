@@ -24,6 +24,8 @@ export const useFetch = () => {
           throw new Error(response.message);
         }
 
+        // console.log(response)
+
         const responseData = await response.json();
 
         activeHttpRequests.current = activeHttpRequests.current.filter(
