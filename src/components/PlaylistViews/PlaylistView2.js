@@ -62,7 +62,6 @@ const PlaylistView2 = ({
   }
 
   const items = playlistItems.map((item) => {
-    // console.log(item, 'item')
     return <PlaylistItem key={item.id} playlistId={playlistId} {...item} />
   });
 

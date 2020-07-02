@@ -133,7 +133,7 @@ const PlaylistProvider = ({ children }) => {
 
   const removePlaylist = (id) => {
     setState({
-      playlists: state.playlists.filter((p) => p.id),
+      playlists: state.playlists.filter((p) => p.id !== id),
     });
   };
 

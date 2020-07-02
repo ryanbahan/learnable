@@ -50,7 +50,6 @@ const PlaylistItem = ({
   const playlistContext = useContext(PlaylistContext);
 
   const handleCheckboxToggle = () => {
-    console.log(is_complete)
     playlistContext.patchPlaylistItem(id, {
       playlist_id,
       title,

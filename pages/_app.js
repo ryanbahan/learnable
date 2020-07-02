@@ -5,14 +5,6 @@ import UserProvider from '../src/contexts/userContext';
 import AppSettingsProvider from '../src/contexts/appSettingsContext';
 import theme from '../src/styles/theme';
 import GlobalStyles from '../src/styles/GlobalStyles';
-import Router from 'next/router'
-
-const onRedirectCallback = appState => {
-  console.log('appstate', appState)
-  appState
-  ? Router.push(appState.targetUrl)
-  : Router.push('/app')
-};
 
 function MyApp(props) {
   const { Component, pageProps } = props
