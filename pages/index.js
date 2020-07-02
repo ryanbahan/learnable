@@ -21,7 +21,11 @@ export default function Home() {
                 <Title>The learning management tool for developers.</Title>
                 <SubTitle>Keep your goals clear, and actualize every step of your progress.</SubTitle>
                 <div>
-                    <Button onClick={signin}>Get Started</Button>
+                    <Button 
+                        onClick={() => signin(null, { callbackUrl: process.env.baseURL[process.env.type] + "/app" })}
+                    >
+                        Get Started
+                    </Button>
                 </div>
             </Main>
         </> 
