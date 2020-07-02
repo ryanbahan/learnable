@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import styled from 'styled-components'
-import { useSession } from 'next-auth/client'
+import { signin } from 'next-auth/client'
 
 const testVar = "testVar"
 
@@ -10,10 +10,7 @@ export async function getServerSideProps(context, testVar) {
     }
 }
 
-export default function Home(props) {
-    const [session, loading] = useSession()
-
-    console.log(Home, 'home')
+export default function Home() {
 
     return (
         <>
@@ -24,8 +21,11 @@ export default function Home(props) {
                 <Title>The learning management tool for developers.</Title>
                 <SubTitle>Keep your goals clear, and actualize every step of your progress.</SubTitle>
                 <div>
-                    <Button>Sign up</Button>
-                    <Button>Sign in</Button>
+                    <Button 
+                        onClick={() => signin(null, { callbackUrl: process.env.baseURL[process.env.type] + "/app" })}
+                    >
+                        Get Started
+                    </Button>
                 </div>
             </Main>
         </> 
@@ -47,7 +47,7 @@ const Button = styled.button`
     color: #fff;
     border: none;
     border-radius: 0.25rem;
-    padding: .5rem 1rem;
+    padding: .75rem 1.5rem;
     margin: 1.5rem;
     font-size: 1.5rem;
     cursor: pointer;
