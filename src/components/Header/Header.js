@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useContext } from 'react';
-import { UserContext } from '../../contexts/userContext';
 import React from "react";
 import { signin, signout, useSession } from 'next-auth/client'
 
@@ -10,16 +8,13 @@ const Header = () => {
 
   return (
     <Nav>
-      <Link href="/app">
+      <Link href="/">
         <H1>learnable</H1>
       </Link>
       <Div>
         <Ul>
           <Link href="/app">
             <li>home</li>
-          </Link>
-          <Link href="/app/notifications">
-            <li>notifications</li>
           </Link>
         </Ul>
         {
@@ -44,10 +39,9 @@ const Div = styled.div`
 
 const Button = styled.button`
   font-size: 1rem;
-  padding: 0 0.75rem;
   height: 2rem;
   border: none;
-  min-width: 10rem;
+  min-width: 7.5rem;
   box-shadow: ${({ theme }) => theme.styles.boxShadow};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   color: white;

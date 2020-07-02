@@ -10,7 +10,6 @@ import { useSession } from 'next-auth/client'
 
 const PlaylistsContainer = () => {
   const [session, loading] = useSession()
-  // console.log(session, 'session')
 
   const appSettingsContext = useContext(AppSettingsContext);
   const { archiveView, view } = appSettingsContext.state;
@@ -42,7 +41,7 @@ const PlaylistsContainer = () => {
       }
     >
       {view === true ? renderedPlaylists : renderedPlaylistsSmall}
-      {view === true && !archiveView ? <AddPlaylist /> : null}
+      {session && view === true && !archiveView ? <AddPlaylist /> : null}
     </Main>
   )
 };

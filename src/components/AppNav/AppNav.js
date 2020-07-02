@@ -8,6 +8,7 @@ import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import ArchiveIcon from '@material-ui/icons/Archive';
 import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
+import { useSession } from 'next-auth/client'
 
 const AppNav = () => {
   const [hover, setHover] = useState(null);
@@ -16,6 +17,7 @@ const AppNav = () => {
   const { switchArchiveView, switchView } = appSettingsContext;
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
+  const [session, loading] = useSession()
   let cancel = false;
 
   if (playlists.length) {
@@ -46,6 +48,7 @@ const AppNav = () => {
   };
 
   return (
+    session ?
     <Nav>
       {<H2>{!appSettingsContext.state.archiveView ? 'CURRENT' : 'ARCHIVED'}</H2>}
       <Div>
@@ -119,6 +122,7 @@ const AppNav = () => {
       </Wrapper>
       </Div>
     </Nav>
+    : null
   )
 };
 
