@@ -146,14 +146,19 @@ const PlaylistProvider = ({ children }) => {
   };
 
   const deletePlaylist = async (playlistId) => {
+
+    removePlaylist(playlistId)
+
     try {
       const responseData = await sendRequest(
         `${base}/playlists/${playlistId}`,
         'DELETE',
         { 'Content-Type': 'application/json' }
       );
-
-      fetchPlaylists();
+      
+      if (state.playlists.length) {
+        fetchPlaylists();
+      }
 
     } catch (error) {
       console.error(error);
