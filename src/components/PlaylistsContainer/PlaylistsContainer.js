@@ -10,7 +10,7 @@ import { useSession } from 'next-auth/client'
 
 const PlaylistsContainer = () => {
   const [session, loading] = useSession()
-  console.log(session, 'session')
+  // console.log(session, 'session')
 
   const appSettingsContext = useContext(AppSettingsContext);
   const { archiveView, view } = appSettingsContext.state;

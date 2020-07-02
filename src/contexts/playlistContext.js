@@ -15,7 +15,7 @@ const PlaylistProvider = ({ children }) => {
     if (session && session.user) {
       fetchPlaylists();
     } else {
-      console.log('test re-render')
+      // console.log('test re-render')
     }
   }, [session]);
 
