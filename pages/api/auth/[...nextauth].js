@@ -5,11 +5,10 @@ const options = {
     site: process.env.baseURL[process.env.type] || 'http://localhost:8080',
 
     providers: [
-        // Email disabled until Sendgrid free account is reactivated
-        // Providers.Email({
-        //     server: process.env.EMAIL_SERVER,
-        //     from: process.env.EMAIL_FROM
-        // }),
+        Providers.Email({
+            server: process.env.EMAIL_SERVER,
+            from: process.env.EMAIL_FROM
+        }),
         // GH disabled until email can be accessed
         // Providers.GitHub({
         //     clientId: process.env.GITHUB_ID,
