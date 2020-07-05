@@ -1,15 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { childVariants } from './animations'
 import { Button, FormControl, PlusIcon } from './InputStyles';
-
-const childVariants = {
-  active: {
-    scaleY: 1,
-  },
-  disabled: {
-    scaleY: 0,
-  },
-};
 
 const Input = ({
   id,
@@ -40,19 +30,5 @@ const Input = ({
     )}
   </FormControl>
 );
-
-Input.defaultProps = {
-  hasButton: false,
-};
-
-Input.propTypes = {
-  hasButton: PropTypes.bool,
-  id: PropTypes.string,
-  label: PropTypes.string.isRequired,
-  onButtonClick: PropTypes.func,
-  onChangeHandler: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
-};
 
 export default Input;
