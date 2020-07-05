@@ -6,12 +6,12 @@ import { PlaylistContext } from '../../contexts/playlistContext';
 const AddPlaylist = () => {
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
-  // let isDisabled = false;
+  let isDisabled = false;
 
-  // if (playlists.length) {
-  //   isDisabled = !playlists[playlists.length - 1].id;
-  //   // console.log('t', !playlists[playlists.length - 1].id)
-  // }
+  if (playlists.length) {
+    isDisabled = !playlists[playlists.length - 1].id;
+    // console.log('t', !playlists[playlists.length - 1].id)
+  }
   
   return (
     <Wrapper>
@@ -27,11 +27,12 @@ const AddPlaylist = () => {
             playlist_items: [],
           })
         }
+        disabled={isDisabled}
         variants={variants}
         initial="initial"
         animate="animate"
-        whileHover="hover"
-        whileTap="tap"
+        whileHover={!isDisabled && "hover"}
+        whileTap={!isDisabled && "tap"}
       >
         Add Playlist
       </Button>
