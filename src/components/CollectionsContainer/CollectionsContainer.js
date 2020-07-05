@@ -1,4 +1,5 @@
 import Collection from '../Collection/Collection'
+import AppSidebar from '../AppSidebar/AppSidebar'
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/client'
@@ -32,13 +33,21 @@ const CollectionsContainer = () => {
         }
     };
 
-    return <Div>
-                {collections ? collections.map(c => <Collection key={c.id} {...c} />) : null}
-            </Div>
+    return <Main>
+                <AppSidebar />
+                <Grid>
+                    {collections ? collections.map(c => <Collection key={c.id} {...c} />) : null}
+                </Grid>
+            </Main>
 }
 
-const Div = styled.div`
-margin: 3rem;
+const Main = styled.main`
+    flex-grow: 1;
+    display: flex;
+`
+
+const Grid = styled.div`
+    margin: 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 `

@@ -16,7 +16,6 @@ export default function App(props) {
       <Head>
         <title>Learnable</title>
       </Head>
-      <Header />
       <MainWrapper>
         <CollectionsContainer />
       </MainWrapper>
@@ -27,5 +26,5 @@ export default function App(props) {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 4rem);
+  height: 100vh;
 `;

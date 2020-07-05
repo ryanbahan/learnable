@@ -5,7 +5,6 @@ import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
 import Link from 'next/link'
 
     // <Dropdown playlistId={id} />
-    // <PlaylistTitle title={title} playlistItems={collection_items} />
     // <ProgressBar playlistItems={collection_items} />
 
 const Collection = ({ title, id}) => {
