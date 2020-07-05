@@ -13,13 +13,14 @@ const PlaylistProvider = ({ children }) => {
 
   useEffect(() => {
     if (session) {
-      const playlists = localStorage.getItem("playlists") 
-
-      if (playlists) {
-        setState({ playlists: JSON.parse(playlists) });
-      } else {
-        fetchPlaylists();
-      }
+      // const playlists = localStorage.getItem("playlists") 
+      fetchPlaylists()
+      // TEMPORARY CACHE
+      // if (playlists) {
+      //   setState({ playlists: JSON.parse(playlists) });
+      // } else {
+      //   fetchPlaylists();
+      // }
 
     } else {
       // console.log('test re-render')

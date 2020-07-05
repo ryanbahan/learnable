@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
-import React, { useContext } from 'react';
-import styled, { css } from 'styled-components';
+import { Main } from './styles'
+import { parentVariants } from './animations'
+import { useContext } from 'react';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
@@ -44,38 +44,6 @@ const PlaylistsContainer = () => {
       {session && view === true && !archiveView ? <AddPlaylist /> : null}
     </Main>
   )
-};
-
-const Main = styled(motion.main)`
-  display: flex;
-  flex-direction: row;
-  padding: 0.5rem 2.5rem 0 2.5rem;
-  flex-grow: 1;
-  width: 100vw;
-  overflow: scroll;
-  background-color: #f9f9f9;
-  color: ${({ theme }) => theme.colors.fontPrimary};
-
-  ${({ view }) =>
-    !view &&
-    css`
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    `}
-`;
-
-const parentVariants = {
-  active: {
-    transition: {
-      delay: 1,
-      staggerChildren: 0.05,
-    },
-  },
-  disabled: {
-    transition: {
-      delay: 1,
-    },
-  },
 };
 
 export default PlaylistsContainer;

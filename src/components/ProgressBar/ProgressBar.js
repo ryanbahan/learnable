@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import { Bar, PercentComplete } from './styles' 
 
 const calculatePercentComplete = (arr) => {
   if (arr.length) {
@@ -9,23 +8,6 @@ const calculatePercentComplete = (arr) => {
   return 0;
 };
 
-const Bar = styled.div.attrs({
-  'data-testid': 'progressbar',
-})`
-  height: 1rem;
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.grayLight};
-`;
-
-const PercentComplete = styled.div`
-  height: 1rem;
-  background-color: #2ecc71;
-  ${({ percentage }) =>
-    css`
-      width: ${percentage};
-    `}
-`;
-
 const ProgressBar = ({ playlistItems }) => (
   <Bar>
     <PercentComplete
@@ -33,13 +15,5 @@ const ProgressBar = ({ playlistItems }) => (
     />
   </Bar>
 );
-
-ProgressBar.defaultProps = {
-  playlistItems: [],
-};
-
-ProgressBar.propTypes = {
-  playlistItems: PropTypes.arrayOf(PropTypes.object),
-};
 
 export default ProgressBar;
