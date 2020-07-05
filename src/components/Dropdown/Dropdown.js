@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import { useContext } from 'react';
+import { Div } from './styles'
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -71,16 +70,3 @@ export default function Dropdown({ dueDate, isFavorite, playlistId, title }) {
   );
 }
 
-const Div = styled.div`
-  position: absolute;
-  right: 0;
-  transform: rotate(90deg);
-  top: 0;
-`;
-
-Dropdown.propTypes = {
-  dueDate: PropTypes.string.isRequired,
-  isFavorite: PropTypes.bool,
-  playlistId: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-};
