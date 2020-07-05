@@ -1,38 +1,8 @@
-import PropTypes from 'prop-types';
+import { Button, ButtonWrapper, Div } from './PlaylistView1Styles'
 import { useContext, useState } from 'react';
-import styled from 'styled-components';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import DatePickerInput from '../DatePickerInput/DatePickerInput';
 import Input from '../Input/Input';
-
-const Button = styled.button.attrs(() => ({
-  type: 'button',
-}))`
-  background: #3498db;
-  border: none;
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.white};
-  font-size: ${({ theme }) => theme.fontSizes.sm};
-  font-weight: 500;
-  height: 2.5rem;
-  width: 100%;
-
-  &:hover {
-    background: #2980b9;
-  }
-`;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  align-items: flex-end;
-  flex-grow: 1;
-`;
-
-const Div = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-`;
 
 const PlaylistView1 = ({
   onChangeHandler,
@@ -89,13 +59,6 @@ const PlaylistView1 = ({
       )}
     </Div>
   );
-};
-
-PlaylistView1.propTypes = {
-  onChangeHandler: PropTypes.func.isRequired,
-  playlistDate: PropTypes.string.isRequired,
-  setPlaylistDate: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
 };
 
 export default PlaylistView1;
