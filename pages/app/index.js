@@ -4,14 +4,12 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { useSession } from 'next-auth/client'
 
-export default function App() {
+export default function App(props) {
   const [session, loading] = useSession()
-
+  
   if (loading) {
     return <></>
   }
-
-  console.log(session, loading)
 
   return (
     <>
