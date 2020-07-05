@@ -2,16 +2,19 @@ import styled from 'styled-components'
 import ProgressBar from '../ProgressBar/ProgressBar';
 import Dropdown from '../Dropdown/Dropdown';
 import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
+import Link from 'next/link'
 
     // <Dropdown playlistId={id} />
     // <PlaylistTitle title={title} playlistItems={collection_items} />
     // <ProgressBar playlistItems={collection_items} />
 
-const Collection = ({ title, id, collection_items }) => {
+const Collection = ({ title, id}) => {
     return (
-        <Div>
-            collection
-        </Div>
+        <Link href={`/app/collections/${id}`} as={`/app/collections/${id}`}>
+            <Div>
+                { title }
+            </Div>
+        </Link>
     )
 }
 

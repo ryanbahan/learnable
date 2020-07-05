@@ -12,15 +12,7 @@ const CollectionsContainer = () => {
     
     useEffect(() => {
         if (session) {
-            // const playlists = localStorage.getItem("playlists") 
             fetchCollections()
-            // TEMPORARY CACHE
-            // if (playlists) {
-            //   setState({ playlists: JSON.parse(playlists) });
-            // } else {
-            //   fetchPlaylists();
-            // }
-
         } else {
             // console.log('test re-render')
         }
@@ -33,8 +25,6 @@ const CollectionsContainer = () => {
                 `${base}/collections/${session.user.id}`
             );
 
-            console.log(responseData)
-
             setCollections(responseData.data)
 
         } catch (error) {
@@ -43,7 +33,7 @@ const CollectionsContainer = () => {
     };
 
     return <Div>
-                {collections ? collections.map(c => <Collection key={c.id} />) : null}
+                {collections ? collections.map(c => <Collection key={c.id} {...c} />) : null}
             </Div>
 }
 
