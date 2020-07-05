@@ -12,8 +12,15 @@ const PlaylistProvider = ({ children }) => {
   const base = process.env.baseAPIURL[process.env.type];
 
   useEffect(() => {
-    if (session && session.user) {
-      fetchPlaylists();
+    if (session) {
+      const playlists = localStorage.getItem("playlists") 
+
+      if (playlists) {
+        setState({ playlists: JSON.parse(playlists) });
+      } else {
+        fetchPlaylists();
+      }
+
     } else {
       // console.log('test re-render')
     }
@@ -34,6 +41,7 @@ const PlaylistProvider = ({ children }) => {
         });
 
         setState({ playlists: formattedData });
+        localStorage.setItem("playlists", JSON.stringify(formattedData));
       }
     } catch (error) {
       console.error(error);

@@ -1,17 +1,18 @@
-import { motion } from 'framer-motion';
-import React, { useContext } from 'react';
-import styled, { css } from 'styled-components';
+import { Wrapper, Button } from './styles'
+import { variants } from './animations'
+import { useContext } from 'react';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
 const AddPlaylist = () => {
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
-  let isDisabled = false;
+  // let isDisabled = false;
 
-  if (playlists.length) {
-    isDisabled = !playlists[playlists.length - 1].id;
-  }
-
+  // if (playlists.length) {
+  //   isDisabled = !playlists[playlists.length - 1].id;
+  //   // console.log('t', !playlists[playlists.length - 1].id)
+  // }
+  
   return (
     <Wrapper>
       <Button
@@ -26,47 +27,16 @@ const AddPlaylist = () => {
             playlist_items: [],
           })
         }
-        disabled={isDisabled}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 0.6 } }}
-        whileHover={!isDisabled && { scale: 1.025 }}
-        whileTap={!isDisabled && { scale: 0.98 }}
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        whileHover="hover"
+        whileTap="tap"
       >
         Add Playlist
       </Button>
     </Wrapper>
   );
 };
-
-const Wrapper = styled.div`
-  padding: 0 1rem;
-`;
-
-const Button = styled(motion.button)`
-  background: transparent;
-  border: 1px dashed ${({ theme }) => theme.colors.grayDark};
-  border-radius: ${({ theme }) => theme.styles.borderRadius};
-  color: ${({ theme }) => theme.colors.fontPrimary};
-  font-size: ${({ theme }) => theme.fontSizes.md};
-  height: 10rem;
-  margin: 2.5rem 2.5rem 2.5rem 0;
-  min-width: 25rem;
-  width: 25rem;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      border: 1px dashed ${({ theme }) => theme.colors.grayLight};
-      color: ${({ theme }) => theme.colors.grayLight};
-
-      &:hover {
-        cursor: auto;
-      }
-    `}
-`;
 
 export default AddPlaylist;
