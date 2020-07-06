@@ -5,18 +5,20 @@ import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/client'
 import { useFetch } from '../../hooks/useFetch'
 import Header from '../Header/Header'
+import AddCollection from '../AddCollection/AddCollection'
 
 const CollectionsContainer = () => {
     const [session, loading] = useSession()
     const { isLoading, error, sendRequest, clearError } = useFetch();
     const base = process.env.baseAPIURL[process.env.type]
     const [ collections, setCollections ] = useState([])
+    const [collectionsModal, toggleCollectionsModal] = useState(false)
     
     useEffect(() => {
         if (session) {
             fetchCollections()
         } else {
-            // console.log('test re-render')
+            console.log('test re-render')
         }
     }, [session]);
 
@@ -36,14 +38,34 @@ const CollectionsContainer = () => {
 
     return <Main>
                 <AppSidebar />
-                <div style={{width: "100%"}}>
-                    <Header type="collections" />
+                <Wrapper>
+                    {
+                        collectionsModal
+                        ? <AddCollection
+                            modalState={collectionsModal}
+                            toggleModal={toggleCollectionsModal}
+                        />
+                        : null
+                    }
+                    <Header 
+                        type="collections" 
+                        modalState={ collectionsModal } 
+                        toggleModal={ toggleCollectionsModal } 
+                    />
                     <Grid>
-                        {collections ? collections.map(c => <Collection key={c.id} {...c} />) : null}
+                        {
+                            collections 
+                            ? collections.map(c => <Collection key={c.id} {...c} />) 
+                            : null
+                        }
                     </Grid>
-                </div>
+                </Wrapper>
             </Main>
 }
+
+const Wrapper = styled.div`
+    width: 100%;
+`
 
 const Main = styled.main`
     flex-grow: 1;

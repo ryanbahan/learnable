@@ -23,7 +23,6 @@ const Div = styled.div`
     height: 15rem;
     margin: 0.5rem;
     padding: 2.5rem 1rem;
-    position: relative;
     border-radius: ${({ theme }) => theme.styles.borderRadius};
     flex-basis: 25%;
 `

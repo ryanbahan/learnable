@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { signin, signout, useSession } from 'next-auth/client'
 import AddIcon from '@material-ui/icons/Add';
 
-const Header = ({ type }) => {
+const Header = ({ type, modalState, toggleModal }) => {
   const [session, loading] = useSession()
 
   switch (type) {
@@ -19,7 +19,7 @@ const Header = ({ type }) => {
       return (
         <CollectionsNav>
           <h3>Recently Viewed</h3>
-          <AddButton><AddIcon /></AddButton>
+          <AddButton onClick={() => toggleModal(true)}><AddIcon /></AddButton>
         </CollectionsNav>
       )
     case "collection": 
