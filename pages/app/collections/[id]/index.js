@@ -13,7 +13,6 @@ export default function App() {
                 <title>Learnable</title>
             </Head>
             <PlaylistProvider>
-                <Header type="collection" />
                 <MainWrapper>
                     <AppNav />
                     <PlaylistsContainer />

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/client'
 import { useFetch } from '../../hooks/useFetch'
+import Header from '../Header/Header'
 
 const CollectionsContainer = () => {
     const [session, loading] = useSession()
@@ -35,9 +36,12 @@ const CollectionsContainer = () => {
 
     return <Main>
                 <AppSidebar />
-                <Grid>
-                    {collections ? collections.map(c => <Collection key={c.id} {...c} />) : null}
-                </Grid>
+                <div style={{width: "100%"}}>
+                    <Header type="collections" />
+                    <Grid>
+                        {collections ? collections.map(c => <Collection key={c.id} {...c} />) : null}
+                    </Grid>
+                </div>
             </Main>
 }
 

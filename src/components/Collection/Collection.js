@@ -21,7 +21,7 @@ const Div = styled.div`
     border: solid 1px ${({ theme }) => theme.colors.grayLight};
     box-shadow: ${({ theme }) => theme.styles.boxShadow};
     height: 15rem;
-    margin: 1.2rem;
+    margin: 0.5rem;
     padding: 2.5rem 1rem;
     position: relative;
     border-radius: ${({ theme }) => theme.styles.borderRadius};
