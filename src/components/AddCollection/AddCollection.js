@@ -1,16 +1,57 @@
 import styled from 'styled-components'
+import Input from '../Input/Input'
+import { useState } from 'react'
 
-const AddCollection = ({ modalState, toggleModal }) => {
+const AddCollection = ({ toggleModal }) => {
+    const [ text, setText ] = useState("")
+
     return (
         <>
             <OuterWrapper onClick={() => toggleModal(false)}>
                 <Modal onClick={(e) => {e.stopPropagation()}}>
-                    addcollection
+                    <Input 
+                        label="Collections Title"
+                        onChangeHandler={(e) => setText(e.target.value)}
+                        placeholder="what should we call this?"
+                        type="text"
+                        value={text}
+                    />
+                    <ButtonWrapper>
+                        <Button>Create Collection</Button>
+                        <CancelButton onClick={() => toggleModal(false)}>Cancel</CancelButton>
+                    </ButtonWrapper>
                 </Modal>
             </OuterWrapper>
         </>
     )
 }
+
+export const Button = styled.button`
+    font-size: 1rem;
+    height: 2rem;
+    border: none;
+    min-width: 10rem;
+    box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
+    border-radius: ${({ theme }) => theme.styles.borderRadius};
+    color: white;
+    background: #9b59b6;
+    cursor: pointer;
+    margin: 0 1rem;
+`;
+
+export const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+`
+
+export const CancelButton = styled.button`
+    font-size: 1rem;
+    height: 2rem;
+    border: none;
+    color: #e74c3c;
+    background: transparent;
+    cursor: pointer;
+`;
 
 const Modal = styled.section`
     position: absolute;
