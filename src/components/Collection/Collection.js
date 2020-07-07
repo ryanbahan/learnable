@@ -4,20 +4,22 @@ import Dropdown from '../Dropdown/Dropdown';
 import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
 import Link from 'next/link'
 
-    // <Dropdown playlistId={id} />
-    // <ProgressBar playlistItems={collection_items} />
-
 const Collection = ({ title, id}) => {
     return (
-        <Link href={`/app/collections/${id}`} as={`/app/collections/${id}`}>
-            <Div>
-                { title }
-            </Div>
-        </Link>
+        <Wrapper>
+            <Dropdown playlistId={ id } />
+            <Link href={`/app/collections/${id}`} as={`/app/collections/${id}`}>
+                <Div>
+                    { title }
+                </Div>
+            </Link>
+        </Wrapper>
     )
 }
 
-const Div = styled.div`
+const Wrapper = styled.div`
+    position: relative;
+    border: solid 1px black;
     border: solid 1px ${({ theme }) => theme.colors.grayLight};
     box-shadow: ${({ theme }) => theme.styles.boxShadow};
     height: 15rem;
@@ -25,6 +27,16 @@ const Div = styled.div`
     padding: 2.5rem 1rem;
     border-radius: ${({ theme }) => theme.styles.borderRadius};
     flex-basis: 25%;
+`
+
+const Div = styled.div`
+    position: absolute;
+    border-radius: ${({ theme }) => theme.styles.borderRadius};
+    padding: 2.5rem;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
 `
 
 export default Collection

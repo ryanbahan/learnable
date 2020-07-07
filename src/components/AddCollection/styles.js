@@ -22,8 +22,8 @@ export const CancelButton = styled.button`
     font-size: 1rem;
     height: 2rem;
     border: none;
-    color: #e74c3c;
-    background: transparent;
+    color: ${({ theme }) => theme.colors.fontPrimary};
+    background: #fff;
     cursor: pointer;
 `;
 
