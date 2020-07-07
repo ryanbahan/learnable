@@ -3,9 +3,9 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import { useSession } from 'next-auth/client'
 import CollectionProvider from '../../src/contexts/collectionContext'
-import Collection from '../../src/components/Collection/Collection';
+import fetch from 'node-fetch'
 
-export default function App(props) {
+export default function App({ collections }) {
   const [session, loading] = useSession()
   
   if (loading) {
@@ -18,12 +18,23 @@ export default function App(props) {
         <title>Learnable</title>
       </Head>
       <MainWrapper>
-        <CollectionProvider>
+        <CollectionProvider collections={ collections } >
           <CollectionsContainer />
         </CollectionProvider>
       </MainWrapper>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const base = process.env.baseAPIURL[process.env.type];
+  const res = await fetch(`${base}/collections/1`)
+  const json = await res.json()
+  const collections = json.data
+
+  return {
+    props: { collections }, // will be passed to the page component as props
+  }
 }
 
 const MainWrapper = styled.div`

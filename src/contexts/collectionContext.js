@@ -5,12 +5,14 @@ import { useRouter } from 'next/router'
 
 export const CollectionContext = createContext();
 
-const CollectionProvider = ({ children }) => {
-    const [state, setState] = useState({ collections: [] });
+const CollectionProvider = ({ collections, children }) => {
+    const [state, setState] = useState( collections );
     const { isLoading, error, sendRequest, clearError } = useFetch();
     const [session, loading] = useSession()
     const router = useRouter()
     const base = process.env.baseAPIURL[process.env.type];
+
+    console.log(state)
 
     // useEffect(() => {
     //     if (session) {
@@ -149,31 +151,31 @@ const CollectionProvider = ({ children }) => {
     //     }
     // };
 
-    // const removePlaylist = (id) => {
-    //     setState({
-    //         playlists: state.playlists.filter((p) => p.id !== id),
-    //     });
-    // };
+    const removeCollection = (id) => {
+        // setState({
+        //     playlists: state.playlists.filter((p) => p.id !== id),
+        // });
+    };
 
-    // const deletePlaylist = async (playlistId) => {
+    const deleteCollection = async (id) => {
 
-    //     removePlaylist(playlistId)
+        removeCollection(id)
 
-    //     try {
-    //         const responseData = await sendRequest(
-    //             `${base}/playlists/${playlistId}`,
-    //             'DELETE',
-    //             { 'Content-Type': 'application/json' }
-    //         );
+        try {
+            const responseData = await sendRequest(
+                `${base}/collections/${id}`,
+                'DELETE',
+                { 'Content-Type': 'application/json' }
+            );
 
-    //         if (state.playlists.length) {
-    //             fetchPlaylists();
-    //         }
+            // if (state.playlists.length) {
+            //     fetchPlaylists();
+            // }
 
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     // const cancelAdd = () => {
     //     setState({
@@ -185,10 +187,11 @@ const CollectionProvider = ({ children }) => {
         <CollectionContext.Provider
             value={{
                 state,  
-                setState
+                setState,
+                deleteCollection,
             }}
         >
-            {children}
+            { children }
         </CollectionContext.Provider>
     );
 };

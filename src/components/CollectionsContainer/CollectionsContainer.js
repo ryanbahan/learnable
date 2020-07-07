@@ -1,40 +1,17 @@
 import Collection from '../Collection/Collection'
 import AppSidebar from '../AppSidebar/AppSidebar'
 import styled from 'styled-components'
-import { useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
+import { CollectionContext } from '../../contexts/collectionContext';
 import { useSession } from 'next-auth/client'
-import { useFetch } from '../../hooks/useFetch'
 import Header from '../Header/Header'
 import AddCollection from '../AddCollection/AddCollection'
 
 const CollectionsContainer = () => {
     const [session, loading] = useSession()
-    const { isLoading, error, sendRequest, clearError } = useFetch();
-    const base = process.env.baseAPIURL[process.env.type]
-    const [ collections, setCollections ] = useState([])
     const [collectionsModal, toggleCollectionsModal] = useState(false)
-    
-    useEffect(() => {
-        if (session) {
-            fetchCollections()
-        } else {
-            console.log('test re-render')
-        }
-    }, [session]);
-
-    const fetchCollections = async () => {
-        try {
-
-            const responseData = await sendRequest(
-                `${base}/collections/${session.user.id}`
-            );
-
-            setCollections(responseData.data)
-
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    const collectionContext = useContext(CollectionContext);
+    const collections = collectionContext.state
 
     return <Main>
                 <AppSidebar />

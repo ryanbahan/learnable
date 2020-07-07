@@ -5,13 +5,13 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Router from 'next/router';
-import { PlaylistContext } from '../../contexts/playlistContext';
+import { CollectionContext } from '../../contexts/collectionContext';
 
 const options = ['Archive', 'Delete', 'Go to page'];
 const ITEM_HEIGHT = 48;
 
-export default function Dropdown({ id, type }) {
-  const playlistContext = useContext(PlaylistContext);
+export default function Dropdown({ id }) {
+  const collectionContext = useContext(CollectionContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -20,14 +20,9 @@ export default function Dropdown({ id, type }) {
   };
 
   const handleClose = (option) => {
-    if (option === 'Archive') {
-      playlistContext.patchPlaylist(id, {
-        status: 'archived',
-      });
-    }
 
     if (option === 'Delete') {
-      playlistContext.deletePlaylist(id);
+      collectionContext.deleteCollection(id);
     }
 
     if (option === 'Go to page') {
