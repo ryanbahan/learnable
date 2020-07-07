@@ -1,7 +1,7 @@
 import CollectionsContainer from '../../src/components/CollectionsContainer/CollectionsContainer'
 import Head from 'next/head';
 import styled from 'styled-components';
-import { useSession } from 'next-auth/client'
+import { useSession, getSession } from 'next-auth/client'
 import CollectionProvider from '../../src/contexts/collectionContext'
 import fetch from 'node-fetch'
 
@@ -31,6 +31,10 @@ export async function getServerSideProps(context) {
   const res = await fetch(`${base}/collections/1`)
   const json = await res.json()
   const collections = json.data
+
+  const session = await getSession(context)
+
+  console.log('session', session)
 
   return {
     props: { collections }, // will be passed to the page component as props

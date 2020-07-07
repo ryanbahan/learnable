@@ -12,8 +12,6 @@ const CollectionProvider = ({ collections, children }) => {
     const router = useRouter()
     const base = process.env.baseAPIURL[process.env.type];
 
-    console.log(state)
-
     // useEffect(() => {
     //     if (session) {
     //         // const playlists = localStorage.getItem("playlists") 
