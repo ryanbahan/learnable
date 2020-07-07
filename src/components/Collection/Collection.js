@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import ProgressBar from '../ProgressBar/ProgressBar';
-import Dropdown from '../Dropdown/Dropdown';
+import CollectionDropdown from '../CollectionDropdown/CollectionDropdown';
 import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
 import Link from 'next/link'
 
 const Collection = ({ title, id}) => {
     return (
         <Wrapper>
-            <Dropdown playlistId={ id } />
+            <CollectionDropdown id={ id } />
             <Link href={`/app/collections/${id}`} as={`/app/collections/${id}`}>
                 <Div>
                     { title }

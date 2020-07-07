@@ -13,7 +13,7 @@ import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
 import UserProvider from '../../contexts/userContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
-import Dropdown from './Dropdown';
+import Dropdown from './PlaylistDropdown';
 
 afterEach(cleanup);
 

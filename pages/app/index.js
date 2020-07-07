@@ -2,6 +2,8 @@ import CollectionsContainer from '../../src/components/CollectionsContainer/Coll
 import Head from 'next/head';
 import styled from 'styled-components';
 import { useSession } from 'next-auth/client'
+import CollectionProvider from '../../src/contexts/collectionContext'
+import Collection from '../../src/components/Collection/Collection';
 
 export default function App(props) {
   const [session, loading] = useSession()
@@ -16,7 +18,9 @@ export default function App(props) {
         <title>Learnable</title>
       </Head>
       <MainWrapper>
-        <CollectionsContainer />
+        <CollectionProvider>
+          <CollectionsContainer />
+        </CollectionProvider>
       </MainWrapper>
     </>
   );
