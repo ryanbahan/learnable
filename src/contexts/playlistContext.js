@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { sortPlaylistItems } from '../utils/utils';
 import { useSession } from 'next-auth/client'
+import { useRouter } from 'next/router'
 
 export const PlaylistContext = createContext();
 
@@ -9,6 +10,7 @@ const PlaylistProvider = ({ children }) => {
   const [state, setState] = useState({ playlists: [] });
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const [session, loading] = useSession()
+  const router = useRouter()
   const base = process.env.baseAPIURL[process.env.type];
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const PlaylistProvider = ({ children }) => {
   const fetchPlaylists = async () => {
     try {
       const responseData = await sendRequest(
-        `${base}/playlists/${session.user.id}`
+        `${base}/playlists/${router.query.id}`
       );
       
       if (responseData) {
@@ -58,9 +60,9 @@ const PlaylistProvider = ({ children }) => {
   const postPlaylist = async ({ user_id, title, due_date }) => {
     try {
       const responseData = await sendRequest(
-        `${base}/playlists/${session.user.id}`,
+        `${base}/playlists/${router.query.id}`,
         'POST',
-        JSON.stringify({ user_id: session.user.id, title, due_date, status: "active" }),
+        JSON.stringify({ collection_id: router.query.id, title, due_date, status: "active" }),
         { 'Content-Type': 'application/json' }
       );
       
