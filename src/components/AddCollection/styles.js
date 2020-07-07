@@ -39,7 +39,7 @@ export const Modal = styled.section`
     margin: 0.5rem;
     padding: 2.5rem 1rem;
     border-radius: ${({ theme }) => theme.styles.borderRadius};
-    z-index: 5;
+    z-index: 10;
 `
 
 export const OuterWrapper = styled.div`

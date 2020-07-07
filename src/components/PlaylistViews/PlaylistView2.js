@@ -33,7 +33,7 @@ const PlaylistView2 = ({
       <Dropdown
         dueDate={dueDate}
         isFavorite={isFavorite}
-        playlistId={playlistId}
+        id={playlistId}
         title={title}
       />
       <PlaylistTitle title={title} playlistItems={playlistItems} />

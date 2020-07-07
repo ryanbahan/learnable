@@ -10,7 +10,7 @@ import { PlaylistContext } from '../../contexts/playlistContext';
 const options = ['Archive', 'Delete', 'Go to page'];
 const ITEM_HEIGHT = 48;
 
-export default function Dropdown({ dueDate, isFavorite, playlistId, title }) {
+export default function Dropdown({ id }) {
   const playlistContext = useContext(PlaylistContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -21,17 +21,18 @@ export default function Dropdown({ dueDate, isFavorite, playlistId, title }) {
 
   const handleClose = (option) => {
     if (option === 'Archive') {
-      playlistContext.patchPlaylist(playlistId, {
+      playlistContext.patchPlaylist(id, {
         status: 'archived',
       });
     }
 
     if (option === 'Delete') {
-      playlistContext.deletePlaylist(playlistId);
+      console.log(id, 'id')
+      playlistContext.deletePlaylist(id);
     }
 
     if (option === 'Go to page') {
-      Router.push(`/app/playlist/${playlistId}`);
+      Router.push(`/app/playlist/${id}`);
     }
 
     setAnchorEl(null);
