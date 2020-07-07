@@ -52,13 +52,16 @@ const CollectionsContainer = () => {
                         modalState={ collectionsModal } 
                         toggleModal={ toggleCollectionsModal } 
                     />
-                    <Grid>
-                        {
-                            collections 
-                            ? collections.map(c => <Collection key={c.id} {...c} />) 
-                            : null
-                        }
-                    </Grid>
+                    <GridWrapper>
+                        <Grid>
+                            {
+                                collections 
+                                ? collections.map(c => <Collection key={c.id} {...c} />) 
+                                : null
+                            }
+                        </Grid>
+                        <div style={{height: "1rem"}} />
+                    </GridWrapper>
                 </Wrapper>
             </Main>
 }
@@ -73,9 +76,14 @@ const Main = styled.main`
 `
 
 const Grid = styled.div`
-    margin: 3rem;
+    padding: 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+`
+
+const GridWrapper = styled.div`
+    overflow: scroll;
+    height: calc(100vh - 3rem);
 `
 
 export default CollectionsContainer

@@ -11,6 +11,7 @@ import TimerIcon from '@material-ui/icons/Timer'
 import StarsIcon from '@material-ui/icons/Stars'
 import Link from 'next/link';
 import { signin, signout, useSession } from 'next-auth/client'
+import { useState } from 'react'
 
 const AppSidebar = () => {
     const [session, loading] = useSession()
