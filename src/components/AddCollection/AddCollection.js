@@ -1,9 +1,46 @@
-import styled from 'styled-components'
+import {
+    Button,
+    ButtonWrapper,
+    OuterWrapper,
+    CancelButton,
+    Modal,
+} from './styles'
 import Input from '../Input/Input'
 import { useState } from 'react'
+import { useSession } from 'next-auth/client'
+import { useFetch } from '../../hooks/useFetch';
+import { useRouter } from 'next/router'
+
 
 const AddCollection = ({ toggleModal }) => {
-    const [ text, setText ] = useState("")
+    const [ title, setTitle ] = useState("")
+    const [session, loading] = useSession()
+    const router = useRouter()
+    const { isLoading, error, sendRequest, clearError } = useFetch();
+    const base = process.env.baseAPIURL[process.env.type]
+
+    const handleSubmit = () => {
+        postCollection()
+    }
+
+    const postCollection = async () => {
+        try {
+            const responseData = await sendRequest(
+                `${base}/collections/${session.user.id}`,
+                'POST',
+                JSON.stringify({ title }),
+                { 'Content-Type': 'application/json' }
+            );
+
+            if (responseData) {
+                console.log(responseData)
+                router.push(`/app/collections/${responseData.id}`)
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <>
@@ -11,13 +48,13 @@ const AddCollection = ({ toggleModal }) => {
                 <Modal onClick={(e) => {e.stopPropagation()}}>
                     <Input 
                         label="Collections Title"
-                        onChangeHandler={(e) => setText(e.target.value)}
+                        onChangeHandler={(e) => setTitle(e.target.value)}
                         placeholder="what should we call this?"
                         type="text"
-                        value={text}
+                        value={ title }
                     />
                     <ButtonWrapper>
-                        <Button>Create Collection</Button>
+                        <Button onClick={() => handleSubmit()}>Create Collection</Button>
                         <CancelButton onClick={() => toggleModal(false)}>Cancel</CancelButton>
                     </ButtonWrapper>
                 </Modal>
@@ -25,59 +62,5 @@ const AddCollection = ({ toggleModal }) => {
         </>
     )
 }
-
-export const Button = styled.button`
-    font-size: 1rem;
-    height: 2rem;
-    border: none;
-    min-width: 10rem;
-    box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
-    border-radius: ${({ theme }) => theme.styles.borderRadius};
-    color: white;
-    background: #9b59b6;
-    cursor: pointer;
-    margin: 0 1rem;
-`;
-
-export const ButtonWrapper = styled.div`
-    display: flex;
-    justify-content: flex-end;
-`
-
-export const CancelButton = styled.button`
-    font-size: 1rem;
-    height: 2rem;
-    border: none;
-    color: #e74c3c;
-    background: transparent;
-    cursor: pointer;
-`;
-
-const Modal = styled.section`
-    position: absolute;
-    background: white;
-    border: solid 1px ${({ theme }) => theme.colors.grayLight};
-    box-shadow: ${({ theme }) => theme.styles.boxShadow};
-    height: 75vh;
-    width: 65vw;
-    min-height: 20rem;
-    min-width: 20rem;
-    margin: 0.5rem;
-    padding: 2.5rem 1rem;
-    border-radius: ${({ theme }) => theme.styles.borderRadius};
-    z-index: 5;
-`
-
-const OuterWrapper = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
 
 export default AddCollection
