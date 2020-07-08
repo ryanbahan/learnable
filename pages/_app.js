@@ -5,21 +5,26 @@ import UserProvider from '../src/contexts/userContext';
 import AppSettingsProvider from '../src/contexts/appSettingsContext';
 import theme from '../src/styles/theme';
 import GlobalStyles from '../src/styles/GlobalStyles';
+import { Provider } from 'next-auth/client'
 
 function MyApp(props) {
+  const base = process.env.baseURL[process.env.type];
   const { Component, pageProps } = props
+  const { session } = pageProps
 
   return (
-    <UserProvider>
-      <AppSettingsProvider>
-        <ThemeProvider theme={theme}>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
-            <GlobalStyles />
-            <Component {...pageProps} />
-          </MuiPickersUtilsProvider>
-        </ThemeProvider>
-      </AppSettingsProvider>
-    </UserProvider>
+    <Provider options={{ site: base }} session={ session } >
+      <UserProvider>
+        <AppSettingsProvider>
+          <ThemeProvider theme={ theme }>
+            <MuiPickersUtilsProvider utils={ MomentUtils }>
+              <GlobalStyles />
+              <Component { ...pageProps } />
+            </MuiPickersUtilsProvider>
+          </ThemeProvider>
+        </AppSettingsProvider>
+      </UserProvider>
+    </Provider>
   );
 }
 

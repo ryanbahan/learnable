@@ -5,7 +5,6 @@ export const H2 = styled.h2`
   font-weight: 400;
   font-size: 1rem;
   padding-left: 1rem;
-  align-self: flex-end;
 `
 
 export const ArchiveButton = styled(motion.button)`

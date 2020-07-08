@@ -5,7 +5,7 @@ import ProgressBar from '../ProgressBar/ProgressBar';
 import DueDate from '../DueDate/DueDate';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 import NewPlaylistItemBar from '../NewPlaylistItemBar/NewPlaylistItemBar';
-import Dropdown from '../Dropdown/Dropdown';
+import PlaylistDropdown from '../PlaylistDropdown/PlaylistDropdown';
 
 const PlaylistView2 = ({
   dueDate,
@@ -30,12 +30,7 @@ const PlaylistView2 = ({
 
   return (
     <>
-      <Dropdown
-        dueDate={dueDate}
-        isFavorite={isFavorite}
-        playlistId={playlistId}
-        title={title}
-      />
+      <PlaylistDropdown id={playlistId} />
       <PlaylistTitle title={title} playlistItems={playlistItems} />
       <DueDate dueDate={dueDate} />
       <ProgressBar playlistItems={playlistItems} />

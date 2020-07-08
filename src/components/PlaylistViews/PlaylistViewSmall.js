@@ -3,7 +3,7 @@ import { Div } from "./PlaylistViewSmallStyles";
 import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import DueDate from '../DueDate/DueDate';
-import Dropdown from '../Dropdown/Dropdown';
+import PlaylistDropdown from '../PlaylistDropdown/PlaylistDropdown';
 
 const PlaylistView2 = ({ due_date, id, playlist_items, title }) => {
   if (!playlist_items) {
@@ -12,7 +12,7 @@ const PlaylistView2 = ({ due_date, id, playlist_items, title }) => {
 
   return (
     <Div variants={childVariants} whileHover={{ scale: 1.02 }}>
-      <Dropdown playlistId={id} />
+      <PlaylistDropdown playlistId={id} />
       <PlaylistTitle title={title} playlistItems={playlist_items} />
       <DueDate dueDate={due_date} />
       <ProgressBar playlistItems={playlist_items} />

@@ -5,4 +5,5 @@ export const Div = styled.div`
   right: 0;
   transform: rotate(90deg);
   top: 0;
+  z-index: 5;
 `;
