@@ -21,7 +21,6 @@ const AppSidebar = () => {
             <Ul>
                 <Link href="/app/profile"><Li><PersonIcon /> Profile</Li></Link>
                 <Link href="/app"><Li><TimerIcon /> Recent</Li></Link>
-                <Link href="/app/search"><Li><SearchIcon /> Search</Li></Link>
                 <Link href="/app/favorites"><Li><StarsIcon /> Favorites</Li></Link>
             </Ul>
             <Div>
