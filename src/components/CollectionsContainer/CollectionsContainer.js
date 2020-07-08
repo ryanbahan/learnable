@@ -54,8 +54,6 @@ const Main = styled.main`
 
 const Grid = styled.div`
     padding: 3rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 `
 
 const GridWrapper = styled.div`

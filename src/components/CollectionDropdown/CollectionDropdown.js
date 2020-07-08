@@ -7,7 +7,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Router from 'next/router';
 import { CollectionContext } from '../../contexts/collectionContext';
 
-const options = ['Archive', 'Delete', 'Go to page'];
+const options = ['Delete', 'Go to page'];
 const ITEM_HEIGHT = 48;
 
 export default function Dropdown({ id }) {
@@ -26,7 +26,7 @@ export default function Dropdown({ id }) {
     }
 
     if (option === 'Go to page') {
-      Router.push(`/app/playlist/${id}`);
+      Router.push(`/app/collections/${id}`);
     }
 
     setAnchorEl(null);

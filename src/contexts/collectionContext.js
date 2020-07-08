@@ -12,44 +12,6 @@ const CollectionProvider = ({ collections, children }) => {
     const router = useRouter()
     const base = process.env.baseAPIURL[process.env.type];
 
-    // useEffect(() => {
-    //     if (session) {
-    //         // const playlists = localStorage.getItem("playlists") 
-    //         fetchPlaylists()
-    //         // TEMPORARY CACHE
-    //         // if (playlists) {
-    //         //   setState({ playlists: JSON.parse(playlists) });
-    //         // } else {
-    //         //   fetchPlaylists();
-    //         // }
-
-    //     } else {
-    //         // console.log('test re-render')
-    //     }
-    // }, [session]);
-
-    // const fetchPlaylists = async () => {
-    //     try {
-    //         const responseData = await sendRequest(
-    //             `${base}/playlists/${router.query.id}`
-    //         );
-
-    //         if (responseData) {
-    //             const formattedData = responseData.data.map((playlist) => {
-    //                 if (playlist.playlist_items) {
-    //                     sortPlaylistItems(playlist.playlist_items);
-    //                 }
-    //                 return playlist;
-    //             });
-
-    //             setState({ playlists: formattedData });
-    //             localStorage.setItem("playlists", JSON.stringify(formattedData));
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
-
     // const addPlaylist = (newPlaylist) => {
     //     setState((prevState) => ({
     //         playlists: [...prevState.playlists, newPlaylist],
@@ -150,9 +112,9 @@ const CollectionProvider = ({ collections, children }) => {
     // };
 
     const removeCollection = (id) => {
-        // setState({
-        //     playlists: state.playlists.filter((p) => p.id !== id),
-        // });
+        setState(
+            state.filter((c) => c.id !== id),
+        );
     };
 
     const deleteCollection = async (id) => {

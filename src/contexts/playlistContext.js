@@ -6,28 +6,29 @@ import { useRouter } from 'next/router'
 
 export const PlaylistContext = createContext();
 
-const PlaylistProvider = ({ children }) => {
-  const [state, setState] = useState({ playlists: [] });
+const PlaylistProvider = ({ playlists, children }) => {
+  // console.log("playlists", playlists)
+  const [state, setState] = useState({ playlists });
   const { isLoading, error, sendRequest, clearError } = useFetch();
   const [session, loading] = useSession()
   const router = useRouter()
   const base = process.env.baseAPIURL[process.env.type];
 
-  useEffect(() => {
-    if (session) {
-      // const playlists = localStorage.getItem("playlists") 
-      fetchPlaylists()
-      // TEMPORARY CACHE
-      // if (playlists) {
-      //   setState({ playlists: JSON.parse(playlists) });
-      // } else {
-      //   fetchPlaylists();
-      // }
+  // useEffect(() => {
+  //   if (session) {
+  //     // const playlists = localStorage.getItem("playlists") 
+  //     fetchPlaylists()
+  //     // TEMPORARY CACHE
+  //     // if (playlists) {
+  //     //   setState({ playlists: JSON.parse(playlists) });
+  //     // } else {
+  //     //   fetchPlaylists();
+  //     // }
 
-    } else {
-      // console.log('test re-render')
-    }
-  }, [session]);
+  //   } else {
+  //     // console.log('test re-render')
+  //   }
+  // }, [session]);
 
   const fetchPlaylists = async () => {
     try {

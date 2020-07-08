@@ -4,14 +4,14 @@ import styled from 'styled-components';
 import PlaylistProvider from '../../../../src/contexts/playlistContext';
 import PlaylistsContainer from '../../../../src/components/PlaylistsContainer/PlaylistsContainer';
 
-export default function App() {
+export default function App({ playlists }) {
 
     return (
         <>
             <Head>
                 <title>Learnable</title>
             </Head>
-            <PlaylistProvider>
+            <PlaylistProvider playlists={ playlists }>
                 <MainWrapper>
                     <AppNav />
                     <PlaylistsContainer />
@@ -19,6 +19,26 @@ export default function App() {
             </PlaylistProvider>
         </>
     );
+}
+
+export async function getServerSideProps(context) {
+    const base = process.env.baseAPIURL[process.env.type];
+    const res = await fetch(`${base}/playlists/${context.params.id}`)
+    const json = await res.json()
+
+    if (json) {
+        const playlists = json.data
+
+        return {
+            props: { playlists }, // will be passed to the page component as props
+        }
+    } else {
+        const playlists = []
+
+        return {
+            props: { playlists }, // will be passed to the page component as props
+        } 
+    }
 }
 
 const MainWrapper = styled.div`

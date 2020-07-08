@@ -28,12 +28,21 @@ export default function App({ collections }) {
 export async function getServerSideProps(context) {
   const base = process.env.baseAPIURL[process.env.type];
   const session = await getSession(context)
-  const res = await fetch(`${base}/collections/${session.user.id}`)
-  const json = await res.json()
-  const collections = json.data
 
-  return {
-    props: { collections }, // will be passed to the page component as props
+  if (session) {
+    const res = await fetch(`${base}/collections/${session.user.id}`)
+    const json = await res.json()
+    const collections = json.data
+
+    return {
+      props: { collections }, // will be passed to the page component as props
+    }
+  } else {
+    const collections = []
+
+    return {
+      props: { collections }, // will be passed to the page component as props
+    }
   }
 }
 
