@@ -11,7 +11,6 @@ import { ThemeProvider } from 'styled-components';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
-import UserProvider from '../../contexts/userContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import { mockPlaylistData } from '../../../mockData/mockData';
 import PlaylistView3 from './PlaylistView3';
@@ -20,15 +19,13 @@ afterEach(cleanup);
 
 function renderPlaylistView3(props, context) {
   const utils = render(
-    <UserProvider>
-      <PlaylistContext.Provider value={context}>
-        <ThemeProvider theme={theme}>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
-            <PlaylistView3 {...props} />
-          </MuiPickersUtilsProvider>
-        </ThemeProvider>
-      </PlaylistContext.Provider>
-    </UserProvider>
+    <PlaylistContext.Provider value={context}>
+      <ThemeProvider theme={theme}>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <PlaylistView3 {...props} />
+        </MuiPickersUtilsProvider>
+      </ThemeProvider>
+    </PlaylistContext.Provider>
   );
 
   return { ...utils };

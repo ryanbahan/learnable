@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
-import UserProvider from '../../contexts/userContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import { mockPlaylistData } from '../../../mockData/mockData';
 import { AppSettingsContext } from '../../contexts/appSettingsContext';
@@ -13,19 +12,23 @@ import PlaylistsContainer from './PlaylistsContainer';
 
 afterEach(cleanup);
 
+const mockFetchPromise = Promise.resolve({
+  json: () => Promise.resolve({}),
+});
+
+window.fetch = jest.fn(() => mockFetchPromise)
+
 function renderPlaylistsContainer(props, context, appContext) {
   const utils = render(
-    <UserProvider>
-      <PlaylistContext.Provider value={context}>
-        <AppSettingsContext.Provider value={appContext}>
-          <ThemeProvider theme={theme}>
-            <MuiPickersUtilsProvider utils={MomentUtils}>
-              <PlaylistsContainer {...props} />
-            </MuiPickersUtilsProvider>
-          </ThemeProvider>
-        </AppSettingsContext.Provider>
-      </PlaylistContext.Provider>
-    </UserProvider>
+    <PlaylistContext.Provider value={context}>
+      <AppSettingsContext.Provider value={appContext}>
+        <ThemeProvider theme={theme}>
+          <MuiPickersUtilsProvider utils={MomentUtils}>
+            <PlaylistsContainer {...props} />
+          </MuiPickersUtilsProvider>
+        </ThemeProvider>
+      </AppSettingsContext.Provider>
+    </PlaylistContext.Provider>
   );
 
   return { ...utils };
@@ -42,11 +45,10 @@ test('it renders the correct content', () => {
       },
     }
   );
-  const button = screen.getByText('Add Playlist');
+
   const pl1 = screen.getByText('Learn Javascript');
   const pl2 = screen.getByText('Learn Ruby');
 
-  expect(button).toBeInTheDocument();
   expect(pl1).toBeInTheDocument();
   expect(pl2).toBeInTheDocument();
 });
