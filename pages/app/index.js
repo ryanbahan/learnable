@@ -38,11 +38,11 @@ export async function getServerSideProps(context) {
       props: { collections }, // will be passed to the page component as props
     }
   } else {
-    const collections = []
-
-    return {
-      props: { collections }, // will be passed to the page component as props
-    }
+    const { res } = context;
+    res.setHeader("location", "/api/auth/signin");
+    res.statusCode = 302;
+    res.end();
+    return;
   }
 }
 
