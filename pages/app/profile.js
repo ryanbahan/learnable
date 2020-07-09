@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Profile = () => {
     return (
         <Main>
-            <AppSidebar />
+            <AppSidebar active="profile" />
             <Div>
                 <p>
                     This section is currently under construction. Check back soon!

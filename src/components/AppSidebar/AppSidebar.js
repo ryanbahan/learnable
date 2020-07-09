@@ -11,18 +11,37 @@ import TimerIcon from '@material-ui/icons/Timer'
 import StarsIcon from '@material-ui/icons/Stars'
 import Link from 'next/link';
 import { signin, signout, useSession } from 'next-auth/client'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 const AppSidebar = () => {
+    const navItems = [
+        {name: "Recent", component: <TimerIcon />, href: "/app"}, 
+        {name: "Favorites", component: <StarsIcon />, href: "/app/favorites"}, 
+        {name: "Profile", component: <PersonIcon />, href: "/app/profile"},
+    ]
     const base = process.env.baseURL[process.env.type]
     const [session, loading] = useSession()
+    const router = useRouter()
+
+    const mapNavItems = navItems.map(item => {
+        const isActive = router.pathname === item.href
+        ? true
+        : false
+
+    return (
+        <Link href={ item.href } key={ item.href } >
+            <Li active={ isActive } >
+                { item.component } 
+                { item.name }
+            </Li>
+        </Link>
+        )
+    })
 
     return (
         <Aside>
             <Ul>
-                <Link href="/app/profile"><Li><PersonIcon /> Profile</Li></Link>
-                <Link href="/app"><Li><TimerIcon /> Recent</Li></Link>
-                <Link href="/app/favorites"><Li><StarsIcon /> Favorites</Li></Link>
+                { mapNavItems }
             </Ul>
             <Div>
                 {
