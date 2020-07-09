@@ -27,7 +27,8 @@ export async function getServerSideProps(context) {
 
     if (!session) {
         const { res } = context;
-        res.setHeader("location", "/api/auth/signin");
+        const base = process.env.baseURL[process.env.type];
+        res.setHeader("location", `${base}/api/auth/signin`);
         res.statusCode = 302;
         res.end();
         return;
