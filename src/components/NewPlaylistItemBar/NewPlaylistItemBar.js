@@ -22,14 +22,15 @@ const NewPlaylistItemBar = ({
     }
 
     setPlaylistItemURL(url);
+    return url
   };
 
   const onItemSubmit = async () => {
-    formatUrl(playlistItemURL);
+    const url = await formatUrl(playlistItemURL);
 
     const res = await fetch("/api/ogReader", {
       method: "POST",
-      body: JSON.stringify({ url: "https://nextjs.org/docs/api-reference/next/router"})
+      body: JSON.stringify({ url: url })
     })
 
     const json = await res.json()
