@@ -9,8 +9,8 @@ const Collection = ({ title, id}) => {
     const collectionContext = useContext(CollectionContext);
 
     return (
-        <Wrapper>
-            <Link href={`/app/collections/${id}`} as={`/app/collections/${id}`}>
+        <Link href={`/app/collections/${id}`} as={`/app/collections/${id}`}>
+            <Wrapper>
                 <Div>
                     { title }
                     <IconWrapper>
@@ -20,8 +20,8 @@ const Collection = ({ title, id}) => {
                         }} />
                     </IconWrapper>
                 </Div>
-            </Link>
-        </Wrapper>
+            </Wrapper>
+        </Link>
     )
 }
 
@@ -34,6 +34,7 @@ const Wrapper = styled.div`
     padding: 2.5rem;
     border-radius: ${({ theme }) => theme.styles.borderRadius};
     flex-basis: 25%;
+    cursor: pointer;
 `
 
 const Div = styled.div`
@@ -45,7 +46,6 @@ const Div = styled.div`
     border-radius: ${({ theme }) => theme.styles.borderRadius};
     height: 100%;
     width: 100%;
-    cursor: pointer;
 `
 
 const IconWrapper = styled.div`

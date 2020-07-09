@@ -1,6 +1,7 @@
 import AppNav from '../../../../src/components/AppNav/AppNav'
 import Head from 'next/head';
 import styled from 'styled-components';
+import { getSession } from 'next-auth/client'
 import PlaylistProvider from '../../../../src/contexts/playlistContext';
 import PlaylistsContainer from '../../../../src/components/PlaylistsContainer/PlaylistsContainer';
 
@@ -22,6 +23,16 @@ export default function App({ playlists }) {
 }
 
 export async function getServerSideProps(context) {
+    const session = await getSession(context)
+
+    if (!session) {
+        const { res } = context;
+        res.setHeader("location", "/api/auth/signin");
+        res.statusCode = 302;
+        res.end();
+        return;
+    }
+
     const base = process.env.baseAPIURL[process.env.type];
     const res = await fetch(`${base}/playlists/${context.params.id}`)
     const json = await res.json()
