@@ -11,7 +11,6 @@ import { ThemeProvider } from 'styled-components';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
-import UserProvider from '../../contexts/userContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import Dropdown from './PlaylistDropdown';
 
@@ -19,15 +18,13 @@ afterEach(cleanup);
 
 function renderDropdown(props, context) {
   const utils = render(
-    <UserProvider>
-      <PlaylistContext.Provider value={context}>
-        <ThemeProvider theme={theme}>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
-            <Dropdown {...props} />
-          </MuiPickersUtilsProvider>
-        </ThemeProvider>
-      </PlaylistContext.Provider>
-    </UserProvider>
+    <PlaylistContext.Provider value={context}>
+      <ThemeProvider theme={theme}>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <Dropdown {...props} />
+        </MuiPickersUtilsProvider>
+      </ThemeProvider>
+    </PlaylistContext.Provider>
   );
 
   return { ...utils };
@@ -35,7 +32,6 @@ function renderDropdown(props, context) {
 
 const mockProps = {
   playlistId: 1,
-  isFavorite: false,
   status: 'valid',
   dueDate: '12/31/2020',
   title: 'mock title',
@@ -77,12 +73,6 @@ test('it invokes archive when archive menuitem clicked', async () => {
   fireEvent.click(archiveMenuItem);
 
   expect(mockPatchPlaylist).toHaveBeenCalledTimes(1);
-  expect(mockPatchPlaylist).toHaveBeenCalledWith(1, {
-    status: 'archived',
-    due_date: '12/31/2020',
-    is_favorite: false,
-    title: 'mock title',
-  });
 });
 
 test('it invokes delete when delete menuitem clicked', async () => {
@@ -105,5 +95,4 @@ test('it invokes delete when delete menuitem clicked', async () => {
   fireEvent.click(deleteMenuItem);
 
   expect(mockDeletePlaylist).toHaveBeenCalledTimes(1);
-  expect(mockDeletePlaylist).toHaveBeenCalledWith(1);
 });

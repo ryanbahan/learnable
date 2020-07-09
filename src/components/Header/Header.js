@@ -11,38 +11,15 @@ import Link from 'next/link';
 import { signin, signout, useSession } from 'next-auth/client'
 import AddIcon from '@material-ui/icons/Add';
 
-const Header = ({ type, modalState, toggleModal }) => {
+const Header = ({ toggleModal }) => {
   const [session, loading] = useSession()
 
-  switch (type) {
-    case "collections":
-      return (
-        <CollectionsNav>
-          <h3>Recently Viewed</h3>
-          <AddButton onClick={() => toggleModal(true)}><AddIcon /></AddButton>
-        </CollectionsNav>
-      )
-    case "collection": 
-      return (
-        <Nav>
-          <Link href="/">
-            <H1>learnable</H1>
-          </Link>
-          <Div>
-            <Ul>
-              <Link href="/app">
-                <li>home</li>
-              </Link>
-            </Ul>
-            {
-              session && session.user
-                ? <Button onClick={signout}>Log out</Button>
-                : <Button onClick={signin}>Log in</Button>
-            }
-          </Div>
-        </Nav>
-      )
-  }
+  return (
+    <CollectionsNav>
+      <h3>Recently Viewed</h3>
+      <AddButton onClick={() => toggleModal(true)}><AddIcon /></AddButton>
+    </CollectionsNav>
+  )
 };
 
 export default Header;
