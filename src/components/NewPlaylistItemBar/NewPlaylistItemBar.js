@@ -15,6 +15,7 @@ const NewPlaylistItemBar = ({
   playlistItemURL,
   playlistItems,
   setPlaylistItemURL,
+  setPlaylistItemTitle,
 }) => {
   const formatUrl = (url) => {
     if (!url.includes('//')) {
@@ -22,10 +23,19 @@ const NewPlaylistItemBar = ({
     }
 
     setPlaylistItemURL(url);
+    return url
   };
 
-  const onItemSubmit = () => {
-    formatUrl(playlistItemURL);
+  const onItemSubmit = async () => {
+    const url = await formatUrl(playlistItemURL);
+
+    const res = await fetch("/api/ogReader", {
+      method: "POST",
+      body: JSON.stringify({ url: url })
+    })
+
+    const json = await res.json()
+    setPlaylistItemTitle(json.title)
     nextStep();
     toggleInputActive(false);
   };

@@ -73,6 +73,7 @@ const Playlist = ({
             playlistId={id}
             playlistItemURL={playlistItemURL}
             playlistItems={playlist_items}
+            setPlaylistItemTitle={setPlaylistItemTitle}
             setPlaylistItemURL={setPlaylistItemURL}
             status={status}
             title={playlistTitle}

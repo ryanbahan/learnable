@@ -19,5 +19,6 @@ export const P = styled.p`
   flex-grow: 1;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  max-width: 75%;
+  max-width: 70%;
+  padding-right: 1.5rem;
 `;
