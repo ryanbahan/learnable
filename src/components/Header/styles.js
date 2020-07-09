@@ -54,7 +54,7 @@ export const Nav = styled.nav`
 `;
 
 export const CollectionsNav = styled.nav`
-  height: 3rem;
+  height: 3.5rem;
   width: 100%;
   display: flex;
   border-bottom: solid 1px ${({ theme }) => theme.colors.grayLight};

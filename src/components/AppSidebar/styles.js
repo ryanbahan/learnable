@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
     font-size: 1rem;
@@ -36,9 +36,11 @@ export const Li = styled.li`
         background: ${({ theme }) => theme.colors.grayLighter};
     }
 
-    &:active {
-        background: ${({ theme }) => theme.colors.grayLighter};
-    }
+    ${({ active }) =>
+        active &&
+        css`
+          background: ${({ theme }) => theme.colors.grayLighter};  
+    `}
 `
 
 export const Aside = styled.aside`
@@ -50,5 +52,4 @@ export const Aside = styled.aside`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.75rem 0;
 `
