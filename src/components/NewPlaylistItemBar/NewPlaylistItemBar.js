@@ -24,10 +24,21 @@ const NewPlaylistItemBar = ({
     setPlaylistItemURL(url);
   };
 
-  const onItemSubmit = () => {
+  const onItemSubmit = async () => {
     formatUrl(playlistItemURL);
-    nextStep();
-    toggleInputActive(false);
+
+    const res = await fetch("/api/ogReader", {
+      method: "POST",
+      body: JSON.stringify({ url: "https://nextjs.org/docs/api-reference/next/router"})
+    })
+
+    const json = await res.json()
+
+    console.log("json", json)
+
+
+    // nextStep();
+    // toggleInputActive(false);
   };
 
   return (
