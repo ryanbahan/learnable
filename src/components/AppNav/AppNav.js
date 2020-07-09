@@ -8,7 +8,7 @@ import {
   P,
   Wrapper,
 } from './styles'
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import ViewHeadlineIcon from '@material-ui/icons/ViewHeadline';
@@ -16,16 +16,13 @@ import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import ArchiveIcon from '@material-ui/icons/Archive';
 import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
-import { useSession } from 'next-auth/client'
 
 const AppNav = () => {
-  const [hover, setHover] = useState(null);
   const appSettingsContext = useContext(AppSettingsContext);
-  const { archiveView, view } = appSettingsContext.state;
   const { switchArchiveView, switchView } = appSettingsContext;
+  const { archiveView, view } = appSettingsContext.state;
   const playlistContext = useContext(PlaylistContext);
   const { playlists } = playlistContext.state;
-  const [session, loading] = useSession()
   let cancel = false;
 
   if (playlists.length) {
@@ -56,11 +53,10 @@ const AppNav = () => {
   };
 
   return (
-    session ?
     <Nav>
       {<H2>{!appSettingsContext.state.archiveView ? 'CURRENT' : 'ARCHIVED'}</H2>}
       <Div>
-      <Wrapper onMouseEnter={() => setHover('AddIcon')}>
+      <Wrapper>
         <Button
           aria-label="add new playlist"
           disabled={!view || archiveView}
@@ -70,18 +66,8 @@ const AppNav = () => {
         >
           {cancel ? <RemoveIcon /> : <AddIcon />}
         </Button>
-        {hover === 'AddIcon' ? (
-          <P
-            view={view}
-            variants={variants}
-            initial="disabled"
-            animate="active"
-          >
-            {cancel ? 'Cancel' : 'New playlist'}
-          </P>
-        ) : null}
       </Wrapper>
-      <Wrapper onMouseEnter={() => setHover('ViewIcon')}>
+      <Wrapper>
         <Button
           aria-label="card view"
           whileHover={{ scale: 1.1 }}
@@ -94,43 +80,19 @@ const AppNav = () => {
             <ViewWeekIcon fontSize="large" />
           )}
         </Button>
-        {hover === 'ViewIcon' ? (
-          <P
-            id="view-text"
-            view={view}
-            variants={variants}
-            initial="disabled"
-            animate="active"
-          >
-            Toggle views
-          </P>
-        ) : null}
       </Wrapper>
-      <Wrapper onMouseEnter={() => setHover('ArchiveIcon')}>
+      <Wrapper>
         <ArchiveButton
           aria-label="archive view"
           onClick={() => handleSwitchView(switchArchiveView)}
           whileHover={{ scale: 1.1 }}
-          // whileTap={{ scale: 0.95 }}
           view={appSettingsContext.state.archiveView}
         >
           <ArchiveIcon />
         </ArchiveButton>
-        {hover === 'ArchiveIcon' ? (
-          <P
-            id="archive-text"
-            view={view}
-            variants={variants}
-            initial="disabled"
-            animate="active"
-          >
-            Show archived
-          </P>
-        ) : null}
       </Wrapper>
       </Div>
     </Nav>
-    : null
   )
 };
 

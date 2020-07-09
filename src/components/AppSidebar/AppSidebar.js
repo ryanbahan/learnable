@@ -14,6 +14,7 @@ import { signin, signout, useSession } from 'next-auth/client'
 import { useState } from 'react'
 
 const AppSidebar = () => {
+    const base = process.env.baseURL[process.env.type]
     const [session, loading] = useSession()
 
     return (
@@ -26,7 +27,7 @@ const AppSidebar = () => {
             <Div>
                 {
                     session
-                    ? <Button onClick={ signout }>Log out</Button>
+                        ? <Button onClick={() => signout({ callbackUrl: `${ base }` }) }>Log out</Button>
                     : <Button onClick={ signin }>Log in</Button>
                 }
             </Div>

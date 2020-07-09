@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
-import UserProvider from '../../contexts/userContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import PlaylistTitle from './PlaylistTitle';
 
@@ -13,22 +12,20 @@ afterEach(cleanup);
 
 function renderPlaylistTitle(props, context) {
   const utils = render(
-    <UserProvider>
-      <PlaylistContext.Provider value={context}>
-        <ThemeProvider theme={theme}>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
-            <PlaylistTitle {...props} />
-          </MuiPickersUtilsProvider>
-        </ThemeProvider>
-      </PlaylistContext.Provider>
-    </UserProvider>
+    <PlaylistContext.Provider value={context}>
+      <ThemeProvider theme={theme}>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <PlaylistTitle {...props} />
+        </MuiPickersUtilsProvider>
+      </ThemeProvider>
+    </PlaylistContext.Provider>
   );
 
   return { ...utils };
 }
 
 test('it renders the correct content', () => {
-  renderPlaylistTitle({ title: 'mock title' });
+  renderPlaylistTitle({ title: 'mock title', playlistItems: [] });
   expect(screen.getByText('mock title')).toBeInTheDocument();
   expect(screen.getByText('0%')).toBeInTheDocument();
 });

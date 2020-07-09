@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
-import UserProvider from '../../contexts/userContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import PlaylistItem from './PlaylistItem';
 
@@ -13,15 +12,13 @@ afterEach(cleanup);
 
 function renderPlaylistItem(props, context) {
   const utils = render(
-    <UserProvider>
-      <PlaylistContext.Provider value={context}>
-        <ThemeProvider theme={theme}>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
-            <PlaylistItem {...props} />
-          </MuiPickersUtilsProvider>
-        </ThemeProvider>
-      </PlaylistContext.Provider>
-    </UserProvider>
+    <PlaylistContext.Provider value={context}>
+      <ThemeProvider theme={theme}>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <PlaylistItem {...props} />
+        </MuiPickersUtilsProvider>
+      </ThemeProvider>
+    </PlaylistContext.Provider>
   );
 
   return { ...utils };
@@ -33,7 +30,7 @@ const props = {
   category: 'video',
   id: 1,
   is_complete: false,
-  name: 'JavaScript video',
+  title: 'JavaScript video',
   playlist_id: 1,
   url: 'http://www.test.com',
 };
@@ -55,12 +52,4 @@ test('it invokes onClick event when checkbox toggled', async () => {
 
   fireEvent.click(cb);
   expect(mockPatchPlaylist).toHaveBeenCalledTimes(1);
-  expect(mockPatchPlaylist).toHaveBeenCalledWith(props.playlist_id, props.id, {
-    is_complete: !props.is_complete,
-    category: 'video',
-    name: 'JavaScript video',
-    playlist_id: 1,
-    url: 'http://www.test.com',
-    is_favorite: false,
-  });
 });

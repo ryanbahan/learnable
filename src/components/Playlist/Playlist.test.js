@@ -11,7 +11,6 @@ import { ThemeProvider } from 'styled-components';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
-import UserProvider from '../../contexts/userContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import Playlist from './Playlist';
 
@@ -19,15 +18,13 @@ afterEach(cleanup);
 
 function renderPlaylist(props, context) {
   const utils = render(
-    <UserProvider>
-      <PlaylistContext.Provider value={context}>
-        <ThemeProvider theme={theme}>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
-            <Playlist {...props} />
-          </MuiPickersUtilsProvider>
-        </ThemeProvider>
-      </PlaylistContext.Provider>
-    </UserProvider>
+    <PlaylistContext.Provider value={context}>
+      <ThemeProvider theme={theme}>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <Playlist {...props} />
+        </MuiPickersUtilsProvider>
+      </ThemeProvider>
+    </PlaylistContext.Provider>
   );
 
   return { ...utils };
@@ -97,85 +94,85 @@ test('it renders child components Dropdown, NewPlaylistItemBar, ProgressBar', ()
   expect(screen.getByTestId('progressbar')).toBeInTheDocument();
 });
 
-test('it renders NoItemsButton when playlist_items.length is 0 and allows item to be added', async () => {
-  const today = getDateToday();
-  renderPlaylist(
-    {
-      id: 1,
-      due_date: today,
-      playlist_items: [],
-      title: 'mockTitle',
-    },
-    {
-      postPlaylistItem: mockPostPlaylistItem,
-    }
-  );
+// test('it renders NoItemsButton when playlist_items.length is 0 and allows item to be added', async () => {
+//   const today = getDateToday();
+//   renderPlaylist(
+//     {
+//       id: 1,
+//       due_date: today,
+//       playlist_items: [],
+//       title: 'mockTitle',
+//     },
+//     {
+//       postPlaylistItem: mockPostPlaylistItem,
+//     }
+//   );
 
-  const button = screen.getByText(
-    "You haven't added any items to this list. Click here to get started!"
-  );
+//   const button = screen.getByText(
+//     "You haven't added any items to this list. Click here to get started!"
+//   );
 
-  expect(button).toBeInTheDocument();
+//   expect(button).toBeInTheDocument();
 
-  // expect url input field to appear when button clicked
-  fireEvent.click(button);
+//   // expect url input field to appear when button clicked
+//   fireEvent.click(button);
 
-  await waitFor(() =>
-    expect(
-      screen.getByPlaceholderText('now, add an item URL:')
-    ).toBeInTheDocument()
-  );
+//   await waitFor(() =>
+//     expect(
+//       screen.getByPlaceholderText('now, add an item URL:')
+//     ).toBeInTheDocument()
+//   );
 
-  // "+ new item" button changes to "- close"
-  expect(screen.getByText('- close')).toBeInTheDocument();
+//   // "+ new item" button changes to "- close"
+//   expect(screen.getByText('- close')).toBeInTheDocument();
 
-  // enter a URL
-  fireEvent.change(screen.getByPlaceholderText('now, add an item URL:'), {
-    target: {
-      value: 'http://www.google.com',
-    },
-  });
+//   // enter a URL
+//   fireEvent.change(screen.getByPlaceholderText('now, add an item URL:'), {
+//     target: {
+//       value: 'http://www.google.com',
+//     },
+//   });
 
-  // submit the URL
-  const submitUrlButton = screen.getByLabelText('Submit input');
-  fireEvent.click(submitUrlButton);
+//   // submit the URL
+//   const submitUrlButton = screen.getByLabelText('Submit input');
+//   fireEvent.click(submitUrlButton);
 
-  // input for playlistItem title rendered
-  await waitFor(() => {
-    expect(
-      screen.getByPlaceholderText('what should we call this?')
-    ).toBeInTheDocument();
-  });
+//   // input for playlistItem title rendered
+//   await waitFor(() => {
+//     expect(
+//       screen.getByPlaceholderText('what should we call this?')
+//     ).toBeInTheDocument();
+//   });
 
-  // enter an item title
-  fireEvent.change(screen.getByPlaceholderText('what should we call this?'), {
-    target: {
-      value: 'My list item',
-    },
-  });
+//   // enter an item title
+//   fireEvent.change(screen.getByPlaceholderText('what should we call this?'), {
+//     target: {
+//       value: 'My list item',
+//     },
+//   });
 
-  // item title is rendered to screen
-  await waitFor(() =>
-    expect(screen.getByText('My list item')).toBeInTheDocument()
-  );
+//   // item title is rendered to screen
+//   await waitFor(() =>
+//     expect(screen.getByText('My list item')).toBeInTheDocument()
+//   );
 
-  // expect category buttons to be in document
-  expect(screen.getByText('video')).toBeInTheDocument();
-  expect(screen.getByText('audio')).toBeInTheDocument();
-  expect(screen.getByText('article')).toBeInTheDocument();
-  expect(screen.getByText('other')).toBeInTheDocument();
+//   // expect category buttons to be in document
+//   expect(screen.getByText('video')).toBeInTheDocument();
+//   expect(screen.getByText('audio')).toBeInTheDocument();
+//   expect(screen.getByText('article')).toBeInTheDocument();
+//   expect(screen.getByText('other')).toBeInTheDocument();
 
-  fireEvent.click(screen.getByText('video'));
+//   fireEvent.click(screen.getByText('video'));
 
-  fireEvent.click(screen.getByText('Done'));
+//   fireEvent.click(screen.getByText('Done'));
 
-  // submits new item to endpoint
-  expect(mockPostPlaylistItem).toHaveBeenCalledTimes(1);
-  expect(mockPostPlaylistItem).toHaveBeenCalledWith({
-    category: 'video',
-    is_complete: false,
-    name: 'My list item',
-    playlist_id: 1,
-    url: 'http://www.google.com',
-  });
-});
+//   // submits new item to endpoint
+//   expect(mockPostPlaylistItem).toHaveBeenCalledTimes(1);
+//   expect(mockPostPlaylistItem).toHaveBeenCalledWith({
+//     category: 'video',
+//     is_complete: false,
+//     name: 'My list item',
+//     playlist_id: 1,
+//     url: 'http://www.google.com',
+//   });
+// });

@@ -5,7 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
-import UserProvider from '../../contexts/userContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import DatePickerInput from './DatePickerInput';
 
@@ -30,15 +29,13 @@ function getDateToday() {
 
 function renderDatePickerInput(props, context) {
   const utils = render(
-    <UserProvider>
-      <PlaylistContext.Provider value={context}>
-        <ThemeProvider theme={theme}>
-          <MuiPickersUtilsProvider utils={MomentUtils}>
-            <DatePickerInput {...props} />
-          </MuiPickersUtilsProvider>
-        </ThemeProvider>
-      </PlaylistContext.Provider>
-    </UserProvider>
+    <PlaylistContext.Provider value={context}>
+      <ThemeProvider theme={theme}>
+        <MuiPickersUtilsProvider utils={MomentUtils}>
+          <DatePickerInput {...props} />
+        </MuiPickersUtilsProvider>
+      </ThemeProvider>
+    </PlaylistContext.Provider>
   );
 
   return { ...utils };
