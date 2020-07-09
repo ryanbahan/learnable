@@ -15,6 +15,7 @@ const PlaylistView2 = ({
   playlistItems,
   playlistItemURL,
   setPlaylistItemURL,
+  setPlaylistItemTitle,
   status,
   title,
 }) => {
@@ -41,6 +42,7 @@ const PlaylistView2 = ({
           nextStep={nextStep}
           playlistItemURL={playlistItemURL}
           playlistItems={playlistItems}
+          setPlaylistItemTitle={setPlaylistItemTitle}
           setPlaylistItemURL={setPlaylistItemURL}
         />
         {items.length ? (

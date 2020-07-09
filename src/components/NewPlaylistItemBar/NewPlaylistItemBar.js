@@ -15,6 +15,7 @@ const NewPlaylistItemBar = ({
   playlistItemURL,
   playlistItems,
   setPlaylistItemURL,
+  setPlaylistItemTitle,
 }) => {
   const formatUrl = (url) => {
     if (!url.includes('//')) {
@@ -34,12 +35,9 @@ const NewPlaylistItemBar = ({
     })
 
     const json = await res.json()
-
-    console.log("json", json)
-
-
-    // nextStep();
-    // toggleInputActive(false);
+    setPlaylistItemTitle(json.title)
+    nextStep();
+    toggleInputActive(false);
   };
 
   return (

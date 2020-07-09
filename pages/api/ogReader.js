@@ -5,7 +5,11 @@ export default async (req, res) => {
         const { url } = JSON.parse(req.body)
 
         og(url, function (err, meta) {
-            res.status(200).end(JSON.stringify({ title: meta.title }))
+            if (meta.title) {
+                res.status(200).end(JSON.stringify({ title: meta.title }))
+            } else {
+                res.status(200).end(JSON.stringify({ title: null }))
+            }
         })
 
         return resolve()
