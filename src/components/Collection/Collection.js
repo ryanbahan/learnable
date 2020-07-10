@@ -12,7 +12,7 @@ const Collection = ({ title, id}) => {
     const collectionContext = useContext(CollectionContext);
 
     return (
-        <Link href={`/app/collections/${id}`} as={`/app/collections/${id}`}>
+        <Link href={`/app/collections/[id]`} as={`/app/collections/${id}`}>
             <Wrapper>
                 <Div>
                     { title }
