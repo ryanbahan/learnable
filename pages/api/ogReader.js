@@ -5,7 +5,7 @@ export default async (req, res) => {
         const { url } = JSON.parse(req.body)
 
         og(url, function (err, meta) {
-            if (meta.title) {
+            if (meta && meta.title) {
                 res.status(200).end(JSON.stringify({ title: meta.title }))
             } else {
                 res.status(200).end(JSON.stringify({ title: null }))
