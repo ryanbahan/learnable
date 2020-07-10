@@ -1,11 +1,19 @@
 import CollectionsContainer from '../../src/components/CollectionsContainer/CollectionsContainer'
 import Head from 'next/head';
 import styled from 'styled-components';
+import { useEffect } from 'react'
 import { useSession, getSession } from 'next-auth/client'
 import CollectionProvider from '../../src/contexts/collectionContext'
+import Router from 'next/router'
 
-export default function App({ collections }) {
+export default function App({ collections, auth }) {
   const [session, loading] = useSession()
+
+  useEffect(() => {
+    if (!auth) {
+      return Router.push("/api/auth/signin")
+    }
+  }, [])
   
   if (loading) {
     return <></>
@@ -35,15 +43,18 @@ export async function getServerSideProps(context) {
     const collections = json.data
 
     return {
-      props: { collections }, // will be passed to the page component as props
+      props: { collections, auth: true }, // will be passed to the page component as props
     }
   } else {
-    const { res } = context;
-    const base = process.env.baseURL[process.env.type];
-    res.setHeader("location", `${base}/api/auth/signin`);
-    res.statusCode = 302;
-    res.end();
-    return;
+    console.log(session, 'SESSION')
+    return {
+      props: { collections: [], auth: false }, // will be passed to the page component as props
+    }
+    // const base = process.env.baseURL[process.env.type];
+    // res.setHeader("location", `http://localhost:8080/api/auth/signin`);
+    // res.statusCode = 302;
+    // res.end();
+    // return;
   }
 }
 

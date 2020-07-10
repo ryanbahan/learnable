@@ -46,8 +46,8 @@ const AppSidebar = () => {
             <Div>
                 {
                     session
-                        ? <Button onClick={() => signout({ callbackUrl: `${ base }` }) }>Log out</Button>
-                    : <Button onClick={ signin }>Log in</Button>
+                        ? <Button onClick={ signout }>Log out</Button>
+                        : <Button onClick={ signin }>Log in</Button>
                 }
             </Div>
         </Aside>
