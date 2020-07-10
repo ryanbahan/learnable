@@ -15,7 +15,7 @@ export default function App({ collections, auth }) {
     }
   }, [])
   
-  if (loading) {
+  if (loading || !session) {
     return <></>
   }
 
