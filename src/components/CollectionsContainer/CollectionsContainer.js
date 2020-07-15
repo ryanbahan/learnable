@@ -5,7 +5,7 @@ import {
     GridWrapper,
 } from './styles'
 import Collection from '../Collection/Collection'
-import CollectionsSidebar from '../CollectionsSidebar/CollectionsSidebar'
+import AppSidebar from '../AppSidebar/AppSidebar'
 import { useContext, useState } from 'react'
 import { CollectionContext } from '../../contexts/collectionContext';
 import CollectionsNav from '../CollectionsNav/CollectionsNav'
@@ -17,7 +17,7 @@ const CollectionsContainer = () => {
     const collections = collectionContext.state
 
     return <Main>
-                <CollectionsSidebar />
+                <AppSidebar />
                 <Wrapper>
                     {
                         collectionsModal
