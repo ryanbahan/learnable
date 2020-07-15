@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import { Div, NoItemsButton } from './PlaylistView2Styles'
-import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
-import ProgressBar from '../ProgressBar/ProgressBar';
-import DueDate from '../DueDate/DueDate';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 import NewPlaylistItemBar from '../NewPlaylistItemBar/NewPlaylistItemBar';
-import PlaylistDropdown from '../PlaylistDropdown/PlaylistDropdown';
+import PlaylistHeader from '../PlaylistHeader/PlaylistHeader'
 
 const PlaylistView2 = ({
   dueDate,
@@ -31,10 +28,12 @@ const PlaylistView2 = ({
 
   return (
     <>
-      <PlaylistDropdown id={playlistId} />
-      <PlaylistTitle title={title} playlistItems={playlistItems} />
-      <DueDate dueDate={dueDate} />
-      <ProgressBar playlistItems={playlistItems} />
+      <PlaylistHeader 
+        playlistId={playlistId}
+        title={title} 
+        playlistItems={playlistItems}
+        dueDate={dueDate}
+      />
       <Div>
         <NewPlaylistItemBar
           inputActive={inputActive}

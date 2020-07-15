@@ -1,8 +1,8 @@
 import { childVariants } from './PlaylistViewSmallAnimations'
 import { Div } from "./PlaylistViewSmallStyles";
-import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
-import ProgressBar from '../ProgressBar/ProgressBar';
-import DueDate from '../DueDate/DueDate';
+// import PlaylistTitle from '../PlaylistTitle/PlaylistTitle';
+// import ProgressBar from '../ProgressBar/ProgressBar';
+// import DueDate from '../DueDate/DueDate';
 import PlaylistDropdown from '../PlaylistDropdown/PlaylistDropdown';
 
 const PlaylistView2 = ({ due_date, id, playlist_items, title }) => {
@@ -13,9 +13,6 @@ const PlaylistView2 = ({ due_date, id, playlist_items, title }) => {
   return (
     <Div variants={childVariants} whileHover={{ scale: 1.02 }}>
       <PlaylistDropdown playlistId={id} />
-      <PlaylistTitle title={title} playlistItems={playlist_items} />
-      <DueDate dueDate={due_date} />
-      <ProgressBar playlistItems={playlist_items} />
     </Div>
   );
 };
