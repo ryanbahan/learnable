@@ -2,6 +2,7 @@ import AppNav from '../../../../src/components/AppNav/AppNav'
 import Head from 'next/head';
 import styled from 'styled-components';
 import { getSession } from 'next-auth/client'
+import { sortPlaylistItems } from '../../../../src/utils/utils'
 import PlaylistProvider from '../../../../src/contexts/playlistContext';
 import PlaylistsContainer from '../../../../src/components/PlaylistsContainer/PlaylistsContainer';
 
@@ -41,8 +42,13 @@ export async function getServerSideProps(context) {
     if (json) {
         const playlists = json.data
 
+        const sortedPlaylists = playlists.map(p => {
+            p.playlist_items = sortPlaylistItems(p.playlist_items)
+            return p
+        })
+
         return {
-            props: { playlists }, // will be passed to the page component as props
+            props: { playlists: sortedPlaylists }, // will be passed to the page component as props
         }
     } else {
         const playlists = []
