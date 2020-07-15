@@ -150,10 +150,6 @@ const PlaylistProvider = ({ playlists, children }) => {
         'DELETE',
         { 'Content-Type': 'application/json' }
       );
-      
-      if (state.playlists.length) {
-        fetchPlaylists();
-      }
 
     } catch (error) {
       console.error(error);
