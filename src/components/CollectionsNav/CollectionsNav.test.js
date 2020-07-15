@@ -6,7 +6,7 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
 import { PlaylistContext } from '../../contexts/playlistContext';
-import CollectionNav from './CollectionNav';
+import CollectionsNav from './CollectionsNav';
 
 afterEach(cleanup);
 
