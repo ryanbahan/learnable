@@ -10,7 +10,7 @@ import { PlaylistContext } from '../../contexts/playlistContext';
 const options = ['Archive', 'Delete', 'Go to page'];
 const ITEM_HEIGHT = 48;
 
-export default function Dropdown({ id, type }) {
+export default function Dropdown({ id }) {
   const playlistContext = useContext(PlaylistContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

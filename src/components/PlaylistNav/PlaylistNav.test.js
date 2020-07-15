@@ -7,7 +7,7 @@ import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import { AppSettingsContext } from '../../contexts/appSettingsContext';
-import AppNav from './AppNav';
+import PlaylistNav from './PlaylistNav';
 
 afterEach(cleanup);
 
@@ -55,7 +55,7 @@ function renderComponent(props, playlists, appSettings) {
             <PlaylistContext.Provider value={playlists}>
                 <ThemeProvider theme={theme}>
                     <MuiPickersUtilsProvider utils={MomentUtils}>
-                        <AppNav {...props} />
+                        <PlaylistNav {...props} />
                     </MuiPickersUtilsProvider>
                 </ThemeProvider>
             </PlaylistContext.Provider>

@@ -8,7 +8,7 @@ import Collection from '../Collection/Collection'
 import AppSidebar from '../AppSidebar/AppSidebar'
 import { useContext, useState } from 'react'
 import { CollectionContext } from '../../contexts/collectionContext';
-import Header from '../Header/Header'
+import CollectionsNav from '../CollectionsNav/CollectionsNav'
 import AddCollection from '../AddCollection/AddCollection'
 
 const CollectionsContainer = () => {
@@ -27,8 +27,7 @@ const CollectionsContainer = () => {
                         />
                         : null
                     }
-                    <Header 
-                        type="collections" 
+                    <CollectionsNav
                         modalState={ collectionsModal } 
                         toggleModal={ toggleCollectionsModal } 
                     />
