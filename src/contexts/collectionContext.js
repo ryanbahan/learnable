@@ -12,105 +12,6 @@ const CollectionProvider = ({ collections, children }) => {
     const router = useRouter()
     const base = process.env.baseAPIURL[process.env.type];
 
-    // const addPlaylist = (newPlaylist) => {
-    //     setState((prevState) => ({
-    //         playlists: [...prevState.playlists, newPlaylist],
-    //     }));
-    // };
-
-    // const postPlaylist = async ({ user_id, title, due_date }) => {
-    //     try {
-    //         const responseData = await sendRequest(
-    //             `${base}/playlists/${router.query.id}`,
-    //             'POST',
-    //             JSON.stringify({ collection_id: router.query.id, title, due_date, status: "active" }),
-    //             { 'Content-Type': 'application/json' }
-    //         );
-
-    //         // BUGFIX
-    //         responseData.playlist_items = []
-
-    //         setState({
-    //             playlists: [...state.playlists.filter((p) => p.id), responseData],
-    //         });
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
-
-    // const updatePlaylistItem = (newItem) => {
-    //     const { playlists } = state;
-
-    //     setState({
-    //         playlists: playlists.map((playlist) => {
-    //             if (playlist.id === newItem.playlist_id) {
-    //                 playlist.playlist_items = playlist.playlist_items.filter(p => p.id !== newItem.id)
-    //                 playlist.playlist_items.push(newItem)
-    //             }
-
-    //             sortPlaylistItems(playlist.playlist_items);
-
-    //             return playlist;
-    //         }),
-    //     });
-    // };
-
-    // const updatePlaylist = (newItem) => {
-    //     const { playlists } = state;
-
-    //     setState({
-    //         playlists: [...playlists.filter(p => p.id !== newItem.id), newItem]
-    //     });
-    // };
-
-    // const postPlaylistItem = async (newPlaylistItem) => {
-    //     try {
-    //         const responseData = await sendRequest(
-    //             `${base}/playlistItems`,
-    //             'POST',
-    //             JSON.stringify(newPlaylistItem),
-    //             { 'Content-Type': 'application/json' }
-    //         );
-
-    //         updatePlaylistItem(responseData);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
-
-    // const patchPlaylist = async (playlistId, updateParam) => {
-    //     try {
-    //         const responseData = await sendRequest(
-    //             `${base}/playlists/${playlistId}`,
-    //             'PATCH',
-    //             JSON.stringify(updateParam),
-    //             { 'Content-Type': 'application/json' }
-    //         );
-
-    //         updatePlaylist(responseData);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
-
-    // const patchPlaylistItem = async (
-    //     playlistItemId,
-    //     playlistItemState
-    // ) => {
-    //     try {
-    //         const responseData = await sendRequest(
-    //             `${base}/playlistItems/${playlistItemId}`,
-    //             'PUT',
-    //             JSON.stringify(playlistItemState),
-    //             { 'Content-Type': 'application/json' }
-    //         );
-
-    //         updatePlaylistItem(responseData);
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
-
     const removeCollection = (id) => {
         setState(
             state.filter((c) => c.id !== id),
@@ -128,20 +29,10 @@ const CollectionProvider = ({ collections, children }) => {
                 { 'Content-Type': 'application/json' }
             );
 
-            // if (state.playlists.length) {
-            //     fetchPlaylists();
-            // }
-
         } catch (error) {
             console.error(error);
         }
     };
-
-    // const cancelAdd = () => {
-    //     setState({
-    //         playlists: state.playlists.filter((p) => p.id),
-    //     });
-    // };
 
     return (
         <CollectionContext.Provider
