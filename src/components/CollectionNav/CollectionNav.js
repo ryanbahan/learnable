@@ -11,7 +11,7 @@ import Link from 'next/link';
 import { signin, signout, useSession } from 'next-auth/client'
 import AddIcon from '@material-ui/icons/Add';
 
-const Header = ({ toggleModal }) => {
+const CollectionNav = ({ toggleModal }) => {
   const [session, loading] = useSession()
 
   return (
@@ -22,4 +22,4 @@ const Header = ({ toggleModal }) => {
   )
 };
 
-export default Header;
+export default CollectionNav;

@@ -6,7 +6,7 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 import theme from '../../styles/theme';
 import { PlaylistContext } from '../../contexts/playlistContext';
-import Header from './Header';
+import CollectionNav from './CollectionNav';
 
 afterEach(cleanup);
 
@@ -21,7 +21,7 @@ function renderHeader(props, context) {
       <PlaylistContext.Provider value={context}>
         <ThemeProvider theme={theme}>
           <MuiPickersUtilsProvider utils={MomentUtils}>
-            <Header {...props} />
+            <CollectionNav {...props} />
           </MuiPickersUtilsProvider>
         </ThemeProvider>
       </PlaylistContext.Provider>

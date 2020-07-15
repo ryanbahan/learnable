@@ -17,7 +17,7 @@ import ArchiveIcon from '@material-ui/icons/Archive';
 import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
-const AppNav = () => {
+const PlaylistNav = () => {
   const appSettingsContext = useContext(AppSettingsContext);
   const { switchArchiveView, switchView } = appSettingsContext;
   const { archiveView, view } = appSettingsContext.state;
@@ -96,4 +96,4 @@ const AppNav = () => {
   )
 };
 
-export default AppNav;
+export default PlaylistNav;

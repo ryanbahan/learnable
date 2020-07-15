@@ -1,4 +1,4 @@
-import AppNav from '../../../../src/components/AppNav/AppNav'
+import PlaylistNav from '../../../../src/components/PlaylistNav/PlaylistNav'
 import Head from 'next/head';
 import styled from 'styled-components';
 import { getSession } from 'next-auth/client'
@@ -15,7 +15,7 @@ export default function App({ playlists }) {
             </Head>
             <PlaylistProvider playlists={ playlists }>
                 <MainWrapper>
-                    <AppNav />
+                    <PlaylistNav />
                     <PlaylistsContainer />
                 </MainWrapper>
             </PlaylistProvider>
