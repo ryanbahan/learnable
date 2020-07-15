@@ -21,7 +21,7 @@ function renderHeader(props, context) {
       <PlaylistContext.Provider value={context}>
         <ThemeProvider theme={theme}>
           <MuiPickersUtilsProvider utils={MomentUtils}>
-            <CollectionNav {...props} />
+            <CollectionsNav {...props} />
           </MuiPickersUtilsProvider>
         </ThemeProvider>
       </PlaylistContext.Provider>
