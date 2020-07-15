@@ -6,7 +6,6 @@ import PlaylistHeader from '../PlaylistHeader/PlaylistHeader'
 
 const PlaylistView2 = ({
   dueDate,
-  isFavorite,
   nextStep,
   playlistId,
   playlistItems,
