@@ -13,7 +13,7 @@ const Collection = ({ title, id}) => {
 
     return (
         <Link href={`/app/collections/[id]`} as={`/app/collections/${id}`}>
-            <Wrapper>
+            <Wrapper whileHover={{ scale: 1.01 }} whileTap={{ scale: 1 }}>
                 <Div>
                     { title }
                     <IconWrapper>

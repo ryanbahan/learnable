@@ -1,7 +1,7 @@
 import { Button, ButtonWrapper, Div } from './PlaylistView1Styles'
 import { useContext, useState } from 'react';
 import { PlaylistContext } from '../../contexts/playlistContext';
-import DatePickerInput from '../DatePickerInput/DatePickerInput';
+import { KeyboardDatePicker } from '@material-ui/pickers';
 import Input from '../Input/Input';
 
 const PlaylistView1 = ({
@@ -21,6 +21,10 @@ const PlaylistView1 = ({
     };
 
     playlistContext.postPlaylist(newPlaylist);
+  };
+
+  const formatDateChange = (date) => {
+    setPlaylistDate(date.format('MM/DD/YYYY'));
   };
 
   return (
@@ -47,9 +51,18 @@ const PlaylistView1 = ({
         />
       )}
       {step === 2 && (
-        <DatePickerInput
-          playlistDate={playlistDate}
-          setPlaylistDate={setPlaylistDate}
+        <KeyboardDatePicker
+          autoOk
+          disableToolbar
+          variant="inline"
+          format="MM/DD/YYYY"
+          margin="normal"
+          id="date-picker-inline"
+          value={playlistDate}
+          onChange={formatDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
         />
       )}
       {step === 2 && (

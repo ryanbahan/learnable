@@ -16,4 +16,5 @@ export const Grid = styled.div`
 export const GridWrapper = styled.div`
     overflow: scroll;
     height: calc(100vh - 3.5rem);
+    background: #f9f9f9;
 `

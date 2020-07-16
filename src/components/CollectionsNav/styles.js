@@ -12,8 +12,8 @@ export const CollectionsNavWrapper = styled.nav`
   height: 3.5rem;
   width: 100%;
   display: flex;
-  border-bottom: solid 1px ${({ theme }) => theme.colors.grayLight};
-  box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
+  border-bottom: solid 0.25px ${({ theme }) => theme.colors.grayLight};
+  box-shadow: ${({ theme }) => theme.styles.boxShadowLighter};
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3.5rem;

@@ -1,15 +1,16 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
     position: relative;
-    border: solid 1px black;
-    border: solid 1px ${({ theme }) => theme.colors.grayLight};
+    border: 0.25px solid ${({ theme }) => theme.colors.grayLight};
     box-shadow: ${({ theme }) => theme.styles.boxShadow};
     margin: 0.5rem;
     padding: 2.5rem;
     border-radius: ${({ theme }) => theme.styles.borderRadius};
     flex-basis: 25%;
     cursor: pointer;
+    background: white;
 `
 
 export const Div = styled.div`
