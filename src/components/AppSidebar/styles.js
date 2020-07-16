@@ -55,6 +55,6 @@ export const Aside = styled.aside`
     background: white;
 
     @media (max-width: 550px) {
-    display: none;
+        display: none;
     }
 `

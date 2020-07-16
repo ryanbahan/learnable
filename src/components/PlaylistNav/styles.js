@@ -5,6 +5,10 @@ export const H2 = styled.h2`
   font-weight: 400;
   font-size: 1rem;
   padding-left: 1rem;
+
+  @media (max-width: 450px) {
+    display: none;
+  }
 `
 
 export const ArchiveButton = styled(motion.button)`
@@ -59,6 +63,11 @@ export const Nav = styled.nav`
   align-items: center;
   background-color: #f9f9f9;
   padding: 1rem 2.5rem;
+  width: 100%;
+
+  @media (max-width: 450px) {
+    justify-content: center;
+  }
 `;
 
 export const P = styled(motion.p)`
