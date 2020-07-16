@@ -47,6 +47,12 @@ export default {
                 0 4px 8px rgba(0,0,0,0.02),
                 0 8px 16px rgba(0,0,0,0.01),
                 0 16px 32px rgba(0,0,0,0.02)`,
+    boxShadowLighter: `0 0.25px 1px rgba(0,0,0,0.01),
+                0 0.5px 1px rgba(0,0,0,0.02),
+                0 1px 2px rgba(0,0,0,0.01),
+                0 2px 4px rgba(0,0,0,0.02),
+                0 4px 8px rgba(0,0,0,0.01),
+                0 8px 16px rgba(0,0,0,0.02)`,
     borderRadius: '0.6rem',
   },
 };

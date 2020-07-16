@@ -43,7 +43,7 @@ test('it renders the correct content', () => {
   expect(
     screen.getByPlaceholderText('first, name your list:')
   ).toBeInTheDocument();
-  expect(screen.getByLabelText('Submit input')).toBeInTheDocument();
+  expect(screen.getByLabelText('Submit')).toBeInTheDocument();
 });
 
 test('input button defaults to disabled when title value empty string', () => {
@@ -54,7 +54,7 @@ test('input button defaults to disabled when title value empty string', () => {
     setPlaylistDate: jest.fn(),
   });
 
-  const button = screen.getByLabelText('Submit input');
+  const button = screen.getByLabelText('Submit');
   expect(button).toBeDisabled();
 
   const input = screen.getByPlaceholderText('first, name your list:');
@@ -75,7 +75,7 @@ test('input button onclick renders datepicker and removes original button for sa
     postPlaylist: mockPostPlaylist,
   });
 
-  const button = screen.getByLabelText('Submit input');
+  const button = screen.getByLabelText('Submit');
   expect(button).not.toBeDisabled();
   fireEvent.click(button);
 

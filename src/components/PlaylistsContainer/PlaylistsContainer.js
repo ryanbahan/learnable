@@ -6,10 +6,8 @@ import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
 import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
-import { useSession } from 'next-auth/client'
 
 const PlaylistsContainer = () => {
-  const [session, loading] = useSession()
 
   const appSettingsContext = useContext(AppSettingsContext);
   const { archiveView, view } = appSettingsContext.state;
@@ -41,7 +39,7 @@ const PlaylistsContainer = () => {
       }
     >
       {view === true ? renderedPlaylists : renderedPlaylistsSmall}
-      {session && view === true && !archiveView ? <AddPlaylist /> : null}
+      {view === true && !archiveView ? <AddPlaylist /> : null}
     </Main>
   )
 };

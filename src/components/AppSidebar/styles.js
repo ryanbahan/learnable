@@ -45,11 +45,12 @@ export const Li = styled.li`
 
 export const Aside = styled.aside`
     position: relative;
-    border-right: solid 1px ${({ theme }) => theme.colors.grayLight};
-    box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
+    border-right: solid 0.25px ${({ theme }) => theme.colors.grayLight};
+    box-shadow: ${({ theme }) => theme.styles.boxShadowLighter};
     width: 12.5rem;
     min-width: 12.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: white;
 `
