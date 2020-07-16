@@ -55,6 +55,5 @@ export async function getServerSideProps(context) {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
   position: relative;
 `;
