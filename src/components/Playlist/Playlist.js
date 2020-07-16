@@ -25,6 +25,17 @@ const Playlist = ({
     due_date || moment().format('MM/DD/YYYY')
   );
 
+  const [state, update] = useState({
+    id: id,
+    step: isNewPlaylist(id),
+    title: title,
+    items: playlist_items,
+    newItemLink: '',
+    newItemTitle: '',
+    category: null,
+    date: due_date || moment().format('MM/DD/YYYY'),
+  })
+
   const nextStep = () => {
     if (step > 3) {
       setStep(3);
@@ -77,6 +88,8 @@ const Playlist = ({
             setPlaylistItemURL={setPlaylistItemURL}
             status={status}
             title={playlistTitle}
+            state={state}
+            update={update}
           />
         );
       case 3:

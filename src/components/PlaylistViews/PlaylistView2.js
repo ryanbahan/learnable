@@ -14,6 +14,8 @@ const PlaylistView2 = ({
   setPlaylistItemTitle,
   status,
   title,
+  state,
+  update
 }) => {
   const [inputActive, toggleInputActive] = useState(false);
 
@@ -32,6 +34,8 @@ const PlaylistView2 = ({
         title={title} 
         playlistItems={playlistItems}
         dueDate={dueDate}
+        state={state}
+        update={update}
       />
       <Div>
         <NewPlaylistItemBar
