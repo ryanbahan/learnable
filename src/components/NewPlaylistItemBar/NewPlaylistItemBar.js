@@ -12,10 +12,6 @@ const NewPlaylistItemBar = ({
   inputActive,
   toggleInputActive,
   nextStep,
-  playlistItemURL,
-  playlistItems,
-  setPlaylistItemURL,
-  setPlaylistItemTitle,
   state,
   update
 }) => {
@@ -35,7 +31,7 @@ const NewPlaylistItemBar = ({
   return (
     <Article>
       <Div>
-        <PlaylistItemCount>{playlistItems.length}</PlaylistItemCount>
+        <PlaylistItemCount>{state.items.length}</PlaylistItemCount>
         <Button onClick={() => toggleInputActive(!inputActive)}>
           {inputActive ? <Span>- close</Span> : <Span>+ new item</Span>}
         </Button>

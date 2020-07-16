@@ -29,7 +29,7 @@ const Playlist = ({
     id: id,
     step: isNewPlaylist(id),
     title: title,
-    items: playlist_items,
+    items: playlist_items || [],
     newItemLink: '',
     newItemTitle: '',
     category: null,
@@ -77,15 +77,7 @@ const Playlist = ({
       case 2:
         return (
           <PlaylistView2
-            dueDate={playlistDate}
             nextStep={nextStep}
-            playlistId={id}
-            playlistItemURL={playlistItemURL}
-            playlistItems={playlist_items}
-            setPlaylistItemTitle={setPlaylistItemTitle}
-            setPlaylistItemURL={setPlaylistItemURL}
-            status={status}
-            title={playlistTitle}
             state={state}
             update={update}
           />
@@ -110,15 +102,9 @@ const Playlist = ({
       default:
         return (
           <PlaylistView2
-            dueDate={playlistDate}
-            isFavorite={isFavorite}
             nextStep={nextStep}
-            playlistId={id}
-            playlistItemURL={playlistItemURL}
-            playlistItems={playlist_items}
-            setPlaylistItemURL={setPlaylistItemURL}
-            status={status}
-            title={playlistTitle}
+            state={state}
+            update={update}
           />
         );
     }

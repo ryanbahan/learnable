@@ -5,26 +5,14 @@ import NewPlaylistItemBar from '../NewPlaylistItemBar/NewPlaylistItemBar';
 import PlaylistHeader from '../PlaylistHeader/PlaylistHeader'
 
 const PlaylistView2 = ({
-  dueDate,
   nextStep,
-  playlistId,
-  playlistItems,
-  playlistItemURL,
-  setPlaylistItemURL,
-  setPlaylistItemTitle,
-  status,
-  title,
   state,
   update
 }) => {
   const [inputActive, toggleInputActive] = useState(false);
 
-  if (!playlistItems) {
-    playlistItems = [];
-  }
-
-  const items = playlistItems.map((item) => {
-    return <PlaylistItem key={item.id} playlistId={playlistId} {...item} />
+  const items = state.items.map((item) => {
+    return <PlaylistItem key={item.id} playlistId={state.id} {...item} />
   });
 
   return (
@@ -38,10 +26,6 @@ const PlaylistView2 = ({
           inputActive={inputActive}
           toggleInputActive={toggleInputActive}
           nextStep={nextStep}
-          playlistItemURL={playlistItemURL}
-          playlistItems={playlistItems}
-          setPlaylistItemTitle={setPlaylistItemTitle}
-          setPlaylistItemURL={setPlaylistItemURL}
           state={state}
           update={update}
         />
