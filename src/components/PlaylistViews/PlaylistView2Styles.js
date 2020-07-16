@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Div = styled.div`
   flex-grow: 1;
-  overflow: scroll;
+  overflow-y: scroll;
 `;
 
 export const NoItemsButton = styled.button.attrs({

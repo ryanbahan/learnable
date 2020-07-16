@@ -11,7 +11,6 @@ export const Section = styled(motion.section)`
   margin: 0 ${({ theme }) => theme.spacers.xs};
   min-height: 25rem;
   height: 100%;
-  padding: ${({ theme }) => theme.spacers.xs};
   position: relative;
   transform-origin: center;
   min-width: 375px;

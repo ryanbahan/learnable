@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+export const Wrapper = styled.div`
+  padding: ${({ theme }) => theme.spacers.xs};
+`
+
 export const Bar = styled.div.attrs({
     'data-testid': 'progressbar',
 })`

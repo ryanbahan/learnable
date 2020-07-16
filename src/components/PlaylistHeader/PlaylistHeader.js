@@ -4,13 +4,14 @@ import {
     Bar,
     PercentComplete,
     Span,
+    Wrapper,
 } from './styles'
 import PlaylistDropdown from '../PlaylistDropdown/PlaylistDropdown';
 import { calculatePercentComplete } from '../../utils/utils'
 
 const PlaylistHeader = ({ state, update }) => {
     return (
-        <>
+        <Wrapper>
             <PlaylistDropdown id={ state.id } />
             <Div>
                 { `${calculatePercentComplete(state.items)}%` }
@@ -22,7 +23,7 @@ const PlaylistHeader = ({ state, update }) => {
                     percentage={ `${calculatePercentComplete(state.items)}%` }
                 />
             </Bar>
-        </>
+        </Wrapper>
     )
 }
 

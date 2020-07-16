@@ -4,6 +4,7 @@ export const Article = styled.article`
   align-items: center;
   display: flex;
   flex-direction: column;
+  padding: 0 ${({ theme }) => theme.spacers.xs};
 `;
 
 export const Div = styled.div`
