@@ -18,10 +18,6 @@ const Playlist = ({
   const playlistContext = useContext(PlaylistContext);
   const isNewPlaylist = (id) => (id ? 2 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
-  const [playlistTitle, setPlaylistTitle] = useState(title);
-  const [playlistDate, setPlaylistDate] = useState(
-    due_date || moment().format('MM/DD/YYYY')
-  );
 
   useEffect(() => {
     update({...state, items: playlist_items});
@@ -36,6 +32,7 @@ const Playlist = ({
     newItemTitle: '',
     category: null,
     date: due_date || moment().format('MM/DD/YYYY'),
+    status: status,
   })
 
   const nextStep = () => {
@@ -70,10 +67,6 @@ const Playlist = ({
       case 1:
         return (
           <PlaylistView1
-            onChangeHandler={setPlaylistTitle}
-            playlistDate={playlistDate}
-            setPlaylistDate={setPlaylistDate}
-            title={playlistTitle}
             state={state}
             update={update}
           />

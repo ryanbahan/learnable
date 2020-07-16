@@ -5,26 +5,23 @@ import { KeyboardDatePicker } from '@material-ui/pickers';
 import Input from '../Input/Input';
 
 const PlaylistView1 = ({
-  onChangeHandler,
-  playlistDate,
-  setPlaylistDate,
-  title,
+  state,
+  update
 }) => {
   const playlistContext = useContext(PlaylistContext);
   const [step, setStep] = useState(1);
 
   const handleSubmit = () => {
     const newPlaylist = {
-      user_id: 1,
-      title,
-      due_date: playlistDate,
+      title: state.title,
+      due_date: state.date,
     };
 
     playlistContext.postPlaylist(newPlaylist);
   };
 
   const formatDateChange = (date) => {
-    setPlaylistDate(date.format('MM/DD/YYYY'));
+    update({ ...state, date: date.format('MM/DD/YYYY') });
   };
 
   return (
@@ -35,19 +32,19 @@ const PlaylistView1 = ({
           hasButton
           label="Title"
           onButtonClick={() => setStep(2)}
-          onChangeHandler={(e) => onChangeHandler(e.target.value)}
+          onChangeHandler={(e) => update({ ...state, title: e.target.value })}
           placeholder="first, name your list:"
           type="text"
-          value={title}
+          value={state.title}
         />
       )}
       {step === 2 && (
         <Input
           label="Title"
-          onChangeHandler={(e) => onChangeHandler(e.target.value)}
+          onChangeHandler={(e) => update({ ...state, title: e.target.value })}
           placeholder="first, name your list:"
           type="text"
-          value={title}
+          value={state.title}
         />
       )}
       {step === 2 && (
@@ -58,7 +55,7 @@ const PlaylistView1 = ({
           format="MM/DD/YYYY"
           margin="normal"
           id="date-picker-inline"
-          value={playlistDate}
+          value={state.date}
           onChange={formatDateChange}
           KeyboardButtonProps={{
             'aria-label': 'change date',
