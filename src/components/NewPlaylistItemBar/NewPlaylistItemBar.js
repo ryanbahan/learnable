@@ -11,9 +11,8 @@ import {
 const NewPlaylistItemBar = ({
   inputActive,
   toggleInputActive,
-  nextStep,
   state,
-  update
+  update,
 }) => {
 
   const onItemSubmit = async () => {
@@ -23,8 +22,7 @@ const NewPlaylistItemBar = ({
     })
 
     const json = await res.json()
-    update({ ...state, newItemTitle: json.title})
-    nextStep();
+    update({ ...state, newItemTitle: json.title, step: state.step + 1})
     toggleInputActive(false);
   };
 

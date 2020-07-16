@@ -5,7 +5,6 @@ import NewPlaylistItemBar from '../NewPlaylistItemBar/NewPlaylistItemBar';
 import PlaylistHeader from '../PlaylistHeader/PlaylistHeader'
 
 const PlaylistView2 = ({
-  nextStep,
   state,
   update
 }) => {
@@ -25,7 +24,6 @@ const PlaylistView2 = ({
         <NewPlaylistItemBar
           inputActive={inputActive}
           toggleInputActive={toggleInputActive}
-          nextStep={nextStep}
           state={state}
           update={update}
         />

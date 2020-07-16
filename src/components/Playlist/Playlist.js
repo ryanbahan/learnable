@@ -14,15 +14,13 @@ const Playlist = ({
   status,
   title,
 }) => {
-  console.log(playlist_items, 'ITEMS')
   const playlistContext = useContext(PlaylistContext);
   const isNewPlaylist = (id) => (id ? 2 : 1);
-  const [step, setStep] = useState(isNewPlaylist(id));
-
+  
   useEffect(() => {
     update({...state, items: playlist_items});
   }, [playlist_items])
-
+  
   const [state, update] = useState({
     id: id,
     step: isNewPlaylist(id),
@@ -35,20 +33,7 @@ const Playlist = ({
     status: status,
   })
 
-  const nextStep = () => {
-    if (step > 3) {
-      setStep(3);
-      return;
-    }
-
-    setStep(step + 1);
-  };
-
-  const prevStep = () => {
-    setStep(step - 1);
-  };
-
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const newPlaylistItem = {
       playlist_id: state.id,
       title: state.newItemTitle,
@@ -57,13 +42,12 @@ const Playlist = ({
       is_complete: false,
     };
 
-    await playlistContext.postPlaylistItem(newPlaylistItem);
-    await update({ ...state, newItemLink: '', newItemTitle: '', category: null })
-    prevStep();
+    playlistContext.postPlaylistItem(newPlaylistItem);
+    update({ ...state, newItemLink: '', newItemTitle: '', category: null, step: 2 })
   };
 
   const switchViews = () => {
-    switch (step) {
+    switch (state.step) {
       case 1:
         return (
           <PlaylistView1
@@ -74,7 +58,6 @@ const Playlist = ({
       case 2:
         return (
           <PlaylistView2
-            nextStep={nextStep}
             state={state}
             update={update}
           />
@@ -83,7 +66,6 @@ const Playlist = ({
         return (
           <PlaylistView3
             handleSubmit={handleSubmit}
-            prevStep={prevStep}
             state={state}
             update={update}
           />
@@ -91,7 +73,6 @@ const Playlist = ({
       default:
         return (
           <PlaylistView2
-            nextStep={nextStep}
             state={state}
             update={update}
           />
@@ -101,7 +82,7 @@ const Playlist = ({
 
   return (
     <Section variants={childVariants} whileHover={{ scale: 1.02 }}>
-      {switchViews(step)}
+      {switchViews(state.step)}
     </Section>
   );
 };

@@ -29,7 +29,6 @@ const buttons = [
 
 const PlaylistView3 = ({
   handleSubmit,
-  prevStep,
   state,
   update
 }) => (
@@ -56,7 +55,7 @@ const PlaylistView3 = ({
     </Grid>
     <div style={{ textAlign: 'center' }}>
       <DoneButton onClick={() => handleSubmit()}>Done</DoneButton>
-      <Span onClick={() => prevStep()}>Cancel</Span>
+      <Span onClick={() => update({ ...state, step: state.step - 1 })}>Cancel</Span>
     </div>
   </>
 );
