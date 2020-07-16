@@ -13,28 +13,6 @@ const PlaylistProvider = ({ playlists, children }) => {
   const router = useRouter()
   const base = process.env.baseAPIURL[process.env.type];
 
-  const fetchPlaylists = async () => {
-    try {
-      const responseData = await sendRequest(
-        `${base}/playlists/${router.query.id}`
-      );
-      
-      if (responseData) {
-        const formattedData = responseData.data.map((playlist) => {
-          if (playlist.playlist_items) {
-            sortPlaylistItems(playlist.playlist_items);
-          }
-          return playlist;
-        });
-
-        setState({ playlists: formattedData });
-        localStorage.setItem("playlists", JSON.stringify(formattedData));
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const addPlaylist = (newPlaylist) => {
     setState((prevState) => ({
       playlists: [...prevState.playlists, newPlaylist],
