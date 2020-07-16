@@ -22,7 +22,7 @@ const Input = ({
       />
       {hasButton && (
         <Button
-          aria-label="Submit input"
+          aria-label="Submit"
           disabled={!value}
           onClick={onButtonClick}
         >
