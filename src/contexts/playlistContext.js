@@ -41,7 +41,7 @@ const PlaylistProvider = ({ playlists, children }) => {
     }));
   };
 
-  const postPlaylist = async ({ user_id, title, due_date }) => {
+  const postPlaylist = async ({ title, due_date }) => {
     try {
       const responseData = await sendRequest(
         `${base}/playlists/${router.query.id}`,

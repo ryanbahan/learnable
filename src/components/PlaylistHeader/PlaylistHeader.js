@@ -6,27 +6,20 @@ import {
     Span,
 } from './styles'
 import PlaylistDropdown from '../PlaylistDropdown/PlaylistDropdown';
+import { calculatePercentComplete } from '../../utils/utils'
 
-const calculatePercentComplete = (arr) => {
-    if (arr.length) {
-        const completedItems = arr.filter((item) => item.is_complete === true);
-        return ((completedItems.length / arr.length) * 100).toFixed();
-    }
-    return 0;
-};
-
-const PlaylistHeader = ({ playlistId, title, dueDate, playlistItems }) => {
+const PlaylistHeader = ({ state, update }) => {
     return (
         <>
-            <PlaylistDropdown id={playlistId} />
+            <PlaylistDropdown id={ state.id } />
             <Div>
-                {`${calculatePercentComplete(playlistItems)}%`}
-                <Span>{title}</Span>
+                { `${calculatePercentComplete(state.items)}%` }
+                <Span>{ state.title }</Span>
             </Div>
-            <P>Due: {dueDate}</P>
+            <P>Due: { state.date }</P>
             <Bar>
                 <PercentComplete
-                    percentage={`${calculatePercentComplete(playlistItems)}%`}
+                    percentage={ `${calculatePercentComplete(state.items)}%` }
                 />
             </Bar>
         </>

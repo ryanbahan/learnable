@@ -6,6 +6,39 @@ import AirplayIcon from '@material-ui/icons/Airplay';
 import Input from '../Input/Input';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 
+const PlaylistView3 = ({
+  handleSubmit,
+  state,
+  update
+}) => (
+  <>
+    <PlaylistItem category={state.category} title={state.newItemTitle} />
+    <Input
+      label="Playlist item title"
+      onChangeHandler={(e) => update({...state, newItemTitle: e.target.value })}
+      placeholder="what should we call this?"
+      type="text"
+      value={state.newItemTitle}
+    />
+    <Grid>
+      {buttons.map((btn) => (
+        <Button
+          aria-label={btn.label}
+          key={btn.label}
+          onClick={() => update({ ...state, category: btn.label })}
+        >
+          {btn.icon}
+          {btn.label}
+        </Button>
+      ))}
+    </Grid>
+    <div style={{ textAlign: 'center' }}>
+      <DoneButton onClick={() => handleSubmit()}>Done</DoneButton>
+      <Span onClick={() => update({ ...state, step: state.step - 1 })}>Cancel</Span>
+    </div>
+  </>
+);
+
 const buttons = [
   {
     label: 'video',
@@ -26,41 +59,5 @@ const buttons = [
     icon: <AirplayIcon fontSize="large" style={{ fill: '#2c3e50' }} />,
   },
 ];
-
-const PlaylistView3 = ({
-  category,
-  handleSubmit,
-  prevStep,
-  playlistItemTitle,
-  setCategory,
-  setPlaylistItemTitle,
-}) => (
-  <>
-    <PlaylistItem category={category} title={playlistItemTitle} />
-    <Input
-      label="Playlist item title"
-      onChangeHandler={(e) => setPlaylistItemTitle(e.target.value)}
-      placeholder="what should we call this?"
-      type="text"
-      value={playlistItemTitle}
-    />
-    <Grid>
-      {buttons.map((btn) => (
-        <Button
-          aria-label={btn.label}
-          key={btn.label}
-          onClick={() => setCategory(btn.label)}
-        >
-          {btn.icon}
-          {btn.label}
-        </Button>
-      ))}
-    </Grid>
-    <div style={{ textAlign: 'center' }}>
-      <DoneButton onClick={() => handleSubmit()}>Done</DoneButton>
-      <Span onClick={() => prevStep()}>Cancel</Span>
-    </div>
-  </>
-);
 
 export default PlaylistView3;

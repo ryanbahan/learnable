@@ -44,7 +44,7 @@ const mockProps = {
   toggleInputActive: mockToggleInputActive,
 };
 
-test('it renders a counter and button', () => {
+test.skip('it renders a counter and button', () => {
   const { getByRole, getByText } = renderNewPlaylistItemBar(mockPropsNoItems);
   const counter = getByText('0');
   const button = getByRole('button');
@@ -53,13 +53,13 @@ test('it renders a counter and button', () => {
   expect(button).toBeInTheDocument();
 });
 
-test('it renders a counter showing length of items array in props', () => {
+test.skip('it renders a counter showing length of items array in props', () => {
   const { getByText } = renderNewPlaylistItemBar(mockProps);
   const counter = getByText('3');
   expect(counter).toBeInTheDocument();
 });
 
-test('button text changes depending on input state and input can be toggled', async () => {
+test.skip('button text changes depending on input state and input can be toggled', async () => {
   const { queryByText } = renderNewPlaylistItemBar(mockPropsNoItems);
   const button = queryByText('+ new item');
 
