@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const Div = styled.div`
   flex-grow: 1;
   overflow-y: scroll;
+  padding: 0 ${({ theme }) => theme.spacers.xs};
 `;
 
 export const NoItemsButton = styled.button.attrs({

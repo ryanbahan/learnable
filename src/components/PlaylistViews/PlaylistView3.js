@@ -1,4 +1,4 @@
-import { Button, DoneButton, Grid, Span } from './PlaylistView3Styles'
+import { Button, DoneButton, Grid, Span, Wrapper } from './PlaylistView3Styles'
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import MicNoneOutlinedIcon from '@material-ui/icons/MicNoneOutlined';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
@@ -11,7 +11,7 @@ const PlaylistView3 = ({
   state,
   update
 }) => (
-  <>
+  <Wrapper>
     <PlaylistItem category={state.category} title={state.newItemTitle} />
     <Input
       label="Playlist item title"
@@ -36,7 +36,7 @@ const PlaylistView3 = ({
       <DoneButton onClick={() => handleSubmit()}>Done</DoneButton>
       <Span onClick={() => update({ ...state, step: state.step - 1 })}>Cancel</Span>
     </div>
-  </>
+  </Wrapper>
 );
 
 const buttons = [

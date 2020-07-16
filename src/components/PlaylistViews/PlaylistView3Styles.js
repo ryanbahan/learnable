@@ -44,3 +44,11 @@ export const Span = styled.span`
   text-align: center;
   cursor: pointer;
 `;
+
+export const Wrapper = styled.div`
+  padding: ${({ theme }) => theme.spacers.xs};
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
+`

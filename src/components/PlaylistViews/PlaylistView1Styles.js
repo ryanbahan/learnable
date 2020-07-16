@@ -27,4 +27,5 @@ export const Div = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  padding: ${({ theme }) => theme.spacers.xs};
 `;

@@ -13,7 +13,6 @@ export const A = styled(motion.a).attrs({
   margin: 0.5rem 0;
   min-height: ${({ theme }) => theme.spacers.md};
   text-decoration: none;
-  margin: ${({ theme }) => theme.spacers.xs};
 `;
 
 export const P = styled.p`
