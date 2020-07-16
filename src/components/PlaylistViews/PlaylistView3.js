@@ -6,27 +6,6 @@ import AirplayIcon from '@material-ui/icons/Airplay';
 import Input from '../Input/Input';
 import PlaylistItem from '../PlaylistItem/PlaylistItem';
 
-const buttons = [
-  {
-    label: 'video',
-    icon: <YouTubeIcon fontSize="large" style={{ fill: '#c4302b' }} />,
-  },
-  {
-    label: 'audio',
-    icon: <MicNoneOutlinedIcon fontSize="large" style={{ fill: '#8e44ad' }} />,
-  },
-  {
-    label: 'article',
-    icon: (
-      <DescriptionOutlinedIcon fontSize="large" style={{ fill: '#16a085' }} />
-    ),
-  },
-  {
-    label: 'other',
-    icon: <AirplayIcon fontSize="large" style={{ fill: '#2c3e50' }} />,
-  },
-];
-
 const PlaylistView3 = ({
   handleSubmit,
   state,
@@ -59,5 +38,26 @@ const PlaylistView3 = ({
     </div>
   </>
 );
+
+const buttons = [
+  {
+    label: 'video',
+    icon: <YouTubeIcon fontSize="large" style={{ fill: '#c4302b' }} />,
+  },
+  {
+    label: 'audio',
+    icon: <MicNoneOutlinedIcon fontSize="large" style={{ fill: '#8e44ad' }} />,
+  },
+  {
+    label: 'article',
+    icon: (
+      <DescriptionOutlinedIcon fontSize="large" style={{ fill: '#16a085' }} />
+    ),
+  },
+  {
+    label: 'other',
+    icon: <AirplayIcon fontSize="large" style={{ fill: '#2c3e50' }} />,
+  },
+];
 
 export default PlaylistView3;
