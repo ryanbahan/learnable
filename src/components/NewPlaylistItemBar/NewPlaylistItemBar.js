@@ -16,16 +16,18 @@ const NewPlaylistItemBar = ({
   playlistItems,
   setPlaylistItemURL,
   setPlaylistItemTitle,
+  state,
+  update
 }) => {
 
   const onItemSubmit = async () => {
     const res = await fetch("/api/ogReader", {
       method: "POST",
-      body: JSON.stringify({ url: playlistItemURL })
+      body: JSON.stringify({ url: state.newItemLink })
     })
 
     const json = await res.json()
-    setPlaylistItemTitle(json.title)
+    update({ ...state, newItemTitle: json.title})
     nextStep();
     toggleInputActive(false);
   };
@@ -45,10 +47,10 @@ const NewPlaylistItemBar = ({
           hasButton
           label="Item"
           onButtonClick={() => onItemSubmit()}
-          onChangeHandler={(e) => setPlaylistItemURL(e.target.value)}
+          onChangeHandler={(e) => update({ ...state, newItemLink: e.target.value })}
           placeholder="now, add an item URL:"
           type="text"
-          value={playlistItemURL}
+          value={state.newItemLink}
         />
       )}
     </Article>

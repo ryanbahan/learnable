@@ -30,10 +30,6 @@ const PlaylistView2 = ({
   return (
     <>
       <PlaylistHeader 
-        playlistId={playlistId}
-        title={title} 
-        playlistItems={playlistItems}
-        dueDate={dueDate}
         state={state}
         update={update}
       />
@@ -46,6 +42,8 @@ const PlaylistView2 = ({
           playlistItems={playlistItems}
           setPlaylistItemTitle={setPlaylistItemTitle}
           setPlaylistItemURL={setPlaylistItemURL}
+          state={state}
+          update={update}
         />
         {items.length ? (
           items

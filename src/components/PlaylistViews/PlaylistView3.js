@@ -34,22 +34,24 @@ const PlaylistView3 = ({
   playlistItemTitle,
   setCategory,
   setPlaylistItemTitle,
+  state,
+  update
 }) => (
   <>
-    <PlaylistItem category={category} title={playlistItemTitle} />
+    <PlaylistItem category={state.category} title={state.newItemTitle} />
     <Input
       label="Playlist item title"
       onChangeHandler={(e) => setPlaylistItemTitle(e.target.value)}
       placeholder="what should we call this?"
       type="text"
-      value={playlistItemTitle}
+      value={state.newItemTitle}
     />
     <Grid>
       {buttons.map((btn) => (
         <Button
           aria-label={btn.label}
           key={btn.label}
-          onClick={() => setCategory(btn.label)}
+          onClick={() => update({ ...state, category: btn.label })}
         >
           {btn.icon}
           {btn.label}

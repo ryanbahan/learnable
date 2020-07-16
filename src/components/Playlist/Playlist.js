@@ -51,17 +51,15 @@ const Playlist = ({
 
   const handleSubmit = () => {
     const newPlaylistItem = {
-      playlist_id: id,
-      title: playlistItemTitle,
-      category,
-      url: playlistItemURL,
+      playlist_id: state.id,
+      title: state.newItemTitle,
+      category: state.category,
+      url: state.newItemLink,
       is_complete: false,
     };
 
     playlistContext.postPlaylistItem(newPlaylistItem);
-    setPlaylistItemTitle('');
-    setPlaylistItemURL('');
-    setCategory('');
+    update({ ...state, newItemLink: '', newItemTitle: '', category: null })
     prevStep();
   };
 
@@ -105,6 +103,8 @@ const Playlist = ({
             setPlaylistItemTitle={setPlaylistItemTitle}
             setPlaylistItemURL={setPlaylistItemURL}
             title={playlistTitle}
+            state={state}
+            update={update}
           />
         );
       default:
