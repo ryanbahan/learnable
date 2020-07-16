@@ -46,15 +46,9 @@ export async function getServerSideProps(context) {
       props: { collections, auth: true }, // will be passed to the page component as props
     }
   } else {
-    console.log(session, 'SESSION')
     return {
       props: { collections: [], auth: false }, // will be passed to the page component as props
     }
-    // const base = process.env.baseURL[process.env.type];
-    // res.setHeader("location", `http://localhost:8080/api/auth/signin`);
-    // res.statusCode = 302;
-    // res.end();
-    // return;
   }
 }
 

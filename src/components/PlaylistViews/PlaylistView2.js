@@ -20,13 +20,13 @@ const PlaylistView2 = ({
         state={state}
         update={update}
       />
+      <NewPlaylistItemBar
+        inputActive={inputActive}
+        toggleInputActive={toggleInputActive}
+        state={state}
+        update={update}
+      />
       <Div>
-        <NewPlaylistItemBar
-          inputActive={inputActive}
-          toggleInputActive={toggleInputActive}
-          state={state}
-          update={update}
-        />
         {items.length ? (
           items
         ) : (
