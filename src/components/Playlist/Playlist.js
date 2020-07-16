@@ -1,6 +1,6 @@
 import { childVariants } from './animations'
 import { Section } from './styles'
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import moment from 'moment';
 import { PlaylistContext } from '../../contexts/playlistContext';
 import PlaylistView1 from '../PlaylistViews/PlaylistView1';
@@ -14,16 +14,18 @@ const Playlist = ({
   status,
   title,
 }) => {
+  console.log(playlist_items, 'ITEMS')
   const playlistContext = useContext(PlaylistContext);
   const isNewPlaylist = (id) => (id ? 2 : 1);
   const [step, setStep] = useState(isNewPlaylist(id));
   const [playlistTitle, setPlaylistTitle] = useState(title);
-  const [playlistItemURL, setPlaylistItemURL] = useState('');
-  const [category, setCategory] = useState(null);
-  const [playlistItemTitle, setPlaylistItemTitle] = useState('');
   const [playlistDate, setPlaylistDate] = useState(
     due_date || moment().format('MM/DD/YYYY')
   );
+
+  useEffect(() => {
+    update({...state, items: playlist_items});
+  }, [playlist_items])
 
   const [state, update] = useState({
     id: id,
@@ -49,7 +51,7 @@ const Playlist = ({
     setStep(step - 1);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const newPlaylistItem = {
       playlist_id: state.id,
       title: state.newItemTitle,
@@ -58,8 +60,8 @@ const Playlist = ({
       is_complete: false,
     };
 
-    playlistContext.postPlaylistItem(newPlaylistItem);
-    update({ ...state, newItemLink: '', newItemTitle: '', category: null })
+    await playlistContext.postPlaylistItem(newPlaylistItem);
+    await update({ ...state, newItemLink: '', newItemTitle: '', category: null })
     prevStep();
   };
 
@@ -72,6 +74,8 @@ const Playlist = ({
             playlistDate={playlistDate}
             setPlaylistDate={setPlaylistDate}
             title={playlistTitle}
+            state={state}
+            update={update}
           />
         );
       case 2:
@@ -85,16 +89,8 @@ const Playlist = ({
       case 3:
         return (
           <PlaylistView3
-            category={category}
             handleSubmit={handleSubmit}
             prevStep={prevStep}
-            playlistItems={playlist_items}
-            playlistItemTitle={playlistItemTitle}
-            playlistItemURL={playlistItemURL}
-            setCategory={setCategory}
-            setPlaylistItemTitle={setPlaylistItemTitle}
-            setPlaylistItemURL={setPlaylistItemURL}
-            title={playlistTitle}
             state={state}
             update={update}
           />

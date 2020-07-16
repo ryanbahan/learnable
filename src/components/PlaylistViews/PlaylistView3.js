@@ -28,12 +28,8 @@ const buttons = [
 ];
 
 const PlaylistView3 = ({
-  category,
   handleSubmit,
   prevStep,
-  playlistItemTitle,
-  setCategory,
-  setPlaylistItemTitle,
   state,
   update
 }) => (
@@ -41,7 +37,7 @@ const PlaylistView3 = ({
     <PlaylistItem category={state.category} title={state.newItemTitle} />
     <Input
       label="Playlist item title"
-      onChangeHandler={(e) => setPlaylistItemTitle(e.target.value)}
+      onChangeHandler={(e) => update({...state, newItemTitle: e.target.value })}
       placeholder="what should we call this?"
       type="text"
       value={state.newItemTitle}
