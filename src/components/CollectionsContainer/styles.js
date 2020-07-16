@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-    width: 100%;
+    flex-grow: 1;
 `
 
 export const Main = styled.main`
-    flex-grow: 1;
     display: flex;
+    width: 100vw;
+    height: 100vh;
 `
 
 export const Grid = styled.div`

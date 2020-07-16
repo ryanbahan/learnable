@@ -53,4 +53,8 @@ export const Aside = styled.aside`
     flex-direction: column;
     align-items: center;
     background: white;
+
+    @media (max-width: 550px) {
+    display: none;
+    }
 `
