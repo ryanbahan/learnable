@@ -27,6 +27,7 @@ export const Li = styled.li`
     align-items: center;
     font-size: 0.85rem;
     padding: 1rem;
+    cursor: pointer;
 
     > * {
         padding: 0.25rem;

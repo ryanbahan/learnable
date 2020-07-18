@@ -23,4 +23,5 @@ export const CollectionsNavWrapper = styled.nav`
 export const H3 = styled.h3`
   font-weight: 500;
   font-size: 1rem;
+  pointer-events: none;
 `
