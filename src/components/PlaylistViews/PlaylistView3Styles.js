@@ -51,4 +51,5 @@ export const Wrapper = styled.div`
   flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
+  overflow: scroll;
 `

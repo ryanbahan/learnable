@@ -8,9 +8,8 @@ export const Section = styled(motion.section)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 ${({ theme }) => theme.spacers.xs};
-  min-height: 25rem;
-  height: 100%;
+  margin: 0 1.5rem;
+  height: 75vh;
   position: relative;
   transform-origin: center;
   min-width: 375px;

@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 export const Main = styled(motion.main)`
   display: flex;
   flex-direction: row;
-  padding: 2.5rem;
+  padding: 3rem 1rem 0 1rem;
   flex-grow: 1;
   width: 100vw;
   overflow: scroll;

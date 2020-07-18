@@ -5,6 +5,7 @@ export const A = styled(motion.a).attrs({
     target: '_blank',
 })`
   align-items: center;
+  justify-content: space-between;
   border: 0.5px solid ${({ theme }) => theme.colors.grayLighter};
   border-radius: ${({ theme }) => theme.styles.borderRadius};
   box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
@@ -19,6 +20,5 @@ export const P = styled.p`
   flex-grow: 1;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  max-width: 70%;
   padding-right: 1.5rem;
 `;
