@@ -2,6 +2,13 @@ import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   padding: ${({ theme }) => theme.spacers.xs};
+
+  ${({ view }) =>
+    !view &&
+    css`
+      padding: 0;
+      }
+    `}
 `
 
 export const Bar = styled.div.attrs({
@@ -36,6 +43,13 @@ export const Div = styled.div`
   justify-content: space-between;
   margin-bottom: ${({ theme }) => theme.spacers.xs};
   margin-top: ${({ theme }) => theme.spacers.sm};
+
+  ${({ view }) =>
+  !view &&
+  css`
+    margin: 1rem 0;
+    }
+  `}
 `;
 
 export const Span = styled.span`

@@ -25,6 +25,7 @@ const PlaylistView2 = ({
         toggleInputActive={toggleInputActive}
         state={state}
         update={update}
+        
       />
       <Div>
         {items.length ? (

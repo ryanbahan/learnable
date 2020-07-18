@@ -1,34 +1,29 @@
-import React, { createContext } from 'react';
+import { createContext, useState } from 'react';
 
 export const AppSettingsContext = createContext();
 
-export default class AppSettingsProvider extends React.Component {
-  state = {
-    view: true,
-    archiveView: false,
+const AppSettingsProvider = ({ children }) => {
+  const [state, setState] = useState({ view: true, archiveView: false })
+
+  const switchView = () => {
+    setState({ ...state, view: !state.view });
   };
 
-  switchView = () => {
-    this.setState({ view: !this.state.view });
+  const switchArchiveView = () => {
+    setState({ ...state, archiveView: !state.archiveView });
   };
 
-  switchArchiveView = () => {
-    this.setState({ archiveView: !this.state.archiveView });
-  };
-
-  render() {
-    const { children } = this.props;
-
-    return (
-      <AppSettingsContext.Provider
-        value={{
-          state: this.state,
-          switchView: this.switchView,
-          switchArchiveView: this.switchArchiveView,
-        }}
-      >
-        {children}
-      </AppSettingsContext.Provider>
-    );
-  }
+  return (
+    <AppSettingsContext.Provider
+      value={{
+        state: state,
+        switchView: switchView,
+        switchArchiveView: switchArchiveView,
+      }}
+    >
+      {children}
+    </AppSettingsContext.Provider>
+  );
 }
+
+export default AppSettingsProvider

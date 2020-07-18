@@ -1,10 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Article = styled.article`
   align-items: center;
   display: flex;
   flex-direction: column;
   padding: 0 ${({ theme }) => theme.spacers.xs};
+
+    ${({ view }) =>
+    !view &&
+    css`
+    padding: 0;
+    }
+  `}
 `;
 
 export const Div = styled.div`

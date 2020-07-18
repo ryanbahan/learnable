@@ -13,6 +13,7 @@ const Playlist = ({
   playlist_items,
   status,
   title,
+  view,
 }) => {
   const playlistContext = useContext(PlaylistContext);
   const isNewPlaylist = (id) => (id ? 2 : 1);
@@ -81,7 +82,7 @@ const Playlist = ({
   };
 
   return (
-    <Section variants={childVariants} whileHover={{ scale: 1.02 }}>
+    <Section view={view} variants={childVariants} whileHover={{ scale: 1.02 }}>
       {switchViews(state.step)}
     </Section>
   );
