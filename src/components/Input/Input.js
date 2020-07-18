@@ -1,5 +1,6 @@
 import { childVariants } from './animations'
 import { Button, FormControl, PlusIcon } from './InputStyles';
+import AddIcon from '@material-ui/icons/Add';
 
 const Input = ({
   id,
@@ -26,7 +27,7 @@ const Input = ({
           disabled={!value}
           onClick={onButtonClick}
         >
-          <PlusIcon />
+          <AddIcon style={{background: "transparent"}} />
         </Button>
       )}
     </FormControl>

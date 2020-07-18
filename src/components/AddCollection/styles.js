@@ -5,12 +5,16 @@ export const Button = styled.button`
     height: 2rem;
     border: none;
     min-width: 10rem;
-    box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
-    border-radius: ${({ theme }) => theme.styles.borderRadius};
+    box-shadow: ${({ theme }) => theme.styles.boxShadow};
+    border-radius: 0.25rem;
     color: white;
     background: #9b59b6;
     cursor: pointer;
     margin: 0 1rem;
+
+    &:hover {
+        background: #8e44ad;     
+    }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -19,10 +23,10 @@ export const ButtonWrapper = styled.div`
 `
 
 export const CancelButton = styled.button`
-    font-size: 1rem;
+    font-size: 0.85rem;
     height: 2rem;
     border: none;
-    color: ${({ theme }) => theme.colors.fontPrimary};
+    color: ${({ theme }) => theme.colors.fontSecondary};
     background: #fff;
     cursor: pointer;
 `;

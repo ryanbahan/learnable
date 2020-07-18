@@ -8,12 +8,12 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { PlaylistContext } from '../../contexts/playlistContext';
 
 const icon = {
-  video: <YouTubeIcon fontSize="large" style={{ fill: '#c4302b' }} />,
-  audio: <MicNoneOutlinedIcon fontSize="large" style={{ fill: '#8e44ad' }} />,
+  video: <YouTubeIcon fontSize="large" style={{ fill: '#c4302b', margin: "1rem" }} />,
+  audio: <MicNoneOutlinedIcon fontSize="large" style={{ fill: '#8e44ad', margin: "1rem" }} />,
   article: (
-    <DescriptionOutlinedIcon fontSize="large" style={{ fill: '#16a085' }} />
+    <DescriptionOutlinedIcon fontSize="large" style={{ fill: '#16a085', margin: "1rem" }} />
   ),
-  other: <AirplayIcon fontSize="large" style={{ fill: '#2c3e50' }} />,
+  other: <AirplayIcon fontSize="large" style={{ fill: '#2c3e50', margin: "1rem" }} />,
 };
 
 const PlaylistItem = ({
@@ -44,7 +44,6 @@ const PlaylistItem = ({
         checked={is_complete}
         onChange={() => handleCheckboxToggle()}
         name="checkbox"
-        color="default"
       />
       <P>{ title }</P>
       { icon[category] }

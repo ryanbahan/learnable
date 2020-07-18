@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
-import AddIcon from '@material-ui/icons/Add';
 
 export const Button = styled.button.attrs(() => ({
   type: 'button',
@@ -8,30 +7,19 @@ export const Button = styled.button.attrs(() => ({
   background: ${({ theme }) => theme.colors.grayLighter};
   color: ${({ theme }) => theme.colors.fontPrimary};
   border: none;
-  height: 3rem;
   width: 3rem;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    cursor: pointer;
-    outline: none;
-
-    & > * {
-      color: ${({ theme }) => theme.colors.grayLighter};
-      background-color: ${({ theme }) => theme.colors.fontSecondary};
-    }
-  }
+  height: 3rem;
+  cursor: pointer;
 
   ${({ disabled }) =>
     disabled &&
     css`
+        cursor: not-allowed;
+
       && > * {
+        cursor: not-allowed;
         color: ${({ theme }) => theme.colors.grayLight};
         background-color: #f9f9f9;
-        cursor: auto;
       }
     `}
 `;
@@ -93,11 +81,4 @@ export const FormControl = styled(motion.div)`
         margin-bottom: 0.4rem;
       }
     `}
-`;
-
-export const PlusIcon = styled(AddIcon)`
-  && {
-    font-size: 3rem;
-    pointer-events: none;
-  }
 `;

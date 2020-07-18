@@ -5,7 +5,7 @@ export const Wrapper = styled(motion.div)`
     position: relative;
     border: 0.25px solid ${({ theme }) => theme.colors.grayLight};
     box-shadow: ${({ theme }) => theme.styles.boxShadow};
-    margin: 0.5rem;
+    margin: 1rem 0.5rem;
     padding: 2.5rem;
     border-radius: ${({ theme }) => theme.styles.borderRadius};
     flex-basis: 25%;
@@ -14,7 +14,7 @@ export const Wrapper = styled(motion.div)`
 `
 
 export const Div = styled.div`
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: ${({ theme }) => theme.colors.fontPrimary};
     display: flex;
     justify-content: space-between;

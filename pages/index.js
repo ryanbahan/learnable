@@ -43,7 +43,7 @@ const Main = styled.main`
 `
 
 const Button = styled.button`
-    background: #9B59B6;
+    background: #9b59b6;
     color: #fff;
     border: none;
     border-radius: 0.25rem;
@@ -51,6 +51,11 @@ const Button = styled.button`
     margin: 1.5rem;
     font-size: 1.5rem;
     cursor: pointer;
+    box-shadow: ${({ theme }) => theme.styles.boxShadow};
+
+    &:hover {
+        background: #8e44ad;     
+    }
 `
 
 const Title = styled.h2`

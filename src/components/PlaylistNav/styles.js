@@ -62,7 +62,7 @@ export const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   background-color: #f9f9f9;
-  padding: 1rem 2.5rem;
+  padding: 2rem 2rem 0 2rem;
   width: 100%;
 
   @media (max-width: 450px) {
