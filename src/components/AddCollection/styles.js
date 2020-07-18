@@ -5,15 +5,15 @@ export const Button = styled.button`
     height: 2rem;
     border: none;
     min-width: 10rem;
-    box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
+    box-shadow: ${({ theme }) => theme.styles.boxShadow};
     border-radius: 0.25rem;
     color: white;
-    background: #3498db;
+    background: #9b59b6;
     cursor: pointer;
     margin: 0 1rem;
 
     &:hover {
-        background: #2980b9;
+        background: #8e44ad;     
     }
 `;
 

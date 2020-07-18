@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    color: ${({ theme }) => theme.colors.fontPrimary};
   }
 
   body,

@@ -11,6 +11,11 @@ export const Button = styled.button`
     color: ${({ theme }) => theme.colors.fontPrimary};
     background: transparent;
     cursor: pointer;
+
+    &:hover {
+        background: ${({ theme }) => theme.colors.fontPrimary};
+        color: #f9f9f9; 
+    }
 `;
 
 export const Div = styled.div`

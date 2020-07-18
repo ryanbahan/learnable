@@ -44,7 +44,6 @@ const PlaylistItem = ({
         checked={is_complete}
         onChange={() => handleCheckboxToggle()}
         name="checkbox"
-        color="default"
       />
       <P>{ title }</P>
       { icon[category] }

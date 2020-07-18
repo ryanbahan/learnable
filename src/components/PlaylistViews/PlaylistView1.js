@@ -64,7 +64,7 @@ const PlaylistView1 = ({
       )}
       {step === 2 && (
         <ButtonWrapper>
-          <Button onClick={() => handleSubmit()}>CREATE PLAYLIST</Button>
+          <Button onClick={() => handleSubmit()}>Create Playlist</Button>
         </ButtonWrapper>
       )}
     </Div>

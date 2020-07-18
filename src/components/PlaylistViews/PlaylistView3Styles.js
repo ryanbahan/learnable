@@ -30,7 +30,7 @@ export const DoneButton = styled.button.attrs(() => ({
   width: 100%;
 
   &:hover {
-    background: #2980b9;
+    background: #2980b9;     
   }
 `;
 
