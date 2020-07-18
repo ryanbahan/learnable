@@ -5,7 +5,7 @@ import {
     Li,
     Aside,
 } from './styles'
-import SearchIcon from '@material-ui/icons/Search'
+import CollectionsIcon from '@material-ui/icons/Collections';
 import PersonIcon from '@material-ui/icons/Person'
 import TimerIcon from '@material-ui/icons/Timer'
 import StarsIcon from '@material-ui/icons/Stars'
@@ -15,7 +15,7 @@ import { useRouter } from 'next/router'
 
 const AppSidebar = () => {
     const navItems = [
-        {name: "Recent", component: <TimerIcon style={{fontSize: "1.45rem"}} />, href: "/app"}, 
+        { name: "Collections", component: <CollectionsIcon style={{fontSize: "1.45rem"}} />, href: "/app"}, 
         { name: "Favorites", component: <StarsIcon style={{ fontSize: "1.45rem" }} />, href: "/app/favorites"}, 
         { name: "Profile", component: <PersonIcon style={{ fontSize: "1.45rem" }} />, href: "/app/profile"},
     ]

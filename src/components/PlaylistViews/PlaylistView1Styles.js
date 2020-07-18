@@ -8,6 +8,8 @@ export const Button = styled.button.attrs(() => ({
   cursor: pointer;
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.fontSizes.sm};
+  border-radius: ${({ theme }) => theme.styles.borderRadius};
+  border-radius: 0.25rem;
   font-weight: 500;
   height: 2.5rem;
   width: 100%;

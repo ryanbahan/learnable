@@ -12,7 +12,7 @@ const CollectionsNav = ({ toggleModal }) => {
 
   return (
     <CollectionsNavWrapper>
-      <H3>Recently Viewed</H3>
+      <H3>Your Collections</H3>
       <AddButton onClick={() => toggleModal(true)}><AddIcon /></AddButton>
     </CollectionsNavWrapper>
   )

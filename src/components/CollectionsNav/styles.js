@@ -21,7 +21,8 @@ export const CollectionsNavWrapper = styled.nav`
 `;
 
 export const H3 = styled.h3`
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1rem;
   pointer-events: none;
+  padding-left: 0.25rem;
 `

@@ -12,8 +12,6 @@ export const Button = styled.button.attrs(() => ({
   justify-content: center;
   align-items: center;
   font-size: ${({ theme }) => theme.fontSizes.sm};
-  height: 6rem;
-  width: 100%;
 `;
 
 export const DoneButton = styled.button.attrs(() => ({
@@ -22,15 +20,22 @@ export const DoneButton = styled.button.attrs(() => ({
   background: #3498db;
   border: none;
   color: ${({ theme }) => theme.colors.white};
+  border-radius: 0.25rem;
+  box-shadow: ${({ theme }) => theme.styles.boxShadow};
   font-size: ${({ theme }) => theme.fontSizes.sm};
   font-weight: 500;
   cursor: pointer;
   height: 2.5rem;
   margin: 2.5rem 0 0.5rem 0;
   width: 100%;
+
+  &:hover {
+    background: #2980b9;
+  }
 `;
 
 export const Grid = styled.div`
+  flex-grow: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -38,7 +43,7 @@ export const Grid = styled.div`
 `;
 
 export const Span = styled.span`
-  color: #c0392b;
+  color: ${({ theme }) => theme.colors.fontSecondary};
   font-size: 0.85rem;
   margin: 0.25rem 0;
   text-align: center;
