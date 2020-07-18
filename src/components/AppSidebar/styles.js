@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
-    font-size: 1rem;
-    height: 2rem;
+    font-size: 0.85rem;
+    height: 1.75rem;
     border: none;
-    min-width: 7.5rem;
+    width: 6rem;
     box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
     border-radius: ${({ theme }) => theme.styles.borderRadius};
     color: white;
@@ -25,7 +25,7 @@ export const Li = styled.li`
     width: 100%;
     display: flex;
     align-items: center;
-    font-size: 1rem;
+    font-size: 0.85rem;
     padding: 1rem;
 
     > * {
@@ -47,7 +47,7 @@ export const Aside = styled.aside`
     position: relative;
     border-right: solid 0.25px ${({ theme }) => theme.colors.grayLight};
     box-shadow: ${({ theme }) => theme.styles.boxShadowLighter};
-    width: 12.5rem;
+    width: 10vw;
     min-width: 12.5rem;
     display: flex;
     flex-direction: column;

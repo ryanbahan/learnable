@@ -19,3 +19,8 @@ export const CollectionsNavWrapper = styled.nav`
   padding: 1rem 3.5rem;
   color: ${({ theme }) => theme.colors.fontPrimary};
 `;
+
+export const H3 = styled.h3`
+  font-weight: 500;
+  font-size: 1rem;
+`

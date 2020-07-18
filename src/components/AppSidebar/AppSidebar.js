@@ -15,9 +15,9 @@ import { useRouter } from 'next/router'
 
 const AppSidebar = () => {
     const navItems = [
-        {name: "Recent", component: <TimerIcon />, href: "/app"}, 
-        {name: "Favorites", component: <StarsIcon />, href: "/app/favorites"}, 
-        {name: "Profile", component: <PersonIcon />, href: "/app/profile"},
+        {name: "Recent", component: <TimerIcon style={{fontSize: "1.45rem"}} />, href: "/app"}, 
+        { name: "Favorites", component: <StarsIcon style={{ fontSize: "1.45rem" }} />, href: "/app/favorites"}, 
+        { name: "Profile", component: <PersonIcon style={{ fontSize: "1.45rem" }} />, href: "/app/profile"},
     ]
     const base = process.env.baseURL[process.env.type]
     const [session, loading] = useSession()

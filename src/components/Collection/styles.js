@@ -14,7 +14,7 @@ export const Wrapper = styled(motion.div)`
 `
 
 export const Div = styled.div`
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: ${({ theme }) => theme.colors.fontPrimary};
     display: flex;
     justify-content: space-between;

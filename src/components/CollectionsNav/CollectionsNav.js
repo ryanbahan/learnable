@@ -1,6 +1,7 @@
 import {
   AddButton,
   CollectionsNavWrapper,
+  H3,
 } from './styles'
 import Link from 'next/link';
 import { signin, signout, useSession } from 'next-auth/client'
@@ -11,7 +12,7 @@ const CollectionsNav = ({ toggleModal }) => {
 
   return (
     <CollectionsNavWrapper>
-      <h3>Recently Viewed</h3>
+      <H3>Recently Viewed</H3>
       <AddButton onClick={() => toggleModal(true)}><AddIcon /></AddButton>
     </CollectionsNavWrapper>
   )
