@@ -5,7 +5,7 @@ export const Wrapper = styled(motion.div)`
     position: relative;
     border: 0.25px solid ${({ theme }) => theme.colors.grayLight};
     box-shadow: ${({ theme }) => theme.styles.boxShadow};
-    margin: 0.5rem;
+    margin: 1rem 0.5rem;
     padding: 2.5rem;
     border-radius: ${({ theme }) => theme.styles.borderRadius};
     flex-basis: 25%;

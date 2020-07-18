@@ -1,14 +1,15 @@
 import styled, { css } from 'styled-components';
 
 export const Button = styled.button`
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     height: 1.75rem;
     border: none;
-    width: 6rem;
+    width: 5rem;
+    border: solid 0.25px ${({ theme }) => theme.colors.fontPrimary};
     box-shadow: ${({ theme }) => theme.styles.boxShadowLight};
-    border-radius: ${({ theme }) => theme.styles.borderRadius};
-    color: white;
-    background: #9b59b6;
+    border-radius: 0.25rem;
+    color: ${({ theme }) => theme.colors.fontPrimary};
+    background: transparent;
     cursor: pointer;
 `;
 

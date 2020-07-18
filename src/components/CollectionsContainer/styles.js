@@ -11,7 +11,7 @@ export const Main = styled.main`
 `
 
 export const Grid = styled.div`
-    padding: 3rem;
+    padding: 2rem 3rem;
 `
 
 export const GridWrapper = styled.div`
