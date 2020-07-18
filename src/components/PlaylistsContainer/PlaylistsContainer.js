@@ -5,7 +5,6 @@ import { PlaylistContext } from '../../contexts/playlistContext';
 import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Playlist from '../Playlist/Playlist';
 import AddPlaylist from '../AddPlaylist/AddPlaylist';
-import PlaylistViewSmall from '../PlaylistViews/PlaylistViewSmall';
 
 const PlaylistsContainer = () => {
 
@@ -21,11 +20,7 @@ const PlaylistsContainer = () => {
       : playlists.filter((playlist) => playlist.status !== 'archived');
 
   const renderedPlaylists = filteredPlaylists().map((playlist) => (
-    <Playlist key={playlist.id} {...playlist} />
-  ));
-
-  const renderedPlaylistsSmall = filteredPlaylists().map((playlist) => (
-    <PlaylistViewSmall key={playlist.id} {...playlist} />
+    <Playlist key={playlist.id} view={view} {...playlist} />
   ));
 
   return (
@@ -35,10 +30,10 @@ const PlaylistsContainer = () => {
       animate={playlists.length ? 'active' : 'disabled'}
       view={view}
       style={
-        view === true ? null : { flexWrap: 'wrap', justifyContent: 'center' }
+        view === true ? null : { flexWrap: 'wrap', justifyContent: 'center'}
       }
     >
-      {view === true ? renderedPlaylists : renderedPlaylistsSmall}
+      { renderedPlaylists }
       {view === true && !archiveView ? <AddPlaylist /> : null}
     </Main>
   )

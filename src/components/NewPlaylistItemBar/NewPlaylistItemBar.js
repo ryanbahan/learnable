@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AppSettingsContext } from '../../contexts/appSettingsContext';
 import Input from '../Input/Input';
 import {
   Article,
@@ -14,6 +15,8 @@ const NewPlaylistItemBar = ({
   state,
   update,
 }) => {
+  const appSettingsContext = useContext(AppSettingsContext);
+  const { view } = appSettingsContext.state;
 
   const onItemSubmit = async () => {
     const res = await fetch("/api/ogReader", {
@@ -27,7 +30,7 @@ const NewPlaylistItemBar = ({
   };
 
   return (
-    <Article>
+    <Article view={view}>
       <Div>
         <PlaylistItemCount>{state.items.length}</PlaylistItemCount>
         <Button onClick={() => toggleInputActive(!inputActive)}>
