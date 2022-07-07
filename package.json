@@ -15,7 +15,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/pickers": "^3.2.10",
     "framer-motion": "^1.11.0",
-    "moment": "^2.26.0",
+    "moment": "^2.29.4",
     "next": "9.4.0",
     "next-auth": "^2.2.0",
     "open-graph": "^0.2.4",
